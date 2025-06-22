@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 
+import dfwprestinepowerwashing_com from "@assets/dfwprestinepowerwashing.com.jpg";
+
 export default function Hero() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -55,14 +57,11 @@ export default function Hero() {
           
           <div className="relative">
             <img 
-              src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+              src={dfwprestinepowerwashing_com} 
               alt="Professional pressure washing service in action" 
               className="rounded-lg shadow-2xl w-full"
             />
-            <div className="absolute -bottom-6 -left-6 bg-white text-gray-800 p-4 rounded-lg shadow-lg">
-              <div className="text-2xl font-bold text-success">24/7</div>
-              <div className="text-sm">Emergency Service</div>
-            </div>
+            
           </div>
         </div>
       </div>
