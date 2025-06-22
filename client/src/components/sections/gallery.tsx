@@ -66,13 +66,6 @@ export default function Gallery() {
                   alt={item.alt}
                   className="w-full h-64 object-cover"
                 />
-                <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-sm font-semibold ${
-                  item.type === 'BEFORE' 
-                    ? 'bg-red-500 text-white' 
-                    : 'bg-success text-white'
-                }`}>
-                  {item.type}
-                </div>
               </div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">{item.title}</h3>
