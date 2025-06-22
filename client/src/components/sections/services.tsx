@@ -57,17 +57,7 @@ export default function Services() {
         "EPA Approved Products"
       ]
     },
-    {
-      icon: "fas fa-clock",
-      title: "Emergency Services",
-      description: "24/7 emergency cleaning services for urgent situations and disaster cleanup.",
-      features: [
-        "Graffiti Removal",
-        "Oil Spill Cleanup",
-        "Storm Damage Cleaning",
-        "Same-Day Service"
-      ]
-    }
+
   ];
 
   return (

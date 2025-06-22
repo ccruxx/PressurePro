@@ -125,7 +125,8 @@ AquaClean Pro is a modern, responsive single-page application (SPA) for a profes
 ## Changelog
 
 Changelog:
-- June 22, 2025. Initial setup
+- June 22, 2025. Initial setup - Complete professional pressure washing website built
+- June 22, 2025. Removed emergency services at user request - cleaned up all references across services, contact form, and footer
 
 ## User Preferences
 

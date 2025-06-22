@@ -180,7 +180,7 @@ export default function Contact() {
                       <SelectItem value="vehicle">Vehicle & Equipment</SelectItem>
                       <SelectItem value="soft-washing">Soft Washing</SelectItem>
                       <SelectItem value="eco-friendly">Eco-Friendly Options</SelectItem>
-                      <SelectItem value="emergency">Emergency Services</SelectItem>
+
                     </SelectContent>
                   </Select>
                   {form.formState.errors.service && (
@@ -245,13 +245,27 @@ export default function Contact() {
             
             <Card className="bg-primary text-white rounded-xl p-6">
               <CardContent className="p-0">
-                <h4 className="text-xl font-semibold mb-4">Emergency Services Available</h4>
-                <p className="mb-4">
-                  Need immediate assistance? We offer 24/7 emergency pressure washing services for 
-                  urgent situations like graffiti removal, oil spills, and disaster cleanup.
-                </p>
+                <h4 className="text-xl font-semibold mb-4">Why Choose AquaClean Pro?</h4>
+                <ul className="space-y-2 mb-4">
+                  <li className="flex items-center">
+                    <i className="fas fa-check mr-2"></i>
+                    Licensed, Bonded & Insured
+                  </li>
+                  <li className="flex items-center">
+                    <i className="fas fa-check mr-2"></i>
+                    Professional Equipment
+                  </li>
+                  <li className="flex items-center">
+                    <i className="fas fa-check mr-2"></i>
+                    100% Satisfaction Guarantee
+                  </li>
+                  <li className="flex items-center">
+                    <i className="fas fa-check mr-2"></i>
+                    Eco-Friendly Solutions
+                  </li>
+                </ul>
                 <Button className="bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100">
-                  <i className="fas fa-exclamation-triangle mr-2"></i>Emergency Service
+                  <i className="fas fa-phone mr-2"></i>Call Now
                 </Button>
               </CardContent>
             </Card>

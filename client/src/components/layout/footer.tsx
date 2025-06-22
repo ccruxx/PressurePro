@@ -44,7 +44,7 @@ export default function Footer() {
               <li><button onClick={() => scrollToSection('services')} className="hover:text-primary transition-colors">Vehicle & Equipment</button></li>
               <li><button onClick={() => scrollToSection('services')} className="hover:text-primary transition-colors">Soft Washing</button></li>
               <li><button onClick={() => scrollToSection('services')} className="hover:text-primary transition-colors">Eco-Friendly Options</button></li>
-              <li><button onClick={() => scrollToSection('services')} className="hover:text-primary transition-colors">Emergency Services</button></li>
+
             </ul>
           </div>
           
@@ -79,7 +79,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <i className="fas fa-clock text-primary"></i>
-                <span>24/7 Emergency Service</span>
+                <span>Mon-Sat: 7AM-7PM</span>
               </div>
             </div>
           </div>
