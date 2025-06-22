@@ -4,14 +4,14 @@ import { Button } from "@/components/ui/button";
 export default function Gallery() {
   const galleryItems = [
     {
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
+      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
       alt: "Dirty concrete driveway before pressure washing",
       title: "Concrete Driveway",
       description: "Oil stains and years of dirt removed, revealing clean concrete underneath.",
       type: "BEFORE"
     },
     {
-      image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
+      image: "https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
       alt: "Clean concrete driveway after pressure washing",
       title: "Concrete Driveway",
       description: "Professional results that restore the original appearance and add curb appeal.",
