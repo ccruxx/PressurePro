@@ -1,3 +1,4 @@
+import JoshPicture from "@assets/JoshPicture.png";
 export default function About() {
   const features = [
     {
@@ -50,7 +51,7 @@ export default function About() {
           
           <div className="relative">
             <img 
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
+              src={JoshPicture}
               alt="Professional pressure washing team with commercial equipment"
               className="rounded-lg shadow-2xl w-full"
             />
