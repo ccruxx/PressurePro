@@ -96,9 +96,31 @@ export default function Gallery() {
         </div>
 
         <div className="text-center mt-12">
-          <Button className="bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary">
-            <i className="fas fa-images mr-2"></i>View Full Gallery
-          </Button>
+          <div className="bg-white rounded-xl p-8 shadow-lg max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">Ready to Transform Your Property?</h3>
+            <p className="text-gray-600 mb-6">
+              Get professional results like these for your home or business. Free estimates available.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                onClick={() => {
+                  const element = document.getElementById('contact');
+                  if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="bg-success text-white px-6 py-3 rounded-lg font-semibold hover:bg-success/90"
+              >
+                <i className="fas fa-calculator mr-2"></i>Get Free Quote
+              </Button>
+              <Button 
+                onClick={() => {
+                  window.open('tel:+1234567890', '_self');
+                }}
+                className="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary"
+              >
+                <i className="fas fa-phone mr-2"></i>Call Now
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
