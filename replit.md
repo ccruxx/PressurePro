@@ -128,7 +128,7 @@ Changelog:
 - June 22, 2025. Initial setup - Complete professional pressure washing website built
 - June 22, 2025. Removed emergency services at user request - cleaned up all references across services, contact form, and footer
 - January 6, 2025. Updated business name to "DFW Pristine Power Washing" throughout the site
-- January 6, 2025. Updated phone number to (817) 585-6388 and email to dfwpristinepowerwashing@gmail.com
+- January 6, 2025. Updated phone number to (817) 585-6388 and email to joshuacllns@yahoo.com
 - January 6, 2025. Created custom SVG logo resembling pressure washer wand with water streams
 - January 6, 2025. Updated service area to focus on DFW Metro Area
 

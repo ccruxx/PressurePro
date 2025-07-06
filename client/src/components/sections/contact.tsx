@@ -12,7 +12,7 @@ export default function Contact() {
     {
       icon: "fas fa-envelope",
       title: "Email",
-      value: "dfwpristinepowerwashing@gmail.com"
+      value: "joshuacllns@yahoo.com"
     },
     {
       icon: "fas fa-map-marker-alt",
@@ -76,7 +76,7 @@ export default function Contact() {
                       <i className="fas fa-phone mr-2"></i>Call (817) 585-6388
                     </Button>
                     <Button 
-                      onClick={() => window.open('mailto:dfwpristinepowerwashing@gmail.com', '_self')}
+                      onClick={() => window.open('mailto:joshuacllns@yahoo.com', '_self')}
                       className="w-full bg-success text-white px-6 py-3 rounded-lg font-semibold hover:bg-success/90"
                     >
                       <i className="fas fa-envelope mr-2"></i>Send Email
