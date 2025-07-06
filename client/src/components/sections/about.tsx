@@ -28,7 +28,7 @@ export default function About() {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-4xl font-bold text-gray-800 mb-6">Why Choose AquaClean Pro?</h2>
+            <h2 className="text-4xl font-bold text-gray-800 mb-6">Why Choose DFW Pristine Power Washing?</h2>
             <p className="text-xl text-gray-600 mb-8">
               With over 10 years of experience in professional pressure washing, we've built our reputation 
               on delivering exceptional results and outstanding customer service.

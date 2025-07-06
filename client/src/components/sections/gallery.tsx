@@ -113,7 +113,7 @@ export default function Gallery() {
               </Button>
               <Button 
                 onClick={() => {
-                  window.open('tel:+1234567890', '_self');
+                  window.open('tel:+18175856388', '_self');
                 }}
                 className="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary"
               >

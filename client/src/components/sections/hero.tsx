@@ -16,7 +16,7 @@ export default function Hero() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Professional Pressure Washing That{' '}
+              DFW's Premier Pressure Washing That{' '}
               <span className="text-yellow-300">Transforms</span> Your Property
             </h1>
             <p className="text-xl mb-8 text-blue-100">

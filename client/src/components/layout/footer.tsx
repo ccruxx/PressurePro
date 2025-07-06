@@ -12,9 +12,20 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <i className="fas fa-spray-can text-primary text-2xl"></i>
-              <span className="text-2xl font-bold">AquaClean Pro</span>
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="relative">
+                <svg width="32" height="32" viewBox="0 0 32 32" className="text-primary">
+                  {/* Pressure washer wand */}
+                  <rect x="2" y="14" width="20" height="4" rx="2" fill="currentColor" />
+                  <circle cx="22" cy="16" r="3" fill="currentColor" />
+                  {/* Water streams */}
+                  <path d="M22 13 L28 8 M22 16 L30 16 M22 19 L28 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.7" />
+                </svg>
+              </div>
+              <div>
+                <span className="text-xl font-bold leading-tight">DFW PRISTINE</span>
+                <div className="text-sm font-semibold text-primary">POWER WASHING</div>
+              </div>
             </div>
             <p className="text-gray-300 mb-4">
               Professional pressure washing services that transform your property and exceed your expectations.
@@ -67,15 +78,15 @@ export default function Footer() {
             <div className="space-y-3 text-gray-300">
               <div className="flex items-center space-x-3">
                 <i className="fas fa-phone text-primary"></i>
-                <span>(123) 456-7890</span>
+                <span>(817) 585-6388</span>
               </div>
               <div className="flex items-center space-x-3">
                 <i className="fas fa-envelope text-primary"></i>
-                <span>info@aquacleanpro.com</span>
+                <span>dfwpristinepowerwashing@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <i className="fas fa-map-marker-alt text-primary"></i>
-                <span>Metro Area Service</span>
+                <span>DFW Metro Area Service</span>
               </div>
               <div className="flex items-center space-x-3">
                 <i className="fas fa-clock text-primary"></i>
@@ -86,7 +97,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
-          <p>&copy; 2024 AquaClean Pro. All rights reserved. | Licensed, Bonded & Insured</p>
+          <p>&copy; 2024 DFW Pristine Power Washing. All rights reserved. | Licensed, Bonded & Insured</p>
         </div>
       </div>
     </footer>

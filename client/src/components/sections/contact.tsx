@@ -7,17 +7,17 @@ export default function Contact() {
     {
       icon: "fas fa-phone",
       title: "Phone",
-      value: "(123) 456-7890"
+      value: "(817) 585-6388"
     },
     {
       icon: "fas fa-envelope",
       title: "Email",
-      value: "info@aquacleanpro.com"
+      value: "dfwpristinepowerwashing@gmail.com"
     },
     {
       icon: "fas fa-map-marker-alt",
       title: "Service Area",
-      value: "Metro Area & Surrounding Communities"
+      value: "DFW Metro Area & Surrounding Communities"
     },
     {
       icon: "fas fa-clock",
@@ -70,13 +70,13 @@ export default function Contact() {
                   </p>
                   <div className="space-y-4">
                     <Button 
-                      onClick={() => window.open('tel:+1234567890', '_self')}
+                      onClick={() => window.open('tel:+18175856388', '_self')}
                       className="w-full bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100"
                     >
-                      <i className="fas fa-phone mr-2"></i>Call (123) 456-7890
+                      <i className="fas fa-phone mr-2"></i>Call (817) 585-6388
                     </Button>
                     <Button 
-                      onClick={() => window.open('mailto:info@aquacleanpro.com', '_self')}
+                      onClick={() => window.open('mailto:dfwpristinepowerwashing@gmail.com', '_self')}
                       className="w-full bg-success text-white px-6 py-3 rounded-lg font-semibold hover:bg-success/90"
                     >
                       <i className="fas fa-envelope mr-2"></i>Send Email

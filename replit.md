@@ -1,8 +1,8 @@
-# AquaClean Pro - Professional Pressure Washing Website
+# DFW Pristine Power Washing - Professional Pressure Washing Website
 
 ## Overview
 
-AquaClean Pro is a modern, responsive single-page application (SPA) for a professional pressure washing service business. The application features a clean, professional design with sections for services, gallery, testimonials, about information, and a contact form. It's built with React, TypeScript, and uses a full-stack architecture with Express.js backend and PostgreSQL database for contact form submissions.
+DFW Pristine Power Washing is a modern, responsive single-page application (SPA) for a professional pressure washing service business serving the Dallas-Fort Worth metro area. The application features a clean, professional design with sections for services, gallery, testimonials, about information, and direct contact methods. It's built with React, TypeScript, and uses a full-stack architecture with Express.js backend. The site focuses on direct customer contact rather than complex forms.
 
 ## System Architecture
 
@@ -127,6 +127,10 @@ AquaClean Pro is a modern, responsive single-page application (SPA) for a profes
 Changelog:
 - June 22, 2025. Initial setup - Complete professional pressure washing website built
 - June 22, 2025. Removed emergency services at user request - cleaned up all references across services, contact form, and footer
+- January 6, 2025. Updated business name to "DFW Pristine Power Washing" throughout the site
+- January 6, 2025. Updated phone number to (817) 585-6388 and email to dfwpristinepowerwashing@gmail.com
+- January 6, 2025. Created custom SVG logo resembling pressure washer wand with water streams
+- January 6, 2025. Updated service area to focus on DFW Metro Area
 
 ## User Preferences
 
