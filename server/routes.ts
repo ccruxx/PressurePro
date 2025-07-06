@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactSubmissionSchema } from "@shared/schema";
+import { sendQuoteRequestEmail } from "./email";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -11,8 +12,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const validatedData = insertContactSubmissionSchema.parse(req.body);
       const submission = await storage.createContactSubmission(validatedData);
       
-      // In a real application, you might send an email notification here
-      console.log("New contact submission:", submission);
+      // Send email notification
+      const emailSent = await sendQuoteRequestEmail(submission);
+      
+      if (emailSent) {
+        console.log("Quote request email sent successfully for:", submission.email);
+      } else {
+        console.warn("Failed to send quote request email for:", submission.email);
+      }
       
       res.json({ success: true, message: "Thank you for your inquiry! We will contact you soon." });
     } catch (error) {
