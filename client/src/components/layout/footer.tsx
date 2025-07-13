@@ -1,4 +1,4 @@
-import logoImage from "@assets/1_1752415343694.jpg";
+import logoImage from "@assets/logo2.png";
 
 export default function Footer() {
   const scrollToSection = (sectionId: string) => {
@@ -15,57 +15,143 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <div className="mb-4">
-              <img 
-                src={logoImage} 
-                alt="DFW Pristine Power Washing Logo" 
+              <img
+                src={logoImage}
+                alt="DFW Pristine Power Washing Logo"
                 className="h-24 w-auto object-contain"
               />
             </div>
             <p className="text-gray-300 mb-4">
-              Professional pressure washing services that transform your property and exceed your expectations.
+              Professional pressure washing services that transform your
+              property and exceed your expectations.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-primary transition-colors">
+              <a
+                href="#"
+                className="text-gray-300 hover:text-primary transition-colors"
+              >
                 <i className="fab fa-facebook text-xl"></i>
               </a>
-              <a href="#" className="text-gray-300 hover:text-primary transition-colors">
+              <a
+                href="#"
+                className="text-gray-300 hover:text-primary transition-colors"
+              >
                 <i className="fab fa-instagram text-xl"></i>
               </a>
-              <a href="#" className="text-gray-300 hover:text-primary transition-colors">
+              <a
+                href="#"
+                className="text-gray-300 hover:text-primary transition-colors"
+              >
                 <i className="fab fa-google text-xl"></i>
               </a>
-              <a href="#" className="text-gray-300 hover:text-primary transition-colors">
+              <a
+                href="#"
+                className="text-gray-300 hover:text-primary transition-colors"
+              >
                 <i className="fab fa-yelp text-xl"></i>
               </a>
             </div>
           </div>
-          
+
           {/* Services */}
           <div>
             <h3 className="text-xl font-semibold mb-4">Our Services</h3>
             <ul className="space-y-2 text-gray-300">
-              <li><button onClick={() => scrollToSection('services')} className="hover:text-primary transition-colors">Residential Cleaning</button></li>
-              <li><button onClick={() => scrollToSection('services')} className="hover:text-primary transition-colors">Commercial Cleaning</button></li>
-              <li><button onClick={() => scrollToSection('services')} className="hover:text-primary transition-colors">Vehicle & Equipment</button></li>
-              <li><button onClick={() => scrollToSection('services')} className="hover:text-primary transition-colors">Soft Washing</button></li>
-              <li><button onClick={() => scrollToSection('services')} className="hover:text-primary transition-colors">Eco-Friendly Options</button></li>
-
+              <li>
+                <button
+                  onClick={() => scrollToSection("services")}
+                  className="hover:text-primary transition-colors"
+                >
+                  Residential Cleaning
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("services")}
+                  className="hover:text-primary transition-colors"
+                >
+                  Commercial Cleaning
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("services")}
+                  className="hover:text-primary transition-colors"
+                >
+                  Vehicle & Equipment
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("services")}
+                  className="hover:text-primary transition-colors"
+                >
+                  Soft Washing
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("services")}
+                  className="hover:text-primary transition-colors"
+                >
+                  Eco-Friendly Options
+                </button>
+              </li>
             </ul>
           </div>
-          
+
           {/* Quick Links */}
           <div>
             <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-gray-300">
-              <li><button onClick={() => scrollToSection('home')} className="hover:text-primary transition-colors">Home</button></li>
-              <li><button onClick={() => scrollToSection('services')} className="hover:text-primary transition-colors">Services</button></li>
-              <li><button onClick={() => scrollToSection('gallery')} className="hover:text-primary transition-colors">Gallery</button></li>
-              <li><button onClick={() => scrollToSection('about')} className="hover:text-primary transition-colors">About</button></li>
-              <li><button onClick={() => scrollToSection('contact')} className="hover:text-primary transition-colors">Contact</button></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("home")}
+                  className="hover:text-primary transition-colors"
+                >
+                  Home
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("services")}
+                  className="hover:text-primary transition-colors"
+                >
+                  Services
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("gallery")}
+                  className="hover:text-primary transition-colors"
+                >
+                  Gallery
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("about")}
+                  className="hover:text-primary transition-colors"
+                >
+                  About
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("contact")}
+                  className="hover:text-primary transition-colors"
+                >
+                  Contact
+                </button>
+              </li>
+              <li>
+                <a href="#" className="hover:text-primary transition-colors">
+                  Privacy Policy
+                </a>
+              </li>
             </ul>
           </div>
-          
+
           {/* Contact Info */}
           <div>
             <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
@@ -89,9 +175,12 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        
+
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
-          <p>&copy; 2024 DFW Pristine Power Washing. All rights reserved. | Licensed, Bonded & Insured</p>
+          <p>
+            &copy; 2024 DFW Pristine Power Washing. All rights reserved. |
+            Licensed, Bonded & Insured
+          </p>
         </div>
       </div>
     </footer>
