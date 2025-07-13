@@ -25,7 +25,7 @@ export default function Testimonials() {
     },
     {
       rating: 5,
-      text: "We needed graffiti removed fast. DFW Premier Power Washing responded the same day and took care of everything perfectly. Impressive customer service.",
+      text: "We needed graffiti removed fast. Josh responded the same day and took care of everything perfectly. Impressive customer service.",
       name: "Lisa Davis",
       title: "Property Manager",
       initials: "LD",
