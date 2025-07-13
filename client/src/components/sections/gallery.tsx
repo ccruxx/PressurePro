@@ -4,40 +4,49 @@ import house from "@assets/house.png";
 import deck from "@assets/deck.png";
 import driveway from "@assets/driveway.jpg";
 import fleet from "@assets/fleet.png";
+import padcleaning from "@assets/padcleaning.jpg";
 import commercialbuilding from "@assets/commercialbuilding.png";
 
 export default function Gallery() {
   const galleryItems = [
     {
-      image: house,
-      alt: "Dirty concrete driveway before pressure washing",
-      title: "Concrete Driveway",
+      image: padcleaning,
+      alt: "Dirty dumpster pad area before pressure washing",
+      title: "Trash Pad Cleaning",
       description:
-        "Oil stains and years of dirt removed, revealing clean concrete underneath.",
+        "Removes grease, grime, and odors from dumpster and trash pad areas, leaving them clean and sanitary.",
       type: "BEFORE",
     },
     {
-      image: deck,
-      alt: "Clean concrete driveway after pressure washing",
-      title: "Concrete Driveway",
+      image: house,
+      alt: "Dirty house exterior before pressure washing",
+      title: "House Exterior",
       description:
-        "Professional results that restore the original appearance and add curb appeal.",
-      type: "AFTER",
+        "Removes years of dirt, mold, and buildup to restore your home’s exterior and boost curb appeal.",
+      type: "BEFORE",
     },
     {
       image: driveway,
+      alt: "Clean concrete driveway after pressure washing",
+      title: "Concrete Driveway",
+      description:
+        "Restores the original appearance and instantly boosts curb appeal.",
+      type: "AFTER",
+    },
+    {
+      image: deck,
       alt: "Weathered wooden deck before pressure washing",
       title: "Wooden Deck",
       description:
-        "Weather-beaten deck restored to its natural beauty and ready for staining.",
+        "Faded wood restored to its natural beauty and ready for staining.",
       type: "BEFORE",
     },
     {
       image: fleet,
-      alt: "Clean wooden deck after pressure washing",
-      title: "Wooden Deck",
+      alt: "Fleet vehicle being cleaned with power washing",
+      title: "Fleet Washing",
       description:
-        "Beautiful restoration that extends the life of the deck and enhances outdoor living.",
+        "Keeps your commercial vehicles clean and professional-looking while protecting their surfaces.",
       type: "AFTER",
     },
     {
@@ -45,17 +54,8 @@ export default function Gallery() {
       alt: "Building exterior with dirt and stains before cleaning",
       title: "Commercial Building",
       description:
-        "Professional cleaning removes years of buildup and improves business appearance.",
+        "Removes years of buildup and brightens business curb appeal.",
       type: "BEFORE",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
-      alt: "Clean building exterior after pressure washing",
-      title: "Commercial Building",
-      description:
-        "Stunning transformation that enhances property value and customer impression.",
-      type: "AFTER",
     },
   ];
 
@@ -97,23 +97,30 @@ export default function Gallery() {
 
         <div className="text-center mt-12">
           <div className="bg-white rounded-xl p-8 shadow-lg max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Ready to Transform Your Property?</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">
+              Ready to Transform Your Property?
+            </h3>
             <p className="text-gray-600 mb-6">
-              Get professional results like these for your home or business. Free estimates available.
+              Get professional results like these for your home or business.
+              Free estimates available.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
+              <Button
                 onClick={() => {
-                  const element = document.getElementById('contact');
-                  if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
+                  const element = document.getElementById("contact");
+                  if (element)
+                    element.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
                 }}
                 className="bg-success text-white px-6 py-3 rounded-lg font-semibold hover:bg-success/90"
               >
                 <i className="fas fa-calculator mr-2"></i>Get Free Quote
               </Button>
-              <Button 
+              <Button
                 onClick={() => {
-                  window.open('tel:+18175856388', '_self');
+                  window.open("tel:+18175856388", "_self");
                 }}
                 className="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary"
               >

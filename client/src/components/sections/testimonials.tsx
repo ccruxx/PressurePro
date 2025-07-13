@@ -4,58 +4,61 @@ export default function Testimonials() {
   const testimonials = [
     {
       rating: 5,
-      text: "AquaClean Pro transformed our driveway from embarrassing to amazing! The oil stains that had been there for years are completely gone. Highly recommend their services.",
+      text: "DFW Pristine Power Washing completely transformed our driveway! Years of oil stains—gone. It looks brand new. Highly recommend their services.",
       name: "Sarah Mitchell",
       title: "Homeowner",
-      initials: "SM"
+      initials: "SM",
     },
     {
       rating: 5,
-      text: "Professional service from start to finish. They arrived on time, worked efficiently, and our commercial building looks brand new. Great value for money.",
+      text: "Professional from start to finish. They showed up on time, worked efficiently, and made our commercial building shine. Great value and great people.",
       name: "Mike Johnson",
       title: "Business Owner",
-      initials: "MJ"
+      initials: "MJ",
     },
     {
       rating: 5,
-      text: "I was amazed at how they brought our old deck back to life. The team was courteous, professional, and the results exceeded our expectations. Will definitely use again!",
+      text: "They brought our old deck back to life! Friendly crew, top-notch results, and zero hassle. Exceeded our expectations in every way.",
       name: "Robert Taylor",
       title: "Homeowner",
-      initials: "RT"
+      initials: "RT",
     },
     {
       rating: 5,
-      text: "Emergency service when we needed graffiti removed quickly. They responded same day and took care of everything professionally. Excellent customer service!",
+      text: "We needed graffiti removed fast. DFW Premier Power Washing responded the same day and took care of everything perfectly. Impressive customer service.",
       name: "Lisa Davis",
       title: "Property Manager",
-      initials: "LD"
+      initials: "LD",
     },
     {
       rating: 5,
-      text: "The eco-friendly cleaning options were perfect for our property with landscaping. No damage to plants, and the results were fantastic. Truly professional work.",
+      text: "We have a lot of landscaping, so their eco-friendly option was ideal. No damage to our plants, and everything looks spotless. Highly professional.",
       name: "Jennifer Wilson",
       title: "Homeowner",
-      initials: "JW"
+      initials: "JW",
     },
     {
       rating: 5,
-      text: "Fair pricing, excellent communication, and outstanding results. Our fleet vehicles look brand new after their service. Will definitely be repeat customers.",
+      text: "Fair pricing, excellent communication, and flawless work. Our fleet vehicles look like they just came off the lot. We’ll definitely keep using them.",
       name: "David Miller",
       title: "Fleet Manager",
-      initials: "DM"
-    }
+      initials: "DM",
+    },
   ];
 
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">What Our Customers Say</h2>
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+            What Our Customers Say
+          </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Don't just take our word for it - hear from satisfied customers across the area
+            Don't just take our word for it - hear from satisfied customers
+            across the area
           </p>
         </div>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <Card key={index} className="bg-slate-50 rounded-xl p-6">
@@ -75,8 +78,12 @@ export default function Testimonials() {
                     {testimonial.initials}
                   </div>
                   <div className="ml-4">
-                    <div className="font-semibold text-gray-800">{testimonial.name}</div>
-                    <div className="text-sm text-gray-600">{testimonial.title}</div>
+                    <div className="font-semibold text-gray-800">
+                      {testimonial.name}
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      {testimonial.title}
+                    </div>
                   </div>
                 </div>
               </CardContent>

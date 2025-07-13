@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import logoImage from "@assets/1_1752415343694.jpg";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -27,19 +28,11 @@ export default function Header() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-3">
-            <div className="relative">
-              <svg width="32" height="32" viewBox="0 0 32 32" className="text-primary">
-                {/* Pressure washer wand */}
-                <rect x="2" y="14" width="20" height="4" rx="2" fill="currentColor" />
-                <circle cx="22" cy="16" r="3" fill="currentColor" />
-                {/* Water streams */}
-                <path d="M22 13 L28 8 M22 16 L30 16 M22 19 L28 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.7" />
-              </svg>
-            </div>
-            <div>
-              <span className="text-xl font-bold text-gray-800 leading-tight">DFW PRISTINE</span>
-              <div className="text-sm font-semibold text-primary">POWER WASHING</div>
-            </div>
+            <img 
+              src={logoImage} 
+              alt="DFW Pristine Power Washing Logo" 
+              className="h-12 w-auto object-contain"
+            />
           </div>
           
           {/* Desktop Navigation */}

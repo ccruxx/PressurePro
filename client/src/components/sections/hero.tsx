@@ -10,7 +10,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary to-secondary">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: 'linear-gradient(135deg, hsl(200, 85%, 55%) 0%, hsl(190, 80%, 60%) 100%)' }}>
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
