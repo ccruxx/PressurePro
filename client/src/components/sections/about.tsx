@@ -56,6 +56,11 @@ export default function About() {
               className="rounded-lg shadow-2xl w-full"
             />
             
+            {/* Founder caption */}
+            <div className="mt-4 text-center">
+              <h3 className="text-xl font-semibold text-gray-800">Founder and Owner Joshua Collins</h3>
+            </div>
+            
             <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-lg">
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary">10+</div>
