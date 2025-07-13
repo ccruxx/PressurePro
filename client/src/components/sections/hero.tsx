@@ -10,7 +10,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary to-secondary">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
@@ -18,17 +18,26 @@ export default function Hero() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          preload="auto"
+          className="w-full h-full object-cover opacity-100"
+          style={{ zIndex: 1 }}
+          onLoadStart={() => console.log('Video loading started')}
+          onCanPlay={() => console.log('Video can start playing')}
+          onPlay={() => console.log('Video is playing')}
+          onError={(e) => {
+            console.error('Video failed to load:', e);
+            console.log('Video src:', videoFile);
+          }}
         >
           <source src={videoFile} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/40" style={{ zIndex: 2 }}></div>
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 z-10 relative text-white text-center">
+      <div className="container mx-auto px-4 relative text-white text-center" style={{ zIndex: 10 }}>
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             DFW's Premier{' '}
