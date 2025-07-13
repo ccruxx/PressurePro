@@ -1,23 +1,14 @@
-import { pgTable, text, serial, timestamp } from "drizzle-orm/pg-core";
-import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-export const contactSubmissions = pgTable("contact_submissions", {
-  id: serial("id").primaryKey(),
-  firstName: text("first_name").notNull(),
-  lastName: text("last_name").notNull(),
-  email: text("email").notNull(),
-  phone: text("phone").notNull(),
-  service: text("service").notNull(),
-  address: text("address"),
-  message: text("message"),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
+// Simple contact form validation schema for static deployment
+export const contactFormSchema = z.object({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  email: z.string().email("Valid email is required"),
+  phone: z.string().min(1, "Phone number is required"),
+  service: z.string().min(1, "Service selection is required"),
+  address: z.string().optional(),
+  message: z.string().optional(),
 });
 
-export const insertContactSubmissionSchema = createInsertSchema(contactSubmissions).omit({
-  id: true,
-  createdAt: true,
-});
-
-export type InsertContactSubmission = z.infer<typeof insertContactSubmissionSchema>;
-export type ContactSubmission = typeof contactSubmissions.$inferSelect;
+export type ContactFormData = z.infer<typeof contactFormSchema>;

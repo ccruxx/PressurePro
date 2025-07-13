@@ -1,12 +1,17 @@
-import { contactSubmissions, type ContactSubmission, type InsertContactSubmission } from "@shared/schema";
+import { type ContactFormData } from "@shared/schema";
 
 export interface IStorage {
-  createContactSubmission(submission: InsertContactSubmission): Promise<ContactSubmission>;
-  getContactSubmissions(): Promise<ContactSubmission[]>;
+  createContactSubmission(submission: ContactFormData): Promise<ContactSubmissionResult>;
+  getContactSubmissions(): Promise<ContactSubmissionResult[]>;
+}
+
+export interface ContactSubmissionResult extends ContactFormData {
+  id: number;
+  createdAt: Date;
 }
 
 export class MemStorage implements IStorage {
-  private submissions: Map<number, ContactSubmission>;
+  private submissions: Map<number, ContactSubmissionResult>;
   private currentId: number;
 
   constructor() {
@@ -14,9 +19,9 @@ export class MemStorage implements IStorage {
     this.currentId = 1;
   }
 
-  async createContactSubmission(insertSubmission: InsertContactSubmission): Promise<ContactSubmission> {
+  async createContactSubmission(insertSubmission: ContactFormData): Promise<ContactSubmissionResult> {
     const id = this.currentId++;
-    const submission: ContactSubmission = {
+    const submission: ContactSubmissionResult = {
       ...insertSubmission,
       id,
       createdAt: new Date(),
@@ -25,7 +30,7 @@ export class MemStorage implements IStorage {
     return submission;
   }
 
-  async getContactSubmissions(): Promise<ContactSubmission[]> {
+  async getContactSubmissions(): Promise<ContactSubmissionResult[]> {
     return Array.from(this.submissions.values()).sort(
       (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
     );
