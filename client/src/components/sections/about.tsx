@@ -1,4 +1,5 @@
 import JoshPicture from "@assets/JoshPicture.png";
+import logo2 from "@assets/logo2.png";
 export default function About() {
   const features = [
     {
@@ -75,6 +76,15 @@ export default function About() {
               </div>
             </div>
           </div>
+        </div>
+        
+        {/* Logo at bottom */}
+        <div className="mt-16 text-center">
+          <img 
+            src={logo2}
+            alt="DFW Pristine Power Washing Logo"
+            className="mx-auto h-20 w-auto"
+          />
         </div>
       </div>
     </section>
