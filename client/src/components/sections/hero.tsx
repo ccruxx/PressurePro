@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
-import videoFile from "@assets/A_man_power_202507061243_7abk5_1751826643565.mp4";
+import { useState } from "react";
+import videoFile from "@assets/hero_video.mp4";
 
 export default function Hero() {
+  const [videoError, setVideoError] = useState(false);
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -13,25 +16,37 @@ export default function Hero() {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: 'linear-gradient(135deg, hsl(200, 85%, 55%) 0%, hsl(190, 80%, 60%) 100%)' }}>
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="w-full h-full object-cover opacity-100"
-          style={{ zIndex: 1 }}
-          onLoadStart={() => console.log('Video loading started')}
-          onCanPlay={() => console.log('Video can start playing')}
-          onPlay={() => console.log('Video is playing')}
-          onError={(e) => {
-            console.error('Video failed to load:', e);
-            console.log('Video src:', videoFile);
-          }}
-        >
-          <source src={videoFile} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        {!videoError ? (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="w-full h-full object-cover opacity-100"
+            style={{ zIndex: 1 }}
+            poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%' stop-color='%23339FDB'/%3E%3Cstop offset='100%' stop-color='%2353B3E6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1920' height='1080' fill='url(%23bg)'/%3E%3C/svg%3E"
+            onLoadStart={() => {
+              console.log('Video loading started');
+              console.log('Video src:', videoFile);
+            }}
+            onCanPlay={() => console.log('Video can start playing')}
+            onPlay={() => console.log('Video is playing')}
+            onLoadedData={() => console.log('Video data loaded')}
+            onError={(e) => {
+              console.error('Video failed to load:', e);
+              console.log('Video src:', videoFile);
+              console.log('Video error details:', e.currentTarget.error);
+              setVideoError(true);
+            }}
+          >
+            <source src={videoFile} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          <div className="w-full h-full" style={{ background: 'linear-gradient(135deg, hsl(200, 85%, 55%) 0%, hsl(190, 80%, 60%) 100%)' }}>
+          </div>
+        )}
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/40" style={{ zIndex: 2 }}></div>
       </div>
