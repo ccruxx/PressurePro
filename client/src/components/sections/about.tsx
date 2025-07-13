@@ -61,30 +61,33 @@ export default function About() {
             <div className="mt-4 text-center">
               <h3 className="text-xl font-semibold text-gray-800">Founder and Owner Joshua Collins</h3>
             </div>
-            
-            <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-lg">
+          </div>
+        </div>
+        
+        {/* Logo and badges at bottom */}
+        <div className="mt-16 text-center">
+          <img 
+            src={logo2}
+            alt="DFW Pristine Power Washing Logo"
+            className="mx-auto h-20 w-auto mb-8"
+          />
+          
+          {/* Badges */}
+          <div className="flex justify-center gap-8 flex-wrap">
+            <div className="bg-white p-6 rounded-lg shadow-lg">
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary">10+</div>
                 <div className="text-sm text-gray-600">Years Experience</div>
               </div>
             </div>
             
-            <div className="absolute -top-6 -left-6 bg-success text-white p-4 rounded-lg shadow-lg">
+            <div className="bg-success text-white p-4 rounded-lg shadow-lg">
               <div className="text-center">
                 <div className="text-2xl font-bold">A+</div>
                 <div className="text-sm">BBB Rating</div>
               </div>
             </div>
           </div>
-        </div>
-        
-        {/* Logo at bottom */}
-        <div className="mt-16 text-center">
-          <img 
-            src={logo2}
-            alt="DFW Pristine Power Washing Logo"
-            className="mx-auto h-20 w-auto"
-          />
         </div>
       </div>
     </section>
