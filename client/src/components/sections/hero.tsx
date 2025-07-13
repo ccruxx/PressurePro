@@ -17,17 +17,11 @@ export default function Hero() {
           "linear-gradient(135deg, hsl(200, 85%, 55%) 0%, hsl(190, 80%, 60%) 100%)",
       }}
     >
-      {/* YouTube Video Background */}
+      {/* Background Pattern */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="w-full h-full relative">
-          <iframe
-            className="absolute top-0 left-0 w-[177.78%] h-full transform -translate-x-1/2 left-1/2"
-            src="https://www.youtube.com/embed/jlj2H8jpNrU?autoplay=1&mute=1&loop=1&playlist=jlj2H8jpNrU&controls=0&modestbranding=1&showinfo=0&rel=0"
-            title="DFW Premier Power Washing"
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+        <div className="w-full h-full relative bg-blue-600">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-700"></div>
+          <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPGcgZmlsbD0iI2ZmZiIgZmlsbC1vcGFjaXR5PSIwLjEiPgo8cGF0aCBkPSJNMCAwaDYwdjYwSDBoLTYweiIvPgo8L2c+CjwvZz4KPHN2Zz4=')]"></div>
         </div>
 
         {/* Dark overlay */}
