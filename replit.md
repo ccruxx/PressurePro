@@ -82,9 +82,10 @@ DFW Pristine Power Washing is a modern, responsive single-page application (SPA)
 ## Deployment Strategy
 
 ### Development Environment
-- **Command**: `npm run dev` (now runs Vite directly)
+- **Command**: `npx vite --host 0.0.0.0 --port 5000` (runs Vite directly)
 - **Client**: Vite dev server with HMR for frontend changes
 - **No Backend**: Static-only development workflow
+- **Port**: 5000 (to match Replit's expected port)
 
 ### Production Deployment
 - **Build Process**: `npm run build` - Vite builds static assets to `dist/public`
@@ -111,6 +112,8 @@ Changelog:
 - January 13, 2025. Removed SendGrid, Express server, database dependencies, and React Query
 - January 13, 2025. Simplified contact system to direct phone and email links
 - January 13, 2025. Updated build configuration for static deployment
+- January 13, 2025. Cleaned up server files and dependencies to match static-only architecture
+- January 13, 2025. Fixed development workflow to use Vite directly on port 5000
 
 ## User Preferences
 
