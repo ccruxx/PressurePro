@@ -31,7 +31,7 @@ export default function Header() {
             <img 
               src={logoImage} 
               alt="DFW Pristine Power Washing Logo" 
-              className="h-12 w-auto object-contain"
+              className="h-20 w-auto object-contain"
             />
           </div>
           

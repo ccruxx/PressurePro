@@ -18,7 +18,7 @@ export default function Footer() {
               <img 
                 src={logoImage} 
                 alt="DFW Pristine Power Washing Logo" 
-                className="h-16 w-auto object-contain"
+                className="h-24 w-auto object-contain"
               />
             </div>
             <p className="text-gray-300 mb-4">
