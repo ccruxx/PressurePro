@@ -4,7 +4,7 @@ import house from "@assets/house.png";
 import deck from "@assets/deck.png";
 import driveway from "@assets/driveway.jpg";
 import fleet from "@assets/fleet.png";
-import padcleaning from "@assets/padcleaning.jpg";
+import padcleaning from "@assets/padcleaning.png";
 import commercialbuilding from "@assets/commercialbuilding.png";
 
 export default function Gallery() {
