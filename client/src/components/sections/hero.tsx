@@ -62,15 +62,16 @@ export default function Hero() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+            {/* Fully Insured Badge */}
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <div className="text-4xl font-bold text-yellow-300 mb-2">
-                500+
-              </div>
-              <div className="text-lg font-semibold mb-1">Happy Customers</div>
+              <div className="text-4xl font-bold text-yellow-300 mb-2">✔</div>
+              <div className="text-lg font-semibold mb-1">Fully Insured</div>
               <div className="text-sm text-gray-300">
-                Satisfied clients across DFW
+                Peace of mind on every job
               </div>
             </div>
+
+            {/* 5-Star Rating Badge (unchanged) */}
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <div className="text-4xl font-bold text-yellow-300 mb-2">5★</div>
               <div className="text-lg font-semibold mb-1">Average Rating</div>
@@ -78,11 +79,13 @@ export default function Hero() {
                 Consistently top-rated service
               </div>
             </div>
+
+            {/* Locally Owned Badge */}
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <div className="text-4xl font-bold text-yellow-300 mb-2">10+</div>
-              <div className="text-lg font-semibold mb-1">Years Experience</div>
+              <div className="text-4xl font-bold text-yellow-300 mb-2">DFW</div>
+              <div className="text-lg font-semibold mb-1">Locally Owned</div>
               <div className="text-sm text-gray-300">
-                Professional expertise
+                Proudly serving our neighbors
               </div>
             </div>
           </div>

@@ -92,21 +92,25 @@ export default function About() {
           />
 
           <div className="flex justify-center items-center gap-6 flex-wrap">
-            {/* Years of Experience Badge */}
+            {/* Locally Owned Badge */}
             <div className="bg-white border border-blue-100 p-6 rounded-xl shadow-md min-w-[140px]">
               <div className="text-center">
-                <div className="text-4xl font-bold text-blue-600">10+</div>
+                <div className="text-2xl font-bold text-blue-600">
+                  Locally Owned
+                </div>
                 <div className="text-sm text-gray-600 mt-1">
-                  Years Experience
+                  DFW-Based Business
                 </div>
               </div>
             </div>
 
-            {/* BBB Rating Badge */}
-            <div className="bg-green-600 text-white p-6 rounded-xl shadow-md min-w-[140px]">
+            {/* Fully Insured Badge */}
+            <div className="bg-white border border-blue-100 p-6 rounded-xl shadow-md min-w-[140px]">
               <div className="text-center">
-                <div className="text-3xl font-bold">A+</div>
-                <div className="text-sm mt-1">BBB Rating</div>
+                <div className="text-2xl font-bold text-blue-600">Insured</div>
+                <div className="text-sm text-gray-600 mt-1">
+                  Licensed & Covered
+                </div>
               </div>
             </div>
 
