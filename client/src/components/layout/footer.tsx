@@ -162,7 +162,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <i className="fas fa-envelope text-primary"></i>
-                <span>joshuacllns@yahoo.com</span>
+                <span>joshua.dfwpristine@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <i className="fas fa-map-marker-alt text-primary"></i>
