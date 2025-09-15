@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import BeforeAfterSlider from "@/components/ui/before-after-slider";
 import house from "@assets/house.png";
 import deck from "@assets/deck.png";
 import driveway from "@assets/driveway.jpg";
@@ -7,7 +8,43 @@ import fleet from "@assets/fleet.png";
 import padcleaning from "@assets/padcleaning.png";
 import commercialbuilding from "@assets/commercialbuilding.jpg";
 
+// New transformation images
+import commercialWallBefore from "@assets/commercial_wall_cleaning_1757974664719.jpg";
+import commercialWallAfter from "@assets/commercial_wall_cleaning2_1757974664719.jpg";
+import drivewayBefore from "@assets/driveway_1757974664720.jpg";
+import drivewayAfter from "@assets/driveway2_1757974664720.jpg";
+import walkwayDeckingBefore from "@assets/walkway_decking_1757974664720.jpg";
+import walkwayDeckingAfter from "@assets/walkway_decking2_1757974664720.jpg";
+
 export default function Gallery() {
+  // Interactive before/after sliders data
+  const beforeAfterSliders = [
+    {
+      beforeImage: commercialWallBefore,
+      afterImage: commercialWallAfter,
+      title: "Commercial Wall Cleaning",
+      description: "Professional stone wall restoration revealing dramatic results",
+      beforeAlt: "Dirty commercial stone wall before pressure washing",
+      afterAlt: "Clean commercial stone wall after pressure washing"
+    },
+    {
+      beforeImage: drivewayBefore,
+      afterImage: drivewayAfter,
+      title: "Driveway Transformation",
+      description: "Complete driveway makeover removing years of stains and grime",
+      beforeAlt: "Stained concrete driveway before cleaning",
+      afterAlt: "Clean concrete driveway after pressure washing"
+    },
+    {
+      beforeImage: walkwayDeckingBefore,
+      afterImage: walkwayDeckingAfter,
+      title: "Walkway & Decking Restoration",
+      description: "Wooden surfaces restored to their natural beauty",
+      beforeAlt: "Weathered wooden decking before cleaning",
+      afterAlt: "Restored wooden decking after pressure washing"
+    }
+  ];
+
   const galleryItems = [
     {
       image: padcleaning,
@@ -72,6 +109,49 @@ export default function Gallery() {
           </p>
         </div>
 
+        {/* Featured Interactive Before/After Sliders */}
+        <div className="mb-20">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-gray-800 mb-4">
+              Interactive Before & After
+            </h3>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Drag the slider to reveal the incredible transformations. See exactly how our professional pressure washing brings properties back to life.
+            </p>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
+            {beforeAfterSliders.map((slider, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden">
+                <BeforeAfterSlider
+                  beforeImage={slider.beforeImage}
+                  afterImage={slider.afterImage}
+                  beforeAlt={slider.beforeAlt}
+                  afterAlt={slider.afterAlt}
+                  className="h-80"
+                  initialPosition={40}
+                  data-testid={`slider-${index}`}
+                />
+                <div className="p-6">
+                  <h4 className="text-xl font-semibold text-gray-800 mb-2">
+                    {slider.title}
+                  </h4>
+                  <p className="text-gray-600">
+                    {slider.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Additional Gallery Images */}
+        <div className="mb-12">
+          <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">
+            More Amazing Results
+          </h3>
+        </div>
+        
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {galleryItems.map((item, index) => (
             <Card
