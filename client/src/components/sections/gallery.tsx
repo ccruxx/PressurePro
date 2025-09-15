@@ -5,7 +5,7 @@ import deck from "@assets/deck.png";
 import driveway from "@assets/driveway.jpg";
 import fleet from "@assets/fleet.png";
 import padcleaning from "@assets/padcleaning.png";
-import commercialbuilding from "@assets/commercialbuilding.png";
+import commercialbuilding from "@assets/commercialbuilding.jpg";
 
 export default function Gallery() {
   const galleryItems = [
