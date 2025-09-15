@@ -8,6 +8,7 @@ interface BeforeAfterSliderProps {
   afterAlt?: string;
   className?: string;
   initialPosition?: number;
+  testId?: string;
 }
 
 export default function BeforeAfterSlider({
@@ -17,6 +18,7 @@ export default function BeforeAfterSlider({
   afterAlt = "After image",
   className,
   initialPosition = 50,
+  testId,
 }: BeforeAfterSliderProps) {
   const [position, setPosition] = useState(initialPosition);
   const [isDragging, setIsDragging] = useState(false);
@@ -30,6 +32,31 @@ export default function BeforeAfterSlider({
     const percentage = Math.max(0, Math.min(100, (relativeX / rect.width) * 100));
     setPosition(percentage);
   }, []);
+
+  const updatePositionByKeyboard = useCallback((percentage: number) => {
+    setPosition(Math.max(0, Math.min(100, percentage)));
+  }, []);
+
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    switch (e.key) {
+      case 'ArrowLeft':
+        e.preventDefault();
+        updatePositionByKeyboard(position - 5);
+        break;
+      case 'ArrowRight':
+        e.preventDefault();
+        updatePositionByKeyboard(position + 5);
+        break;
+      case 'Home':
+        e.preventDefault();
+        updatePositionByKeyboard(0);
+        break;
+      case 'End':
+        e.preventDefault();
+        updatePositionByKeyboard(100);
+        break;
+    }
+  }, [position, updatePositionByKeyboard]);
 
   const handleMouseDown = useCallback(() => {
     setIsDragging(true);
@@ -78,10 +105,10 @@ export default function BeforeAfterSlider({
     <div
       ref={containerRef}
       className={cn(
-        "relative w-full h-96 overflow-hidden rounded-lg cursor-col-resize select-none",
+        "relative w-full h-64 sm:h-80 md:h-96 overflow-hidden rounded-lg cursor-col-resize select-none",
         className
       )}
-      data-testid="before-after-slider"
+      data-testid={testId || "before-after-slider"}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
@@ -96,6 +123,7 @@ export default function BeforeAfterSlider({
           alt={beforeAlt}
           className="w-full h-full object-cover"
           draggable={false}
+          loading="lazy"
         />
       </div>
 
@@ -111,6 +139,7 @@ export default function BeforeAfterSlider({
           alt={afterAlt}
           className="w-full h-full object-cover"
           draggable={false}
+          loading="lazy"
         />
       </div>
 
@@ -118,12 +147,21 @@ export default function BeforeAfterSlider({
       <div
         className="absolute top-0 bottom-0 w-1 bg-white shadow-lg cursor-col-resize"
         style={{ left: `${position}%`, transform: "translateX(-50%)" }}
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleTouchStart}
-        data-testid="slider-handle"
+        data-testid={testId ? `${testId}-handle` : "slider-handle"}
       >
-        {/* Handle Circle */}
-        <div className="absolute top-1/2 left-1/2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2 border-2 border-gray-300">
+        {/* Handle Circle with proper accessibility */}
+        <div 
+          className="absolute top-1/2 left-1/2 w-11 h-11 bg-white rounded-full shadow-lg flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2 border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          tabIndex={0}
+          role="slider"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={Math.round(position)}
+          aria-label="Before and after comparison slider"
+          onMouseDown={handleMouseDown}
+          onTouchStart={handleTouchStart}
+          onKeyDown={handleKeyDown}
+        >
           <div className="w-1 h-4 bg-gray-400 rounded-full mx-px"></div>
           <div className="w-1 h-4 bg-gray-400 rounded-full mx-px"></div>
         </div>
