@@ -1,5 +1,6 @@
 import Header from "@/components/layout/header";
 import Hero from "@/components/sections/hero";
+import FeaturedVideo from "@/components/sections/featured-video";
 import Services from "@/components/sections/services";
 import Gallery from "@/components/sections/gallery";
 import Testimonials from "@/components/sections/testimonials";
@@ -12,6 +13,7 @@ export default function Home() {
     <div className="font-sans bg-slate-50">
       <Header />
       <Hero />
+      <FeaturedVideo />
       <Services />
       <Gallery />
       <Testimonials />
