@@ -42,8 +42,11 @@ export default function Footer() {
                 <i className="fab fa-instagram text-xl"></i>
               </a>
               <a
-                href="#"
+                href="https://share.google/FqAUHWw5ykceLj5Jr"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-300 hover:text-primary transition-colors"
+                data-testid="google-business-link"
               >
                 <i className="fab fa-google text-xl"></i>
               </a>
