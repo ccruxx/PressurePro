@@ -27,8 +27,11 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61578681147252"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-300 hover:text-primary transition-colors"
+                data-testid="facebook-link"
               >
                 <i className="fab fa-facebook text-xl"></i>
               </a>
