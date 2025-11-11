@@ -21,6 +21,8 @@ export default function Footer() {
                 src={logoImage}
                 alt="DFW Pristine Power Washing Logo"
                 className="h-24 w-auto object-contain"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <p className="text-gray-300 mb-4">

@@ -168,6 +168,8 @@ export default function Gallery() {
                   src={item.image}
                   alt={item.alt}
                   className="w-full h-64 object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <CardContent className="p-6">

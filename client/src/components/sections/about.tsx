@@ -67,6 +67,8 @@ export default function About() {
               src={JoshPicture}
               alt="Joshua Collins, founder of DFW Pristine Power Washing"
               className="rounded-lg shadow-2xl w-full"
+              loading="lazy"
+              decoding="async"
             />
 
             <div className="mt-6 text-center">
@@ -89,6 +91,8 @@ export default function About() {
             src={logo2}
             alt="DFW Pristine Power Washing Logo"
             className="mx-auto h-24 w-auto mb-10"
+            loading="lazy"
+            decoding="async"
           />
 
           <div className="flex justify-center items-center gap-6 flex-wrap">
