@@ -16,9 +16,11 @@ export default function SEOHead({
   ogImage = `${SEO_CONSTANTS.SITE_URL}/og-default.jpg`,
   ogType = "website"
 }: SEOHeadProps) {
-  const fullCanonical = canonical.startsWith('http') 
-    ? canonical 
-    : `${SEO_CONSTANTS.SITE_URL}${canonical}`;
+  // Normalize canonical: remove trailing slash, no query strings
+  const normalizedPath = canonical.replace(/\/$/, '').split('?')[0];
+  const fullCanonical = normalizedPath.startsWith('http') 
+    ? normalizedPath 
+    : `${SEO_CONSTANTS.SITE_URL}${normalizedPath}`;
 
   return (
     <Helmet>
@@ -26,6 +28,7 @@ export default function SEOHead({
       <meta name="description" content={description} />
       <link rel="canonical" href={fullCanonical} />
       
+      {/* Open Graph */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={fullCanonical} />
@@ -33,6 +36,7 @@ export default function SEOHead({
       <meta property="og:image" content={ogImage} />
       <meta property="og:site_name" content={SEO_CONSTANTS.BUSINESS_NAME} />
       
+      {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />

@@ -6,6 +6,7 @@ import SEOHead from "@/components/seo/SEOHead";
 import SchemaOrg from "@/components/seo/SchemaOrg";
 import { SEO_CONSTANTS } from "@/lib/seo-constants";
 import { getCityServiceSchema, getBreadcrumbSchema } from "@/lib/schema-helpers";
+import { CITY_LOCAL_CONTENT } from "@/lib/city-content";
 import { Button } from "@/components/ui/button";
 
 interface CityPageProps {
@@ -22,6 +23,11 @@ export default function CityPageTemplate({ cityName, stateName, slug }: CityPage
   ]);
 
   const cityServiceSchema = getCityServiceSchema(cityName, stateName);
+  const cityContent = CITY_LOCAL_CONTENT[slug] || {
+    localSpecifics: `Properties in ${cityName} require professional pressure washing to combat Texas weather conditions, organic growth, and exterior staining.`,
+    nearbyAreas: [],
+    projectSnippet: `Recent pressure washing project in ${cityName} restored curb appeal and property value.`
+  };
 
   return (
     <div className="font-sans bg-slate-50">
@@ -93,16 +99,44 @@ export default function CityPageTemplate({ cityName, stateName, slug }: CityPage
             </div>
 
             <div className="bg-white rounded-lg shadow-md p-8 mb-8">
-              <h2 className="text-2xl font-bold mb-4">Recent project in {cityName}</h2>
+              <h2 className="text-2xl font-bold mb-4">Local Expertise in {cityName}</h2>
+              <p className="text-gray-700 mb-4">
+                {cityContent.localSpecifics}
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+              <h2 className="text-2xl font-bold mb-4">Recent Project in {cityName}</h2>
               <div className="bg-gray-100 rounded-lg p-6 mb-4">
                 <p className="text-gray-700 italic">
-                  "Driveway restoration in {cityName}: black algae removed and curb appeal restored in under two hours. The homeowner was thrilled with the dramatic transformation."
+                  "{cityContent.projectSnippet}"
                 </p>
               </div>
               <p className="text-gray-700">
-                Homes in {cityName} face unique challenges from Texas weather—intense sun, humidity, and seasonal pollen all contribute to exterior buildup. Our professional cleaning services restore your property's appearance while protecting your investment.
+                Our team understands the specific challenges that properties in {cityName} face and adapts our cleaning methods accordingly to deliver safe, effective results.
               </p>
             </div>
+
+            {cityContent.nearbyAreas.length > 0 && (
+              <div className="bg-blue-50 rounded-lg p-8 mb-8">
+                <h3 className="text-xl font-bold mb-4">We Also Serve Nearby Areas</h3>
+                <div className="flex flex-wrap gap-4">
+                  {cityContent.nearbyAreas.map(areaSlug => {
+                    const area = SEO_CONSTANTS.SERVICE_AREA_CITIES.find(c => c.slug === areaSlug);
+                    return area ? (
+                      <Link 
+                        key={areaSlug}
+                        href={`/service-areas/${areaSlug}`}
+                        className="text-blue-600 hover:text-blue-800 font-medium"
+                        data-testid={`link-nearby-${areaSlug}`}
+                      >
+                        → {area.name}, {area.state}
+                      </Link>
+                    ) : null;
+                  })}
+                </div>
+              </div>
+            )}
 
             <div className="bg-white rounded-lg shadow-md p-8 mb-8">
               <h2 className="text-2xl font-bold mb-4">FAQ for {cityName}</h2>

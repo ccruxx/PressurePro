@@ -155,6 +155,17 @@ Changelog:
   - Configured Vercel redirects for www canonicalization
   - Created GBP post templates and keyword CSV for marketing
   - All pages tested and verified via end-to-end Playwright tests
+- November 11, 2025. **Senior SEO Engineer Audit & Fixes**:
+  - Fixed canonical host to non-www (dfwpristine.com) across all configurations
+  - Enhanced canonical URL normalization (trailing slash removal, query string stripping)
+  - Updated Vercel redirects to enforce www → non-www canonicalization
+  - Created unique local content for all 15 city pages (100-150 words each)
+  - Added nearby city cross-linking (2 unique cities per page)
+  - Created automated sitemap generation script (25 URLs total)
+  - Scoped JSON-LD to prevent duplication (LocalBusiness only on homepage)
+  - Enhanced SEOHead with OG/Twitter card defaults
+  - Created placeholder for og-default.jpg (needs 1200x630 image)
+  - Documented large image files for optimization (6.5MB largest file)
 
 ## User Preferences
 

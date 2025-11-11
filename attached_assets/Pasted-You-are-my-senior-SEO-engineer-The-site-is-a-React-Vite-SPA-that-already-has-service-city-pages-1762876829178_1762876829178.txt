@@ -1,0 +1,116 @@
+You are my senior SEO engineer. The site is a React + Vite SPA that already has service + city pages. Apply the following targeted fixes and verifications. Keep design/content intact; only SEO-safe edits. When done, output: (1) changed files list, (2) first 25 lines of sitemap.xml, (3) counts of internal links from each page type, (4) a short QA report with ✅/⚠️.
+
+1) Meta & Canonical Hygiene
+
+Remove any duplicate <meta name="description"> on every route. Exactly one per page.
+
+Ensure canonical tag renders per route:
+https://dfwpristine.com + current pathname (no trailing “/” duplication; no query strings).
+Put it in the shared Head component.
+
+Add consistent OG/Twitter defaults in the shared Head: og:type=website, og:site_name=DFW Pristine Power Washing, a default og:image in /public/og-default.jpg, plus twitter:card=summary_large_image. Allow page overrides but ensure at least the fallback exists.
+
+2) Sitemap & Robots (discoverable in SPAs)
+
+Verify robots.txt at /robots.txt includes:
+
+User-agent: *
+Allow: /
+Sitemap: https://dfwpristine.com/sitemap.xml
+
+
+Make /sitemap.xml a static build artifact (not CSR-only). Create a small Node script (or Vite plugin) to enumerate routes for:
+
+Home, About, Services index, each service page, Service Areas index, each city page, Contact/Thank-You if present.
+
+Include <lastmod> = build time (ISO).
+
+Ensure the sitemap file actually lands in the deploy output (dist/) so Vercel serves it at /sitemap.xml.
+
+3) Redirects / Canonical Host
+
+In vercel.json, enforce HTTPS + non-www (301). Use valid Vercel syntax:
+
+{
+  "redirects": [
+    { "source": "http://dfwpristine.com/:path*", "destination": "https://dfwpristine.com/:path*", "permanent": true },
+    { "source": "https://www.dfwpristine.com/:path*", "destination": "https://dfwpristine.com/:path*", "permanent": true }
+  ]
+}
+
+
+Verify these deploy and don’t create loops.
+
+4) JSON-LD: Scope & Duplication
+
+Homepage: include one LocalBusiness (with NAP, hours, URL, sameAs) and nothing else global.
+
+Service pages: include a Service JSON-LD with "serviceType": "<Service Name>" and "provider": {"@type":"LocalBusiness","name":"DFW Pristine Power Washing","telephone":"(817) 585-6388"}.
+
+City pages: include a Service JSON-LD with "areaServed": {"@type":"Place","name":"<City, TX>"}.
+
+Avoid multiple Organization/LocalBusiness blocks across non-home pages.
+
+5) City Pages → Unique Local Signals
+
+For each city page:
+
+Add a 100–150 word “Local specifics” paragraph (material types, HOA norms, winter algae streaking, driveway rust from irrigation, etc.). Must be unique per city.
+
+Add a project snippet placeholder (1–2 sentences) and ensure image alt reads pressure washing <City, TX> - DFW Pristine Power Washing.
+
+Internally link to 3 priority services and 2 nearby city pages (unique combinations to avoid site-wide duplication).
+
+6) Internal Linking & Nav
+
+Header: ensure Services and Service Areas dropdowns exist and are crawlable (server-rendered links or normal <a> tags, not JS onClick).
+
+From each service page, link to: Service Areas index + 3 city pages.
+
+From each city page, link to: Services index + top 3 services.
+
+Output a small table of link counts per page type after build (just in the report).
+
+7) Images & CWV Guardrails
+
+Add loading="lazy" and decoding="async" to non-hero images; ensure hero images have explicit width/height to prevent CLS.
+
+Create /public/og-default.jpg if missing (≤200KB).
+
+If any image > 300KB, add a TODO note in the QA report listing its path and size.
+
+8) GA4 & GSC (optional hooks)
+
+If VITE_GA4_ID env var exists, inject GA4. Add event for tel: clicks (label = path).
+
+If a GSC HTML tag string is provided, inject once on all pages (no duplicates).
+
+9) GBP Support Assets
+
+Ensure /content/gbp-posts/README.md exists with 5 ready posts and filenames suggestions for city-tagged images (e.g., dfw-pristine-<city-slug>-driveway-cleaning.jpg).
+
+10) Deliverables / Output
+
+Print list of modified/created files.
+
+Print first 25 lines of dist/sitemap.xml.
+
+Print internal link counts (services → cities; cities → services; header/footer totals).
+
+Print a QA checklist with ✅/⚠️ including:
+
+One meta description per page
+
+Canonical host + path confirmed
+
+Sitemap reachable at /sitemap.xml and referenced in robots.txt
+
+JSON-LD present & scoped correctly (no duplicates)
+
+Internal links per page type (numbers)
+
+Redirects working (examples shown)
+
+Largest image files flagged
+
+Next 3 content tasks (blog topics or city proofs)
