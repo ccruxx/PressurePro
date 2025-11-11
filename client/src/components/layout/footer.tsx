@@ -1,4 +1,6 @@
+import { Link } from "wouter";
 import logoImage from "@assets/logo2.png";
+import { SEO_CONSTANTS } from "@/lib/seo-constants";
 
 export default function Footer() {
   const scrollToSection = (sectionId: string) => {
@@ -63,121 +65,88 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-semibold mb-4">Our Services</h3>
             <ul className="space-y-2 text-gray-300">
-              <li>
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="hover:text-primary transition-colors"
-                >
-                  Residential Cleaning
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="hover:text-primary transition-colors"
-                >
-                  Commercial Cleaning
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="hover:text-primary transition-colors"
-                >
-                  Vehicle & Equipment
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="hover:text-primary transition-colors"
-                >
-                  Soft Washing
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="hover:text-primary transition-colors"
-                >
-                  Eco-Friendly Options
-                </button>
-              </li>
+              {SEO_CONSTANTS.PRIMARY_SERVICES.slice(0, 5).map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="hover:text-primary transition-colors"
+                    data-testid={`footer-service-${service.slug}`}
+                  >
+                    {service.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Quick Links */}
+          {/* Service Areas */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-xl font-semibold mb-4">Service Areas</h3>
             <ul className="space-y-2 text-gray-300">
+              {SEO_CONSTANTS.SERVICE_AREA_CITIES.slice(0, 6).map((city) => (
+                <li key={city.slug}>
+                  <Link
+                    href={`/service-areas/${city.slug}`}
+                    className="hover:text-primary transition-colors"
+                    data-testid={`footer-city-${city.slug}`}
+                  >
+                    {city.name}
+                  </Link>
+                </li>
+              ))}
               <li>
-                <button
-                  onClick={() => scrollToSection("home")}
-                  className="hover:text-primary transition-colors"
+                <Link
+                  href="/service-areas"
+                  className="hover:text-primary transition-colors font-semibold"
+                  data-testid="footer-all-areas"
                 >
-                  Home
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="hover:text-primary transition-colors"
-                >
-                  Services
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection("gallery")}
-                  className="hover:text-primary transition-colors"
-                >
-                  Gallery
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection("about")}
-                  className="hover:text-primary transition-colors"
-                >
-                  About
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection("contact")}
-                  className="hover:text-primary transition-colors"
-                >
-                  Contact
-                </button>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Privacy Policy
-                </a>
+                  View All Areas →
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact Info - NAP Block */}
           <div>
             <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
-            <div className="space-y-3 text-gray-300">
+            <div className="space-y-3 text-gray-300 mb-4">
+              <div className="flex items-start space-x-3">
+                <i className="fas fa-building text-primary mt-1"></i>
+                <div>
+                  <div className="font-semibold text-white">{SEO_CONSTANTS.BUSINESS_NAME}</div>
+                  <div>{SEO_CONSTANTS.NAP.CITY}, {SEO_CONSTANTS.NAP.STATE}</div>
+                </div>
+              </div>
               <div className="flex items-center space-x-3">
                 <i className="fas fa-phone text-primary"></i>
-                <span>(817) 585-6388</span>
+                <a href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`} className="hover:text-primary transition-colors" data-testid="footer-phone">
+                  {SEO_CONSTANTS.CONTACT.PHONE}
+                </a>
               </div>
               <div className="flex items-center space-x-3">
                 <i className="fas fa-envelope text-primary"></i>
-                <span>joshua.dfwpristine@gmail.com</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <i className="fas fa-map-marker-alt text-primary"></i>
-                <span>DFW Metro Area Service</span>
+                <a href={`mailto:${SEO_CONSTANTS.CONTACT.EMAIL}`} className="hover:text-primary transition-colors" data-testid="footer-email">
+                  {SEO_CONSTANTS.CONTACT.EMAIL}
+                </a>
               </div>
               <div className="flex items-center space-x-3">
                 <i className="fas fa-clock text-primary"></i>
-                <span>Mon-Sat: 7AM-7PM</span>
+                <span>{SEO_CONSTANTS.HOURS}</span>
               </div>
+            </div>
+            
+            {/* Google Maps Embed */}
+            <div className="mt-4 rounded-lg overflow-hidden border border-gray-700">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d215129.45344716893!2d-97.06943969999999!3d32.4776269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e82d581da8f9f%3A0x9c51ae1e3c3c5e8!2sMidlothian%2C%20TX!5e0!3m2!1sen!2sus!4v1642000000000!5m2!1sen!2sus"
+                width="100%"
+                height="150"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="DFW Pristine Power Washing Location"
+              ></iframe>
             </div>
           </div>
         </div>

@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
+import { ChevronDown } from "lucide-react";
 import logoImage from "@assets/logo2.png";
+import { SEO_CONSTANTS } from "@/lib/seo-constants";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -15,11 +18,20 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const [location] = useLocation();
+  const isHomePage = location === "/";
+  const [showServicesDropdown, setShowServicesDropdown] = useState(false);
+  const [showAreasDropdown, setShowAreasDropdown] = useState(false);
+
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-      setIsMobileMenuOpen(false);
+    if (isHomePage) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        setIsMobileMenuOpen(false);
+      }
+    } else {
+      window.location.href = `/#${sectionId}`;
     }
   };
 
@@ -38,30 +50,74 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            <button
-              onClick={() => scrollToSection("home")}
-              className="text-gray-700 hover:text-primary transition-colors"
-            >
+          <div className="hidden md:flex space-x-6 items-center">
+            <Link href="/" className="text-gray-700 hover:text-primary transition-colors">
               Home
-            </button>
-            <button
-              onClick={() => scrollToSection("services")}
-              className="text-gray-700 hover:text-primary transition-colors"
+            </Link>
+            
+            <div 
+              className="relative group"
+              onMouseEnter={() => setShowServicesDropdown(true)}
+              onMouseLeave={() => setShowServicesDropdown(false)}
             >
-              Services
-            </button>
+              <Link 
+                href="/services" 
+                className="text-gray-700 hover:text-primary transition-colors flex items-center gap-1"
+                data-testid="nav-services"
+              >
+                Services
+                <ChevronDown className="h-4 w-4" />
+              </Link>
+              {showServicesDropdown && (
+                <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-lg py-2 z-50">
+                  {SEO_CONSTANTS.PRIMARY_SERVICES.map((service) => (
+                    <Link 
+                      key={service.slug}
+                      href={`/services/${service.slug}`}
+                      className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-primary transition-colors"
+                      data-testid={`nav-service-${service.slug}`}
+                    >
+                      {service.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div 
+              className="relative group"
+              onMouseEnter={() => setShowAreasDropdown(true)}
+              onMouseLeave={() => setShowAreasDropdown(false)}
+            >
+              <Link 
+                href="/service-areas" 
+                className="text-gray-700 hover:text-primary transition-colors flex items-center gap-1"
+                data-testid="nav-service-areas"
+              >
+                Service Areas
+                <ChevronDown className="h-4 w-4" />
+              </Link>
+              {showAreasDropdown && (
+                <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-lg py-2 z-50 max-h-96 overflow-y-auto">
+                  {SEO_CONSTANTS.SERVICE_AREA_CITIES.map((city) => (
+                    <Link 
+                      key={city.slug}
+                      href={`/service-areas/${city.slug}`}
+                      className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-primary transition-colors"
+                      data-testid={`nav-city-${city.slug}`}
+                    >
+                      {city.name}, {city.state}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+            
             <button
               onClick={() => scrollToSection("gallery")}
               className="text-gray-700 hover:text-primary transition-colors"
             >
               Gallery
-            </button>
-            <button
-              onClick={() => scrollToSection("about")}
-              className="text-gray-700 hover:text-primary transition-colors"
-            >
-              About
             </button>
             <button
               onClick={() => scrollToSection("contact")}
