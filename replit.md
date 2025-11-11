@@ -166,6 +166,19 @@ Changelog:
   - Enhanced SEOHead with OG/Twitter card defaults
   - Created placeholder for og-default.jpg (needs 1200x630 image)
   - Documented large image files for optimization (6.5MB largest file)
+- November 11, 2025. **SEO Finisher - Final Optimizations**:
+  - Compressed 19 images using sharp (largest from 6.5MB to 310KB, total savings 21.6MB)
+  - Generated og-default.jpg (1200x630, 31.9KB) for social sharing
+  - Added loading="lazy" and decoding="async" to non-hero images
+  - Integrated Google Analytics 4 with SPA-aware page_view tracking using wouter's useLocation
+  - Added tel: click event tracking for phone number clicks
+  - Integrated Google Search Console verification meta tag (conditional)
+  - Added FAQPage schema to all 15 city pages (3 standardized Q&As per page)
+  - Configured vercel.json to run sitemap generation after build
+  - Added http→https redirect to vercel.json
+  - Created .env.local template for GA4_ID and GSC_HTML environment variables
+  - Created compression and OG image generation scripts
+  - All features tested and verified via end-to-end Playwright tests
 
 ## User Preferences
 
