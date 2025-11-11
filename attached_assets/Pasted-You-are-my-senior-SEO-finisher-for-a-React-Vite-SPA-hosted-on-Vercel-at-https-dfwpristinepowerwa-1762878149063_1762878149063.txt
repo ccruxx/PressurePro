@@ -1,0 +1,40 @@
+You are my senior SEO finisher for a React + Vite SPA hosted on Vercel at https://dfwpristinepowerwashing.com. The service & city pages already exist. Apply ONLY safe SEO/CWV patches, then print (1) changed files, (2) first 25 lines of /dist/sitemap.xml, (3) a short QA report with ✅/⚠️.
+
+ENV EXPECTED (read from .env or create .env.local if missing):
+VITE_GA4_ID=<paste GA4 ID or leave blank>
+VITE_GSC_HTML=<paste whole <meta name="google-site-verification" ...> tag or leave blank>
+
+TASKS
+
+A) IMAGES / CORE WEB VITALS
+- Create scripts/compress-images.mjs using sharp. Compress any image in client/public or client/src/assets >300KB to WebP/JPG so the result is <200KB (keep visual quality). Preserve filenames; if needed, write optimized copies to the same path and back up originals to /public/_originals once per file.
+- Add loading="lazy" and decoding="async" to all non-hero <img> in components/pages. For hero/above-the-fold images, add explicit width/height props.
+- Create /client/public/og-default.jpg placeholder if missing; require a real 1200x630 JPG exists; if not provided, generate a neutral brand image (text: “DFW Pristine Power Washing”) as a 1200x630 JPG under 200KB.
+
+B) ANALYTICS & GSC
+- If VITE_GA4_ID is present, add GA4 snippet in the shared Head component so it renders on all routes. Track tel: link clicks as events: event name "click_to_call", params { path, link_text }.
+- If VITE_GSC_HTML is present, inject that meta tag once per page via Head (guard against duplicates).
+
+C) SCHEMA: FAQPage on CITY PAGES
+- For every city page, render structured data of type FAQPage using the three visible Q&As already on the page. Ensure we keep LocalBusiness only on the homepage and Service schema on service/city pages.
+
+D) SITEMAP & ROBOTS
+- Ensure scripts/generate-sitemap.js is wired to run postbuild and outputs to dist/sitemap.xml (not CSR-only). Include home, about, services index + the 6 services, service-areas index + all 15 city pages, contact/thank-you if present. lastmod = build time. Ensure robots.txt references https://dfwpristinepowerwashing.com/sitemap.xml.
+
+E) REDIRECTS / CANONICAL HOST
+- Verify vercel.json uses correct redirects:
+  {
+    "redirects": [
+      { "source": "http://dfwpristinepowerwashing.com/:path*", "destination": "https://dfwpristinepowerwashing.com/:path*", "permanent": true },
+      { "source": "https://www.dfwpristinepowerwashing.com/:path*", "destination": "https://dfwpristinepowerwashing.com/:path*", "permanent": true }
+    ]
+  }
+- Confirm canonical link construction uses the non-www host and strips query/fragment.
+
+F) REPORT
+- Run the image compression script and list any files still >300KB.
+- Count internal links per page type (services → cities; cities → services; header/footer totals).
+- Output first 25 lines of the final dist/sitemap.xml.
+- QA ✅/⚠️ checklist: single meta description per page, canonical correctness, sitemap discoverability, JSON-LD scope (no duplicate LocalBusiness), FAQPage present on city pages, GA4 present (if ENV set), tel: event code present, redirect examples, image sizes status.
+
+END.
