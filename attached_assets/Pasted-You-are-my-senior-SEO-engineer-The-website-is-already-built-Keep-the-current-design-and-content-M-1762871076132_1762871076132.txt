@@ -1,0 +1,265 @@
+You are my senior SEO engineer. The website is already built. Keep the current design and content. Make only SEO-safe, additive edits and create new pages/assets as specified. When choices are needed, pick the simplest, framework-native approach. When done, output a diff/commit list and a short QA checklist.
+
+VARIABLES (edit these first)
+
+BUSINESS_NAME="DFW Pristine Power Washing"
+PRIMARY_CITY="Midlothian, TX"
+SERVICE_AREA_CITIES=["Midlothian, TX","Waxahachie, TX","Cedar Hill, TX","Mansfield, TX","Red Oak, TX","Ovilla, TX","Venus, TX","Arlington, TX","Grand Prairie, TX","Irving, TX","Dallas, TX","Fort Worth, TX","Burleson, TX","DeSoto, TX","Ennis, TX"]
+PRIMARY_SERVICES=["Pressure Washing","House Washing (Soft Wash)","Roof Cleaning","Driveway / Concrete Cleaning","Commercial Pressure Washing","Window Cleaning"]
+PHONE="(817) 585-6388"
+EMAIL="info@dfwpristine.com
+"
+SITE_URL="https://www.dfwpristine.com
+" # or the real domain
+NAP_STREET=""
+NAP_CITY="Midlothian"
+NAP_STATE="TX"
+NAP_ZIP=""
+HOURS="Open 24 hours"
+GA4_MEASUREMENT_ID="" # optional
+GSC_HTML_TAG="" # optional Search Console meta tag
+GBP_PLACE_ID="" # optional
+
+0) DETECT STACK & ROUTING
+
+Detect if the repo is Next.js / Astro / Hugo / Jekyll / plain HTML.
+
+If Next.js/Astro: use their layout / Head components.
+
+If static HTML: create reusable partials (/partials/head.html, /partials/footer.html) and inject via a tiny build step if one exists; otherwise duplicate minimal head tags per page.
+
+1) CORE TECHNICAL SEO (mirror what we did for rochelle-associates.com)
+
+Create/update:
+
+robots.txt at the site root:
+
+User-agent: *
+Allow: /
+Sitemap: {{SITE_URL}}/sitemap.xml
+
+
+sitemap.xml: auto-generate all pages, service pages, every city page, lastmod = current date.
+
+If Next.js: build a /pages/sitemap.xml.ts or API route.
+
+If static: create /scripts/build_sitemap.(js|ts) that scans /pages or /public.
+
+Canonical URLs: add <link rel="canonical" href="{{SITE_URL}}{{current_path}}"> to all pages via the site layout/head.
+
+www/non-www + http→https: if Netlify/Vercel present, add redirects:
+
+Netlify _redirects:
+
+http://*  https://:splat  301!
+https://www.dfwpristine.com/*  https://dfwpristine.com/:splat  301
+
+
+Or Vercel vercel.json equivalent.
+
+Open Graph & Twitter cards defaults with brand image.
+
+2) HEAD TAGS (title/meta rules)
+
+Implement dynamic title/meta rules via layout or per page:
+
+Homepage title: Pressure Washing in {{PRIMARY_CITY}} & DFW | {{BUSINESS_NAME}}
+
+Homepage meta: Benefit-driven, include a couple of nearby towns.
+
+Service pages title: {{Service}} in DFW ({{PRIMARY_CITY}}) | {{BUSINESS_NAME}}
+
+City pages title: Pressure Washing in {{City}} | {{BUSINESS_NAME}}
+
+Add meta description 150–160 chars that mentions service + city.
+
+3) JSON-LD SCHEMA (inject via one partial)
+
+Create /partials/schema.json (or framework equivalent) and include on all pages:
+
+Organization + LocalBusiness with NAP, HOURS, sameAs (Facebook/Instagram if available).
+
+Service blocks for PRIMARY_SERVICES.
+
+BreadcrumbList for service & city pages.
+
+On city pages, include a Service with "areaServed": {"@type":"Place","name":"{{City}}"}.
+
+4) SERVICE PAGES (if not already present, create or improve)
+
+For each item in PRIMARY_SERVICES create/enhance a page under /services/{slug}:
+
+H1: {{Service}} in DFW
+
+Sections: What we do (soft-wash where relevant), Before/After, Pricing note (“free quote”), CTA block with PHONE.
+
+Internal links: link to related services and service-areas page.
+
+5) SERVICE AREAS SYSTEM
+
+Create:
+
+/service-areas/index page listing all SERVICE_AREA_CITIES, grouped South/East/West (simple list is fine), with a short intro paragraph for local relevance.
+
+City landing pages at /service-areas/{city-slug} for each city in SERVICE_AREA_CITIES:
+
+H1: Pressure Washing in {{City}}
+
+Intro: 80–120 words referencing common local jobs/neighborhood types (driveways, HOA standards, stone, clay brick, black algae, etc.).
+
+“Popular services in {{City}}” (bulleted list linking to service pages).
+
+1 local proof element slot: “Recent project in {{City}}” (placeholder image + caption).
+
+FAQ (3 Q&As focused on city concerns).
+
+CTA with PHONE.
+
+Add city-specific JSON-LD Service as noted in §3.
+
+Alt text pattern for images: pressure washing {{City}} - {{BUSINESS_NAME}}.
+
+6) HOMEPAGE + FOOTER UPDATES (lightweight, non-design)
+
+Add a short “Proudly serving” band with inline links to 6–8 top towns.
+
+Footer: NAP block (Name, Phone, Hours) + compact embedded Google Map for the primary city.
+
+Add Review snippet section (copy 2–3 short reviews; no star markup unless compliant with Google’s self-serving review policy).
+
+7) INTERNAL LINKING
+
+From every service page, link to the Service Areas index and 2–3 nearest city pages.
+
+From every city page, link to top 2–3 services.
+
+Ensure the header nav has Services and Service Areas.
+
+8) IMAGES & CORE WEB VITALS
+
+Losslessly compress all images (keep visual quality).
+
+Add width/height, loading="lazy", and decoding="async".
+
+Rename any hero/gallery filenames to semantic variants like:
+dfw-pristine-pressure-washing-{{city-slug}}-01.jpg
+
+Ensure CLS-safe placeholders or explicit sizes on hero images.
+
+9) ANALYTICS & GSC (optional but supported)
+
+If GA4_MEASUREMENT_ID provided, add GA4 tag via framework-native snippet.
+
+If GSC_HTML_TAG provided, add it to <head> on all pages.
+
+10) GBP ALIGNMENT (content only, no API)
+
+Create /content/gbp-posts/README.md with 5 prewritten GBP post drafts, each referencing a different town.
+
+Add a /seo/keywords.csv with seed terms:
+
+pressure washing {{City}}, house washing {{City}}, roof cleaning {{City}}, etc. for each city.
+
+11) E-E-A-T BASICS
+
+Create /about enhancements: owner name, years in business, equipment/insurance mention, service guarantees.
+
+Add a simple “Safety & Methods” section (soft-wash for siding/roofs, surface pressure for concrete).
+
+12) TRACKING GOALS
+
+Add click-to-call tel: links; if GA4 present, mark them as conversion events.
+
+If a form exists, ensure a distinct thank-you URL; add to sitemap.
+
+13) REDIRECTS & 404
+
+If any old slugs exist, preserve via 301s in _redirects or framework router.
+
+Make sure /404 exists and links users back to Services and Service Areas.
+
+14) DELIVERABLES
+
+When finished:
+
+Print a file/route list you created/edited.
+
+Print a sample of one generated city page (path + first 20 lines).
+
+Print the first 30 lines of sitemap.xml.
+
+Provide a QA checklist: canonical tags, robots, sitemap ping URL, CLS/LCP notes, internal link counts, and “next posts to write.”
+
+Summarize exact commits/diffs.
+
+15) CONTENT TEMPLATES
+A) City Page Markdown/HTML Template (use for each city)
+# Pressure Washing in {{City}} | {{BUSINESS_NAME}}
+
+<section class="intro">
+DFW Pristine Power Washing serves homeowners and businesses in {{City}} and nearby DFW areas with soft-wash house washing, roof cleaning, and high-pressure concrete cleaning. We remove algae, mildew, rust, and oil stains safely and fast—backed by 5-star reviews and same-week scheduling.
+</section>
+
+<section class="popular-services">
+<h2>Popular in {{City}}</h2>
+<ul>
+<li><a href="/services/pressure-washing">Pressure Washing</a></li>
+<li><a href="/services/house-washing">House Washing (Soft Wash)</a></li>
+<li><a href="/services/roof-cleaning">Roof Cleaning</a></li>
+<li><a href="/services/driveway-concrete-cleaning">Driveway / Concrete</a></li>
+</ul>
+</section>
+
+<section class="local-proof">
+<h2>Recent project in {{City}}</h2>
+<img src="/images/gallery/dfw-pristine-{{city-slug}}-01.jpg" alt="pressure washing {{City}} - {{BUSINESS_NAME}}">
+<p>Driveway restoration in {{City}}: black algae removed and curb appeal restored in under two hours.</p>
+</section>
+
+<section class="faq">
+<h2>FAQ for {{City}}</h2>
+<h3>Do you soft wash roofs in {{City}}?</h3>
+<p>Yes—our soft-wash method protects shingles while removing algae streaks.</p>
+<h3>How fast can you schedule in {{City}}?</h3>
+<p>Most jobs are scheduled within 2–5 days, weather permitting.</p>
+<h3>Are estimates free?</h3>
+<p>Yes—call <a href="tel:{{PHONE}}">{{PHONE}}</a> or request a quote online.</p>
+</section>
+
+<section class="cta">
+<h2>Get a free quote in {{City}}</h2>
+<p>Call <a href="tel:{{PHONE}}">{{PHONE}}</a> or email <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>.</p>
+</section>
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"Service",
+"serviceType":"Pressure Washing",
+"provider":{"@type":"LocalBusiness","name":"{{BUSINESS_NAME}}","telephone":"{{PHONE}}"},
+"areaServed":{"@type":"Place","name":"{{City}}"}
+}
+</script>
+
+B) LocalBusiness JSON-LD (site-wide; fill NAP if you have it)
+{
+"@context":"https://schema.org",
+"@type":"LocalBusiness",
+"name":"{{BUSINESS_NAME}}",
+"image":"{{SITE_URL}}/images/og-default.jpg",
+"telephone":"{{PHONE}}",
+"email":"{{EMAIL}}",
+"address":{"@type":"PostalAddress","streetAddress":"{{NAP_STREET}}","addressLocality":"{{NAP_CITY}}","addressRegion":"{{NAP_STATE}}","postalCode":"{{NAP_ZIP}}","addressCountry":"US"},
+"areaServed":[{{SERVICE_AREA_CITIES as Place}}],
+"openingHours":"{{HOURS}}",
+"url":"{{SITE_URL}}"
+}
+
+C) Homepage “Proudly Serving” snippet
+<section class="service-band">
+  <strong>Proudly serving:</strong>
+  Midlothian · Waxahachie · Cedar Hill · Mansfield · Red Oak · Ovilla · Arlington · Grand Prairie
+</section>
+
+
+End of prompt.
