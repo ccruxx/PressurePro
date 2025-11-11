@@ -2,7 +2,7 @@
 
 ## Overview
 
-DFW Pristine Power Washing is a modern, responsive single-page application (SPA) for a professional pressure washing service business serving the Dallas-Fort Worth metro area. The application features a clean, professional design with sections for services, gallery, testimonials, about information, and direct contact methods. It's built with React, TypeScript, and optimized for static deployment on Vercel. The site focuses on direct customer contact via phone and email buttons rather than complex forms.
+DFW Pristine Power Washing is a comprehensive, SEO-optimized multi-page website for a professional pressure washing service serving the Dallas-Fort Worth metro area. Built as a React SPA with client-side routing, the site features 20+ pages including service pages, city landing pages, and an about page. The application is fully optimized for search engines with structured data, proper meta tags, internal linking, and local SEO targeting 15 DFW cities. It's built with React, TypeScript, react-helmet-async for SEO, and optimized for static deployment on Vercel.
 
 ## System Architecture
 
@@ -12,7 +12,16 @@ DFW Pristine Power Washing is a modern, responsive single-page application (SPA)
 - **UI Framework**: Tailwind CSS with shadcn/ui component library
 - **Styling**: Modern design system with custom CSS variables and responsive layout
 - **Router**: Wouter for lightweight client-side routing
+- **SEO Management**: react-helmet-async for dynamic meta tags and schema markup
 - **Form Handling**: Direct contact methods with client-side validation using Zod
+
+### SEO Architecture
+- **Meta Tags**: Dynamic title, description, Open Graph, and Twitter Card tags on all pages
+- **Structured Data**: Schema.org JSON-LD markup (LocalBusiness, Service, Breadcrumbs)
+- **Technical SEO**: robots.txt, sitemap.xml, canonical URLs, HSTS headers
+- **Content Strategy**: 6 service pages, 15 city landing pages, about page with E-E-A-T content
+- **Internal Linking**: Header/footer navigation, cross-linking between services and cities
+- **Local SEO**: City-specific landing pages with local content and NAP consistency
 
 ### Static Deployment Architecture
 - **Deployment**: Optimized for static hosting on Vercel
@@ -24,18 +33,31 @@ DFW Pristine Power Washing is a modern, responsive single-page application (SPA)
 
 ### Frontend Components
 1. **Layout Components**
-   - Header with sticky navigation and smooth scrolling
-   - Footer with company information and social links
+   - Header with sticky navigation, Services and Service Areas dropdown menus
+   - Footer with NAP block, service links, city links, and Google Maps embed
 
-2. **Section Components**
+2. **Page Components**
+   - Homepage with LocalBusiness schema and serving cities band
+   - About page with E-E-A-T content (experience, credentials, guarantees)
+   - 6 service pages with Service schemas and internal linking
+   - Services index page listing all services
+   - 15 city landing pages using CityPageTemplate component
+   - Service areas index page listing all cities
+
+3. **SEO Components**
+   - SEOHead: Manages meta tags, Open Graph, Twitter cards, canonical URLs
+   - SchemaOrg: Injects JSON-LD structured data
+   - CityPageTemplate: Reusable template for city landing pages
+
+4. **Section Components**
    - Hero section with call-to-action buttons
+   - ServingCities: Band of city links below hero
    - Services showcase with feature cards
    - Gallery with before/after comparisons
    - Testimonials with customer reviews
-   - About section highlighting company strengths
-   - Contact form with validation and submission handling
+   - Contact form with validation
 
-3. **UI Components**
+5. **UI Components**
    - Complete shadcn/ui component library integration
    - Custom styled components matching brand theme
    - Responsive design patterns for mobile and desktop
@@ -67,10 +89,10 @@ DFW Pristine Power Washing is a modern, responsive single-page application (SPA)
 ## External Dependencies
 
 ### Frontend Dependencies
-- **React Ecosystem**: React, React DOM, React Hook Form
+- **React Ecosystem**: React, React DOM, React Hook Form, react-helmet-async
 - **UI & Styling**: Tailwind CSS, shadcn/ui components, Radix UI primitives
 - **Validation**: Zod for client-side form validation
-- **Icons**: Font Awesome for consistent iconography
+- **Icons**: Lucide React for UI icons, Font Awesome for contact icons
 - **Utilities**: clsx, tailwind-merge for conditional styling
 - **Routing**: Wouter for lightweight client-side routing
 
@@ -97,6 +119,8 @@ DFW Pristine Power Washing is a modern, responsive single-page application (SPA)
 - **Build Command**: `npm run build`
 - **Output Directory**: `dist/public`
 - **Framework**: Vite (React)
+- **Redirects**: Non-www to www canonicalization (dfwpristine.com → www.dfwpristine.com)
+- **Headers**: HSTS (Strict-Transport-Security) for enhanced security
 - **No Environment Variables**: No backend dependencies
 
 ## Changelog
@@ -105,7 +129,7 @@ Changelog:
 - June 22, 2025. Initial setup - Complete professional pressure washing website built
 - June 22, 2025. Removed emergency services at user request - cleaned up all references across services, contact form, and footer
 - January 6, 2025. Updated business name to "DFW Pristine Power Washing" throughout the site
-- January 6, 2025. Updated phone number to (817) 585-6388 and email to joshuacllns@yahoo.com
+- January 6, 2025. Updated phone number to (817) 585-6388 and email to joshua.dfwpristine@gmail.com
 - January 6, 2025. Created custom SVG logo resembling pressure washer wand with water streams
 - January 6, 2025. Updated service area to focus on DFW Metro Area
 - January 13, 2025. Converted project to static frontend-only for Vercel deployment
@@ -114,6 +138,23 @@ Changelog:
 - January 13, 2025. Updated build configuration for static deployment
 - January 13, 2025. Cleaned up server files and dependencies to match static-only architecture
 - January 13, 2025. Fixed development workflow to use Vite directly on port 5000
+- November 11, 2025. **Comprehensive SEO Optimization Implementation**:
+  - Installed react-helmet-async for dynamic SEO meta management
+  - Created SEO infrastructure (SEOHead, SchemaOrg components, seo-constants, schema-helpers)
+  - Built robots.txt and sitemap.xml with all canonical URLs
+  - Created 6 service pages with full SEO (pressure-washing, house-washing, roof-cleaning, driveway-concrete-cleaning, commercial-pressure-washing, window-cleaning)
+  - Created services index page listing all services
+  - Built 15 city landing pages using CityPageTemplate (Midlothian, Waxahachie, Cedar Hill, Mansfield, Red Oak, Ovilla, Venus, Arlington, Grand Prairie, Irving, Dallas, Fort Worth, Burleson, DeSoto, Ennis)
+  - Created service areas index page listing all cities
+  - Created About page with E-E-A-T content (experience, credentials, guarantees)
+  - Updated homepage with SEO meta tags, LocalBusiness schema, and serving cities band
+  - Updated header with Services and Service Areas dropdown menus
+  - Updated footer with NAP block, service/city links, and Google Maps embed
+  - Implemented comprehensive internal linking between all pages
+  - Added Schema.org structured data (LocalBusiness, Service, Breadcrumbs)
+  - Configured Vercel redirects for www canonicalization
+  - Created GBP post templates and keyword CSV for marketing
+  - All pages tested and verified via end-to-end Playwright tests
 
 ## User Preferences
 
