@@ -5,7 +5,7 @@ import Footer from "@/components/layout/footer";
 import SEOHead from "@/components/seo/SEOHead";
 import SchemaOrg from "@/components/seo/SchemaOrg";
 import { SEO_CONSTANTS } from "@/lib/seo-constants";
-import { getCityServiceSchema, getBreadcrumbSchema } from "@/lib/schema-helpers";
+import { getCityServiceSchema, getBreadcrumbSchema, getCityFAQSchema } from "@/lib/schema-helpers";
 import { CITY_LOCAL_CONTENT } from "@/lib/city-content";
 import { Button } from "@/components/ui/button";
 
@@ -23,6 +23,7 @@ export default function CityPageTemplate({ cityName, stateName, slug }: CityPage
   ]);
 
   const cityServiceSchema = getCityServiceSchema(cityName, stateName);
+  const cityFAQSchema = getCityFAQSchema(cityName);
   const cityContent = CITY_LOCAL_CONTENT[slug] || {
     localSpecifics: `Properties in ${cityName} require professional pressure washing to combat Texas weather conditions, organic growth, and exterior staining.`,
     nearbyAreas: [],
@@ -36,7 +37,7 @@ export default function CityPageTemplate({ cityName, stateName, slug }: CityPage
         description={`Professional pressure washing in ${cityName}, ${stateName}. House washing, roof cleaning, driveway cleaning & more. Free quotes, same-week service. Call ${SEO_CONSTANTS.CONTACT.PHONE}.`}
         canonical={`/service-areas/${slug}`}
       />
-      <SchemaOrg schema={[breadcrumbs, cityServiceSchema]} />
+      <SchemaOrg schema={[breadcrumbs, cityServiceSchema, cityFAQSchema]} />
       
       <Header />
       
