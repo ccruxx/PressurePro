@@ -1,4 +1,4 @@
-import JoshPicture from "@assets/JoshPicture.png";
+import JoshPicture from "@assets/JoshPicture.jpg";
 import logo2 from "@assets/logo2.png";
 
 export default function About() {

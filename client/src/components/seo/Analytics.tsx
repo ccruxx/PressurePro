@@ -1,14 +1,27 @@
 import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
+import { useLocation } from "wouter";
 
 const GA4_ID = import.meta.env.VITE_GA4_ID;
 const GSC_HTML = import.meta.env.VITE_GSC_HTML;
 
 export default function Analytics() {
+  const [location] = useLocation();
+
+  // Track page views on route change (SPA navigation)
+  useEffect(() => {
+    if (!GA4_ID || !window.gtag) return;
+
+    window.gtag('event', 'page_view', {
+      page_path: location,
+      page_title: document.title,
+    });
+  }, [location]);
+
+  // Track tel: link clicks
   useEffect(() => {
     if (!GA4_ID) return;
 
-    // Track tel: link clicks
     const trackTelClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const link = target.closest('a[href^="tel:"]');
