@@ -25,26 +25,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://dfwpristine.com/</loc>
-    <lastmod>2025-11-11T16:06:30.412Z</lastmod>
+    <loc>https://dfwpristinepowerwashing.com/</loc>
+    <lastmod>2025-11-11T16:14:52.735Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://dfwpristine.com/about</loc>
-    <lastmod>2025-11-11T16:06:30.412Z</lastmod>
+    <loc>https://dfwpristinepowerwashing.com/about</loc>
+    <lastmod>2025-11-11T16:14:52.735Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dfwpristine.com/services</loc>
-    <lastmod>2025-11-11T16:06:30.412Z</lastmod>
+    <loc>https://dfwpristinepowerwashing.com/services</loc>
+    <lastmod>2025-11-11T16:14:52.735Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://dfwpristine.com/service-areas</loc>
-    <lastmod>2025-11-11T16:06:30.412Z</lastmod>
+    <loc>https://dfwpristinepowerwashing.com/service-areas</loc>
+    <lastmod>2025-11-11T16:14:52.735Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 ```
@@ -96,7 +96,7 @@
 ### ✅ Meta & Canonical Hygiene
 - ✅ **One meta description per page** - Verified in SEOHead component, no duplicates in index.html
 - ✅ **Canonical URL normalization** - Implemented in SEOHead with trailing slash removal and query string stripping
-- ✅ **Canonical host confirmed** - All canonicals point to `https://dfwpristine.com` (non-www)
+- ✅ **Canonical host confirmed** - All canonicals point to `https://dfwpristinepowerwashing.com` (non-www)
 - ✅ **OG/Twitter defaults present** - og:type=website, og:site_name, twitter:card=summary_large_image implemented
 - ⚠️ **OG default image** - Placeholder created, needs actual 1200x630 JPG uploaded at `/public/og-default.jpg`
 
@@ -180,19 +180,19 @@ walkway_decking_1757974664720.jpg          1.5M  ⚠️ MEDIUM
 After deployment, verify these redirects work:
 
 ```bash
-# Test www → non-www redirect (should 301 to https://dfwpristine.com/)
-curl -I https://www.dfwpristine.com/
+# Test www → non-www redirect (should 301 to https://dfwpristinepowerwashing.com/)
+curl -I https://www.dfwpristinepowerwashing.com/
 
 # Expected response:
 # HTTP/1.1 301 Moved Permanently
-# Location: https://dfwpristine.com/
+# Location: https://dfwpristinepowerwashing.com/
 
 # Test specific page redirect
-curl -I https://www.dfwpristine.com/services/pressure-washing
+curl -I https://www.dfwpristinepowerwashing.com/services/pressure-washing
 
 # Expected response:
 # HTTP/1.1 301 Moved Permanently
-# Location: https://dfwpristine.com/services/pressure-washing
+# Location: https://dfwpristinepowerwashing.com/services/pressure-washing
 ```
 
 ---

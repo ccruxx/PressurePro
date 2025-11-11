@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const SITE_URL = 'https://dfwpristine.com';
+const SITE_URL = 'https://dfwpristinepowerwashing.com';
 
 const cities = [
   'midlothian-tx', 'waxahachie-tx', 'cedar-hill-tx', 'mansfield-tx',

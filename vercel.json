@@ -9,10 +9,10 @@
       "has": [
         {
           "type": "host",
-          "value": "www.dfwpristine.com"
+          "value": "www.dfwpristinepowerwashing.com"
         }
       ],
-      "destination": "https://dfwpristine.com/:path*",
+      "destination": "https://dfwpristinepowerwashing.com/:path*",
       "permanent": true
     }
   ],

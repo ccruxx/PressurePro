@@ -56,7 +56,7 @@ export const SEO_CONSTANTS = {
     EMAIL: "info@dfwpristine.com",
     ACTUAL_EMAIL: "joshuacllns@yahoo.com", // Keep for backend, use info@ for public display
   },
-  SITE_URL: "https://dfwpristine.com",
+  SITE_URL: "https://dfwpristinepowerwashing.com",
   NAP: {
     STREET: "",
     CITY: "Midlothian",

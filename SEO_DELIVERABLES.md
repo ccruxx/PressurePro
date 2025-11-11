@@ -26,26 +26,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://dfwpristine.com/</loc>
-    <lastmod>2025-11-11T16:06:30.412Z</lastmod>
+    <loc>https://dfwpristinepowerwashing.com/</loc>
+    <lastmod>2025-11-11T16:14:52.735Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://dfwpristine.com/about</loc>
-    <lastmod>2025-11-11T16:06:30.412Z</lastmod>
+    <loc>https://dfwpristinepowerwashing.com/about</loc>
+    <lastmod>2025-11-11T16:14:52.735Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dfwpristine.com/services</loc>
-    <lastmod>2025-11-11T16:06:30.412Z</lastmod>
+    <loc>https://dfwpristinepowerwashing.com/services</loc>
+    <lastmod>2025-11-11T16:14:52.735Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://dfwpristine.com/service-areas</loc>
-    <lastmod>2025-11-11T16:06:30.412Z</lastmod>
+    <loc>https://dfwpristinepowerwashing.com/service-areas</loc>
+    <lastmod>2025-11-11T16:14:52.735Z</lastmod>
     <changefreq>weekly</changefreq>
 ```
 
@@ -75,7 +75,7 @@
 
 ### ✅ Meta & Canonical (100%)
 - ✅ One meta description per page
-- ✅ Canonical host + path confirmed (https://dfwpristine.com)
+- ✅ Canonical host + path confirmed (https://dfwpristinepowerwashing.com)
 - ✅ Trailing slash removal implemented
 - ✅ Query string stripping implemented
 - ✅ OG defaults: type=website, site_name present
@@ -141,11 +141,11 @@
 Test after deployment:
 
 ```bash
-# Should 301 to https://dfwpristine.com/
-curl -I https://www.dfwpristine.com/
+# Should 301 to https://dfwpristinepowerwashing.com/
+curl -I https://www.dfwpristinepowerwashing.com/
 
-# Should 301 to https://dfwpristine.com/services/pressure-washing
-curl -I https://www.dfwpristine.com/services/pressure-washing
+# Should 301 to https://dfwpristinepowerwashing.com/services/pressure-washing
+curl -I https://www.dfwpristinepowerwashing.com/services/pressure-washing
 ```
 
 ---
