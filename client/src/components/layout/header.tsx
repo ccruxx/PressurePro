@@ -48,25 +48,37 @@ export default function Header() {
                 alt="DFW Pristine Power Washing Logo"
                 className="h-28 w-auto object-contain"
               />
-              <div className="absolute top-0 right-0 bg-blue-600 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-sm shadow-sm uppercase tracking-wide" style={{ transform: 'translate(0%, -25%)' }}>
-                Tribal Certified
+              <div className="
+                absolute top-[90%] right-0 translate-x-[0%]
+                bg-blue-600 text-white text-[9px] font-bold
+                px-2 py-1 rounded-full shadow-md ring-1 ring-white/50
+                uppercase tracking-wide flex items-center gap-1
+                animate-pulse
+              ">
+                <svg viewBox="0 0 20 20" className="w-3 h-3" aria-hidden="true">
+                  <path fill="currentColor" d="M10 2l6 3v5c0 4-3.1 6.9-6 8-2.9-1.1-6-4-6-8V5l6-3zM9 13.2l4.7-4.7-1.4-1.4L9 10.4 7.7 9.1 6.3 10.5 9 13.2z"/>
+                </svg>
+                <span>Minority Owned Business</span>
               </div>
             </div>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-6 items-center">
-            <Link href="/" className="text-gray-700 hover:text-primary transition-colors">
+            <Link
+              href="/"
+              className="text-gray-700 hover:text-primary transition-colors"
+            >
               Home
             </Link>
-            
-            <div 
+
+            <div
               className="relative group"
               onMouseEnter={() => setShowServicesDropdown(true)}
               onMouseLeave={() => setShowServicesDropdown(false)}
             >
-              <Link 
-                href="/services" 
+              <Link
+                href="/services"
                 className="text-gray-700 hover:text-primary transition-colors flex items-center gap-1"
                 data-testid="nav-services"
               >
@@ -76,7 +88,7 @@ export default function Header() {
               {showServicesDropdown && (
                 <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-lg py-2 z-50">
                   {SEO_CONSTANTS.PRIMARY_SERVICES.map((service) => (
-                    <Link 
+                    <Link
                       key={service.slug}
                       href={`/services/${service.slug}`}
                       className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-primary transition-colors"
@@ -89,13 +101,13 @@ export default function Header() {
               )}
             </div>
 
-            <div 
+            <div
               className="relative group"
               onMouseEnter={() => setShowAreasDropdown(true)}
               onMouseLeave={() => setShowAreasDropdown(false)}
             >
-              <Link 
-                href="/service-areas" 
+              <Link
+                href="/service-areas"
                 className="text-gray-700 hover:text-primary transition-colors flex items-center gap-1"
                 data-testid="nav-service-areas"
               >
@@ -105,7 +117,7 @@ export default function Header() {
               {showAreasDropdown && (
                 <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-lg py-2 z-50 max-h-96 overflow-y-auto">
                   {SEO_CONSTANTS.SERVICE_AREA_CITIES.map((city) => (
-                    <Link 
+                    <Link
                       key={city.slug}
                       href={`/service-areas/${city.slug}`}
                       className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-primary transition-colors"
@@ -117,7 +129,7 @@ export default function Header() {
                 </div>
               )}
             </div>
-            
+
             <button
               onClick={() => scrollToSection("gallery")}
               className="text-gray-700 hover:text-primary transition-colors"
