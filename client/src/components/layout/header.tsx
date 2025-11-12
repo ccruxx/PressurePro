@@ -67,14 +67,14 @@ export default function Header() {
             >
               <Link
                 href="/services"
-                className="text-gray-700 hover:text-primary transition-colors flex items-center gap-1"
+                className="text-gray-700 hover:text-primary transition-colors flex items-center gap-1 py-2"
                 data-testid="nav-services"
               >
                 Services
                 <ChevronDown className="h-4 w-4" />
               </Link>
               {showServicesDropdown && (
-                <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-lg py-2 z-50">
+                <div className="absolute left-0 top-full w-64 bg-white shadow-lg rounded-lg py-2 z-50 border border-gray-100">
                   {SEO_CONSTANTS.PRIMARY_SERVICES.map((service) => (
                     <Link
                       key={service.slug}
@@ -96,14 +96,14 @@ export default function Header() {
             >
               <Link
                 href="/service-areas"
-                className="text-gray-700 hover:text-primary transition-colors flex items-center gap-1"
+                className="text-gray-700 hover:text-primary transition-colors flex items-center gap-1 py-2"
                 data-testid="nav-service-areas"
               >
                 Service Areas
                 <ChevronDown className="h-4 w-4" />
               </Link>
               {showAreasDropdown && (
-                <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-lg py-2 z-50 max-h-96 overflow-y-auto">
+                <div className="absolute left-0 top-full w-64 bg-white shadow-lg rounded-lg py-2 z-50 max-h-96 overflow-y-auto border border-gray-100">
                   {SEO_CONSTANTS.SERVICE_AREA_CITIES.map((city) => (
                     <Link
                       key={city.slug}
