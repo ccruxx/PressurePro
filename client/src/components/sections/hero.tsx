@@ -61,7 +61,16 @@ export default function Hero() {
             </Button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {/* Minority Owned Badge */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+              <div className="text-4xl font-bold text-yellow-300 mb-2">🏆</div>
+              <div className="text-lg font-semibold mb-1">Minority Owned</div>
+              <div className="text-sm text-gray-300">
+                Tribal Certified Business
+              </div>
+            </div>
+
             {/* Fully Insured Badge */}
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <div className="text-4xl font-bold text-yellow-300 mb-2">✔</div>
@@ -71,7 +80,7 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* 5-Star Rating Badge (unchanged) */}
+            {/* 5-Star Rating Badge */}
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <div className="text-4xl font-bold text-yellow-300 mb-2">5★</div>
               <div className="text-lg font-semibold mb-1">Average Rating</div>
