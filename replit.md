@@ -55,6 +55,8 @@ DFW Pristine Power Washing is a comprehensive, SEO-optimized multi-page website 
    - Services showcase with feature cards
    - Gallery with before/after comparisons
    - Testimonials with customer reviews
+   - About section with founder information
+   - Certification section highlighting Minority-Owned & Tribal Certified status
    - Contact form with validation
 
 5. **UI Components**
@@ -179,6 +181,15 @@ Changelog:
   - Created .env.local template for GA4_ID and GSC_HTML environment variables
   - Created compression and OG image generation scripts
   - All features tested and verified via end-to-end Playwright tests
+- November 12, 2025. **Minority-Owned Business Certification Section**:
+  - Created new Certification section component (client/src/components/sections/certification.tsx)
+  - Added "Tribal Certified" badge to header logo (small blue badge in top-right corner)
+  - Updated SEO constants with minority-owned keywords: "Minority Owned Pressure Washing", "Choctaw Nation Certified Business", "DFW Minority Pressure Washing Company", etc.
+  - Updated homepage meta description to include "Minority-Owned & Choctaw Nation Certified"
+  - Added certification section to homepage between About and Contact sections
+  - Section features: Choctaw Nation emblem placeholder, certification badges, responsive design
+  - Verified responsive layout on desktop and mobile via end-to-end tests
+  - All changes tested and verified via Playwright tests
 
 ## User Preferences
 
