@@ -96,6 +96,18 @@ export default function About() {
           />
 
           <div className="flex justify-center items-center gap-6 flex-wrap">
+            {/* Minority Owned Badge */}
+            <div className="bg-white border border-blue-100 p-6 rounded-xl shadow-md min-w-[140px]">
+              <div className="text-center">
+                <div className="text-xl font-bold text-blue-600">
+                  Minority Owned
+                </div>
+                <div className="text-sm text-gray-600 mt-1">
+                  Tribal Certified
+                </div>
+              </div>
+            </div>
+
             {/* Locally Owned Badge */}
             <div className="bg-white border border-blue-100 p-6 rounded-xl shadow-md min-w-[140px]">
               <div className="text-center">
@@ -118,7 +130,7 @@ export default function About() {
               </div>
             </div>
 
-            {/* Satisfaction Badge (Optional) */}
+            {/* Satisfaction Badge */}
             <div className="bg-white border border-blue-100 p-6 rounded-xl shadow-md min-w-[140px]">
               <div className="text-center">
                 <div className="text-3xl font-bold text-blue-600">100%</div>

@@ -48,18 +48,6 @@ export default function Header() {
                 alt="DFW Pristine Power Washing Logo"
                 className="h-28 w-auto object-contain"
               />
-              <div className="
-                absolute top-[90%] right-0 translate-x-[0%]
-                bg-blue-600 text-white text-[9px] font-bold
-                px-2 py-1 rounded-full shadow-md ring-1 ring-white/50
-                uppercase tracking-wide flex items-center gap-1
-                animate-pulse
-              ">
-                <svg viewBox="0 0 20 20" className="w-3 h-3" aria-hidden="true">
-                  <path fill="currentColor" d="M10 2l6 3v5c0 4-3.1 6.9-6 8-2.9-1.1-6-4-6-8V5l6-3zM9 13.2l4.7-4.7-1.4-1.4L9 10.4 7.7 9.1 6.3 10.5 9 13.2z"/>
-                </svg>
-                <span>Minority Owned Business</span>
-              </div>
             </div>
           </div>
 
