@@ -42,11 +42,16 @@ export default function Header() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-3">
-            <img
-              src={logoImage}
-              alt="DFW Pristine Power Washing Logo"
-              className="h-28 w-auto object-contain"
-            />
+            <div className="relative">
+              <img
+                src={logoImage}
+                alt="DFW Pristine Power Washing Logo"
+                className="h-28 w-auto object-contain"
+              />
+              <div className="absolute -top-1 -right-2 bg-blue-600 text-white text-[9px] font-bold px-2 py-0.5 rounded shadow-md uppercase tracking-wider">
+                Tribal Certified
+              </div>
+            </div>
           </div>
 
           {/* Desktop Navigation */}

@@ -71,7 +71,20 @@ export const SEO_CONSTANTS = {
   OWNER: {
     NAME: "Josh Collins",
     YEARS_IN_BUSINESS: "5+",
-  }
+  },
+  CERTIFICATIONS: {
+    MINORITY_OWNED: true,
+    TRIBAL_CERTIFIED: true,
+    CERTIFYING_ORGANIZATION: "Choctaw Nation of Oklahoma",
+  },
+  ADDITIONAL_KEYWORDS: [
+    "Minority Owned Pressure Washing",
+    "Choctaw Nation Certified Business",
+    "DFW Minority Pressure Washing Company",
+    "Tribal Certified Pressure Washing",
+    "Minority-Owned Business DFW",
+    "Native American Owned Business Texas",
+  ]
 };
 
 export const TOP_CITIES_FOR_DISPLAY = [

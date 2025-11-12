@@ -6,6 +6,7 @@ import Services from "@/components/sections/services";
 import Gallery from "@/components/sections/gallery";
 import Testimonials from "@/components/sections/testimonials";
 import About from "@/components/sections/about";
+import Certification from "@/components/sections/certification";
 import Contact from "@/components/sections/contact";
 import Footer from "@/components/layout/footer";
 import SEOHead from "@/components/seo/SEOHead";
@@ -20,7 +21,7 @@ export default function Home() {
     <div className="font-sans bg-slate-50">
       <SEOHead
         title={`Pressure Washing in ${SEO_CONSTANTS.PRIMARY_CITY} & DFW | ${SEO_CONSTANTS.BUSINESS_NAME}`}
-        description={`Professional pressure washing in Midlothian, Waxahachie, Cedar Hill & DFW. House washing, roof cleaning, driveway cleaning. Free quotes, same-week service. Call ${SEO_CONSTANTS.CONTACT.PHONE}.`}
+        description={`Minority-Owned & Choctaw Nation Certified professional pressure washing in Midlothian, Waxahachie, Cedar Hill & DFW. House washing, roof cleaning, driveway cleaning. Free quotes, same-week service. Call ${SEO_CONSTANTS.CONTACT.PHONE}.`}
         canonical="/"
       />
       <SchemaOrg schema={localBusinessSchema} />
@@ -33,6 +34,7 @@ export default function Home() {
       <Gallery />
       <Testimonials />
       <About />
+      <Certification />
       <Contact />
       <Footer />
     </div>
