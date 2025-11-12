@@ -42,13 +42,13 @@ export default function Header() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-3">
-            <div className="relative">
+            <div className="relative inline-block">
               <img
                 src={logoImage}
                 alt="DFW Pristine Power Washing Logo"
                 className="h-28 w-auto object-contain"
               />
-              <div className="absolute -top-1 -right-2 bg-blue-600 text-white text-[9px] font-bold px-2 py-0.5 rounded shadow-md uppercase tracking-wider">
+              <div className="absolute top-0 right-0 bg-blue-600 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-sm shadow-sm uppercase tracking-wide" style={{ transform: 'translate(0%, -25%)' }}>
                 Tribal Certified
               </div>
             </div>
