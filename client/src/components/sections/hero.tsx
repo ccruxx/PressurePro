@@ -19,9 +19,9 @@ export default function Hero() {
     >
       {/* YouTube Video Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="w-full h-full relative">
+        <div className="w-full h-full relative overflow-hidden">
           <iframe
-            className="absolute top-0 left-0 w-[177.78%] h-full transform -translate-x-1/2 left-1/2"
+            className="absolute top-0 left-1/2 w-[177.78%] h-full -translate-x-1/2 pointer-events-none"
             src="https://www.youtube.com/embed/bsdD-WrDcIE?autoplay=1&mute=1&loop=1&playlist=bsdD-WrDcIE&controls=0&modestbranding=1&showinfo=0&rel=0"
             title="DFW Premier Power Washing"
             frameBorder="0"

@@ -203,6 +203,7 @@ Changelog:
   - Updated About page to list Arlington first in service areas
   - Updated footer Google Maps embed from Midlothian to DFW Metroplex (centered on Arlington)
   - Updated all email references site-wide to joshua.dfwpristine@gmail.com (was info@dfwpristine.com and joshuacllns@yahoo.com)
+  - Fixed mobile horizontal scrolling issue by adding overflow-x: hidden to html/body and fixing hero video container
   - All changes verified via comprehensive end-to-end Playwright tests
 
 ## User Preferences
