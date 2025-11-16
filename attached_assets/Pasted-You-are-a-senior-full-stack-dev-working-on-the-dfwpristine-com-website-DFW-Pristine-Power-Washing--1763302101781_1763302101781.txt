@@ -1,0 +1,151 @@
+You are a senior full-stack dev working on the dfwpristine.com website (DFW Pristine Power Washing).
+Your job right now is to update location + service area content and keep everything in sync for SEO and Google Business Profile.
+
+Step 1 – Understand the project
+
+Scan the repo and tell me briefly:
+
+What framework it uses (likely Next.js/React)
+
+Which files control:
+
+The homepage content
+
+Service area / city pages
+
+Global layout (header/footer)
+
+LocalBusiness / Service schema (JSON-LD)
+
+Don’t change anything yet; just identify these files in a short summary.
+
+Step 2 – Update primary business location
+
+Business currently shows as located in Midlothian, but it MUST now show Arlington, TX as the main location everywhere.
+
+Update the code so that:
+
+The primary location in all visible content = Arlington, TX
+
+Midlothian is only mentioned as a service area, not HQ
+
+LocalBusiness schema, address, and any “based in” or “located in” text uses Arlington
+
+If there is a single central address object, update it to Arlington and reuse that everywhere.
+
+Step 3 – Clean up and align service areas
+
+We have two levels of service areas:
+
+Top Cities (priority for rankings & homepage section)
+Use this exact list and order:
+
+Arlington
+
+Mansfield
+
+Dallas
+
+Fort Worth
+
+Plano
+
+Southlake
+
+Grapevine
+
+Carrollton
+
+Midlothian
+
+Waxahachie
+
+Burleson
+
+Extended Service Area List (can appear on Service Area page or map section):
+
+Hurst
+
+Euless
+
+Frisco
+
+Irving
+
+Keller
+
+Addison
+
+Bedford
+
+Burleson
+
+Arlington
+
+Grapevine
+
+Mansfield
+
+Carrollton
+
+Fort Worth
+
+Midlothian
+
+Grand Prairie
+
+Farmers Branch
+
+Richland Hills
+
+Las Colinas (Irving)
+
+North Richland Hills
+
+Dallas–Fort Worth Metropolitan Area
+
+Tasks:
+
+Find the “service area map” / cities list component and:
+
+Replace the city list with the Extended Service Area List above.
+
+Make sure formatting is clean and not duplicated elsewhere.
+
+If there are individual city pages, ensure their titles/meta/headings reference the right city names and link back to the main services.
+
+Step 4 – Add “Top Cities We Serve” section to homepage
+
+On the homepage, add a new section called “Top Cities We Serve” (or similar) that:
+
+Uses the Top Cities list from Step 3.1.
+
+Is SEO friendly (each city name should be wrapped in a link if a dedicated city page exists; if not, link to the main Service Area page).
+
+Keeps existing styling conventions (same typography, spacing, and responsive behavior as other sections).
+
+Place this section logically near the service area/map or just above the footer.
+
+Step 5 – Update schema / SEO alignment
+
+Ensure any LocalBusiness or Service JSON-LD uses:
+
+Arlington, TX as the primary location
+
+A serviceArea or areaServed list that includes the Top Cities (at minimum).
+
+Check <title>, meta description, and any OpenGraph tags on key pages so they no longer claim Midlothian as HQ.
+
+Step 6 – Clean up, check, and summarize
+
+Run whatever build/check commands are standard for this project (e.g., npm run lint, npm run build) and fix any issues you caused.
+
+Give me a concise summary of:
+
+All files you changed
+
+A quick before/after of the main copy changes
+
+Any TODOs you think we should handle later (e.g., missing city pages you recommend adding).
+
+Make all edits now according to this prompt.
