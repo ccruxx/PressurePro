@@ -2,7 +2,7 @@
 
 ## Overview
 
-DFW Pristine Power Washing is a comprehensive, SEO-optimized multi-page website for a professional pressure washing service serving the Dallas-Fort Worth metro area. Built as a React SPA with client-side routing, the site features 20+ pages including service pages, city landing pages, and an about page. The application is fully optimized for search engines with structured data, proper meta tags, internal linking, and local SEO targeting 15 DFW cities. It's built with React, TypeScript, react-helmet-async for SEO, and optimized for static deployment on Vercel.
+DFW Pristine Power Washing is a comprehensive, SEO-optimized multi-page website for a professional pressure washing service based in Arlington, TX, serving the Dallas-Fort Worth metro area. Built as a React SPA with client-side routing, the site features 35+ pages including service pages, city landing pages, and an about page. The application is fully optimized for search engines with structured data, proper meta tags, internal linking, and local SEO targeting 29 DFW cities. It's built with React, TypeScript, react-helmet-async for SEO, and optimized for static deployment on Vercel.
 
 ## System Architecture
 
@@ -19,7 +19,7 @@ DFW Pristine Power Washing is a comprehensive, SEO-optimized multi-page website 
 - **Meta Tags**: Dynamic title, description, Open Graph, and Twitter Card tags on all pages
 - **Structured Data**: Schema.org JSON-LD markup (LocalBusiness, Service, Breadcrumbs)
 - **Technical SEO**: robots.txt, sitemap.xml, canonical URLs, HSTS headers
-- **Content Strategy**: 6 service pages, 15 city landing pages, about page with E-E-A-T content
+- **Content Strategy**: 6 service pages, 29 city landing pages, about page with E-E-A-T content
 - **Internal Linking**: Header/footer navigation, cross-linking between services and cities
 - **Local SEO**: City-specific landing pages with local content and NAP consistency
 
@@ -41,7 +41,7 @@ DFW Pristine Power Washing is a comprehensive, SEO-optimized multi-page website 
    - About page with E-E-A-T content (experience, credentials, guarantees)
    - 6 service pages with Service schemas and internal linking
    - Services index page listing all services
-   - 15 city landing pages using CityPageTemplate component
+   - 29 city landing pages using CityPageTemplate component
    - Service areas index page listing all cities
 
 3. **SEO Components**
@@ -190,6 +190,18 @@ Changelog:
   - Section features: Choctaw Nation emblem placeholder, certification badges, responsive design
   - Verified responsive layout on desktop and mobile via end-to-end tests
   - All changes tested and verified via Playwright tests
+- November 16, 2025. **Arlington HQ Relocation & Service Area Expansion**:
+  - Changed primary business location from Midlothian to Arlington, TX in all SEO constants
+  - Updated PRIMARY_CITY and NAP.CITY to "Arlington" (was "Midlothian")
+  - Expanded SERVICE_AREA_CITIES from 15 to 29 cities across DFW metro area
+  - Added 14 new service area cities: Plano, Southlake, Grapevine, Carrollton, Hurst, Euless, Frisco, Irving, Keller, Addison, Bedford, Farmers Branch, Richland Hills, North Richland Hills
+  - Created TOP_CITIES_FOR_DISPLAY list with 11 priority cities (Arlington first)
+  - Created 14 new city landing pages with proper routes in App.tsx
+  - Reorganized Service Areas index page into 4 geographic regions (North, Central, West, South DFW)
+  - Updated all 6 service pages "Areas We Serve" sections to say "Based in Arlington" with priority city links
+  - Updated homepage meta description to feature Arlington, Mansfield, Dallas, Fort Worth
+  - Updated About page to list Arlington first in service areas
+  - All changes verified via comprehensive end-to-end Playwright tests
 
 ## User Preferences
 

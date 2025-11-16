@@ -117,12 +117,12 @@ export default function DrivewayConcreteCleaning() {
             <div className="bg-white rounded-lg shadow-md p-8">
               <h2 className="text-2xl font-bold mb-4">Areas We Serve</h2>
               <p className="text-gray-700 mb-4">
-                Professional driveway and concrete cleaning throughout the DFW metro area.
+                Based in Arlington, we proudly serve Dallas, Fort Worth, Mansfield, Plano, and the entire DFW metro area.
               </p>
               <div className="grid md:grid-cols-3 gap-3 text-sm">
-                <Link href="/service-areas/midlothian-tx" className="text-blue-600 hover:text-blue-800" data-testid="link-city-midlothian">Midlothian</Link>
-                <Link href="/service-areas/waxahachie-tx" className="text-blue-600 hover:text-blue-800" data-testid="link-city-waxahachie">Waxahachie</Link>
-                <Link href="/service-areas/cedar-hill-tx" className="text-blue-600 hover:text-blue-800" data-testid="link-city-cedar-hill">Cedar Hill</Link>
+                <Link href="/service-areas/arlington-tx" className="text-blue-600 hover:text-blue-800" data-testid="link-city-arlington">Arlington</Link>
+                <Link href="/service-areas/dallas-tx" className="text-blue-600 hover:text-blue-800" data-testid="link-city-dallas">Dallas</Link>
+                <Link href="/service-areas/fort-worth-tx" className="text-blue-600 hover:text-blue-800" data-testid="link-city-fort-worth">Fort Worth</Link>
               </div>
             </div>
           </div>
