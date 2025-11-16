@@ -16,23 +16,27 @@ export default function ServiceAreasIndex() {
 
   const localBusiness = getLocalBusinessSchema();
 
-  const southCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter(city => 
-    ['Midlothian', 'Waxahachie', 'Red Oak', 'Ovilla', 'Venus', 'Ennis'].includes(city.name)
+  const northCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter(city => 
+    ['Plano', 'Frisco', 'Carrollton', 'Farmers Branch', 'Addison'].includes(city.name)
+  );
+
+  const centralCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter(city => 
+    ['Arlington', 'Grand Prairie', 'Irving', 'Dallas', 'Hurst', 'Euless', 'Bedford', 'Las Colinas'].includes(city.name)
   );
 
   const westCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter(city => 
-    ['Fort Worth', 'Burleson', 'Mansfield', 'Arlington'].includes(city.name)
+    ['Fort Worth', 'Keller', 'Southlake', 'Grapevine', 'North Richland Hills', 'Richland Hills'].includes(city.name)
   );
 
-  const eastCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter(city => 
-    ['Dallas', 'Cedar Hill', 'DeSoto', 'Grand Prairie', 'Irving'].includes(city.name)
+  const southCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter(city => 
+    ['Mansfield', 'Burleson', 'Midlothian', 'Waxahachie', 'Cedar Hill', 'DeSoto', 'Ennis', 'Ovilla', 'Red Oak', 'Venus'].includes(city.name)
   );
 
   return (
     <div className="font-sans bg-slate-50">
       <SEOHead
         title={`Service Areas - DFW Pressure Washing | ${SEO_CONSTANTS.BUSINESS_NAME}`}
-        description={`Professional pressure washing serving Midlothian, Waxahachie, Cedar Hill, Mansfield, Dallas, Fort Worth, and all of the DFW metro area. Free quotes available.`}
+        description={`Professional pressure washing serving Arlington, Mansfield, Dallas, Fort Worth, and all of the DFW metro area. Free quotes available.`}
         canonical="/service-areas"
       />
       <SchemaOrg schema={[breadcrumbs, localBusiness]} />
@@ -56,7 +60,7 @@ export default function ServiceAreasIndex() {
             <div className="bg-white rounded-lg shadow-md p-8 mb-12">
               <h2 className="text-3xl font-bold mb-4">Professional Pressure Washing Across DFW</h2>
               <p className="text-lg text-gray-700 mb-4">
-                DFW Pristine Power Washing provides professional pressure washing, house washing, roof cleaning, and concrete cleaning services throughout the Dallas-Fort Worth metro area. Based in Midlothian, we serve homeowners and businesses across southern, eastern, and western DFW communities.
+                DFW Pristine Power Washing provides professional pressure washing, house washing, roof cleaning, and concrete cleaning services throughout the Dallas-Fort Worth metro area. Based in Arlington, we serve homeowners and businesses across northern, central, western, and southern DFW communities.
               </p>
               <p className="text-lg text-gray-700">
                 Whether you need residential house washing, commercial building cleaning, or driveway restoration, we deliver the same high-quality service to every city we serve. Call us today for a free quote: <a href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`} className="text-blue-600 font-semibold hover:text-blue-800" data-testid="link-call">{SEO_CONSTANTS.CONTACT.PHONE}</a>
@@ -66,10 +70,10 @@ export default function ServiceAreasIndex() {
             <div className="mb-12">
               <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
                 <MapPin className="h-6 w-6 text-blue-600" />
-                South DFW
+                North DFW
               </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {southCities.map((city) => (
+                {northCities.map((city) => (
                   <Link key={city.slug} href={`/service-areas/${city.slug}`} data-testid={`link-city-${city.slug}`}>
                     <Card className="hover:shadow-lg transition-shadow cursor-pointer">
                       <CardHeader>
@@ -86,10 +90,10 @@ export default function ServiceAreasIndex() {
             <div className="mb-12">
               <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
                 <MapPin className="h-6 w-6 text-blue-600" />
-                East DFW
+                Central DFW
               </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {eastCities.map((city) => (
+                {centralCities.map((city) => (
                   <Link key={city.slug} href={`/service-areas/${city.slug}`} data-testid={`link-city-${city.slug}`}>
                     <Card className="hover:shadow-lg transition-shadow cursor-pointer">
                       <CardHeader>
@@ -110,6 +114,26 @@ export default function ServiceAreasIndex() {
               </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {westCities.map((city) => (
+                  <Link key={city.slug} href={`/service-areas/${city.slug}`} data-testid={`link-city-${city.slug}`}>
+                    <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                      <CardHeader>
+                        <CardTitle className="text-lg">
+                          Pressure Washing in {city.name}
+                        </CardTitle>
+                      </CardHeader>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="mb-12">
+              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                <MapPin className="h-6 w-6 text-blue-600" />
+                South DFW
+              </h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {southCities.map((city) => (
                   <Link key={city.slug} href={`/service-areas/${city.slug}`} data-testid={`link-city-${city.slug}`}>
                     <Card className="hover:shadow-lg transition-shadow cursor-pointer">
                       <CardHeader>

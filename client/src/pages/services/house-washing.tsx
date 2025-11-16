@@ -22,7 +22,7 @@ export default function HouseWashing() {
   return (
     <div className="font-sans bg-slate-50">
       <SEOHead
-        title={`${service.name} in DFW (Midlothian) | ${SEO_CONSTANTS.BUSINESS_NAME}`}
+        title={`${service.name} in DFW (Arlington) | ${SEO_CONSTANTS.BUSINESS_NAME}`}
         description={`Professional soft wash house washing in DFW. Safe for siding, stucco, brick, and painted surfaces. Removes algae, mold, and mildew. Free quotes. Call ${SEO_CONSTANTS.CONTACT.PHONE}.`}
         canonical={`/services/${service.slug}`}
       />

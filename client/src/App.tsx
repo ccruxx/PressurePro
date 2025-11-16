@@ -30,6 +30,20 @@ import FortWorthTX from "@/pages/service-areas/fort-worth-tx";
 import BurlesonTX from "@/pages/service-areas/burleson-tx";
 import DeSotoTX from "@/pages/service-areas/desoto-tx";
 import EnnisTX from "@/pages/service-areas/ennis-tx";
+import PlanoTX from "@/pages/service-areas/plano-tx";
+import SouthlakeTX from "@/pages/service-areas/southlake-tx";
+import GrapevineTX from "@/pages/service-areas/grapevine-tx";
+import CarrolltonTX from "@/pages/service-areas/carrollton-tx";
+import HurstTX from "@/pages/service-areas/hurst-tx";
+import EulessTX from "@/pages/service-areas/euless-tx";
+import FriscoTX from "@/pages/service-areas/frisco-tx";
+import KellerTX from "@/pages/service-areas/keller-tx";
+import AddisonTX from "@/pages/service-areas/addison-tx";
+import BedfordTX from "@/pages/service-areas/bedford-tx";
+import FarmersBranchTX from "@/pages/service-areas/farmers-branch-tx";
+import RichlandHillsTX from "@/pages/service-areas/richland-hills-tx";
+import LasColinasTX from "@/pages/service-areas/las-colinas-tx";
+import NorthRichlandHillsTX from "@/pages/service-areas/north-richland-hills-tx";
 
 function Router() {
   return (
@@ -61,6 +75,20 @@ function Router() {
       <Route path="/service-areas/burleson-tx" component={BurlesonTX} />
       <Route path="/service-areas/desoto-tx" component={DeSotoTX} />
       <Route path="/service-areas/ennis-tx" component={EnnisTX} />
+      <Route path="/service-areas/plano-tx" component={PlanoTX} />
+      <Route path="/service-areas/southlake-tx" component={SouthlakeTX} />
+      <Route path="/service-areas/grapevine-tx" component={GrapevineTX} />
+      <Route path="/service-areas/carrollton-tx" component={CarrolltonTX} />
+      <Route path="/service-areas/hurst-tx" component={HurstTX} />
+      <Route path="/service-areas/euless-tx" component={EulessTX} />
+      <Route path="/service-areas/frisco-tx" component={FriscoTX} />
+      <Route path="/service-areas/keller-tx" component={KellerTX} />
+      <Route path="/service-areas/addison-tx" component={AddisonTX} />
+      <Route path="/service-areas/bedford-tx" component={BedfordTX} />
+      <Route path="/service-areas/farmers-branch-tx" component={FarmersBranchTX} />
+      <Route path="/service-areas/richland-hills-tx" component={RichlandHillsTX} />
+      <Route path="/service-areas/las-colinas-tx" component={LasColinasTX} />
+      <Route path="/service-areas/north-richland-hills-tx" component={NorthRichlandHillsTX} />
       
       <Route component={NotFound} />
     </Switch>

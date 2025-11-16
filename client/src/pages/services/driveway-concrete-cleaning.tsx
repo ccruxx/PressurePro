@@ -22,7 +22,7 @@ export default function DrivewayConcreteCleaning() {
   return (
     <div className="font-sans bg-slate-50">
       <SEOHead
-        title={`${service.name} in DFW (Midlothian) | ${SEO_CONSTANTS.BUSINESS_NAME}`}
+        title={`${service.name} in DFW (Arlington) | ${SEO_CONSTANTS.BUSINESS_NAME}`}
         description={`Professional driveway and concrete cleaning in DFW. Remove oil stains, rust, algae, and tire marks. Restore curb appeal. Free quotes. Call ${SEO_CONSTANTS.CONTACT.PHONE}.`}
         canonical={`/services/${service.slug}`}
       />

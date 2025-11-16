@@ -29,7 +29,7 @@ export default function ServicesIndex() {
     <div className="font-sans bg-slate-50">
       <SEOHead
         title={`Pressure Washing Services in DFW | ${SEO_CONSTANTS.BUSINESS_NAME}`}
-        description={`Professional pressure washing, house washing, roof cleaning, and more in the DFW area. Free quotes, same-week scheduling. Serving Midlothian, Waxahachie, and surrounding areas.`}
+        description={`Professional pressure washing, house washing, roof cleaning, and more in the DFW area. Free quotes, same-week scheduling. Serving Arlington, Mansfield, Dallas, Fort Worth and all of DFW.`}
         canonical="/services"
       />
       <SchemaOrg schema={[breadcrumbs, localBusiness]} />

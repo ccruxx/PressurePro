@@ -38,7 +38,7 @@ export default function About() {
                 For over {SEO_CONSTANTS.OWNER.YEARS_IN_BUSINESS} years, {SEO_CONSTANTS.BUSINESS_NAME} has been the trusted choice for professional pressure washing and exterior cleaning services throughout the Dallas-Fort Worth metro area. Founded by {SEO_CONSTANTS.OWNER.NAME}, our company was built on a simple principle: deliver exceptional results with honest service and fair pricing.
               </p>
               <p className="text-lg text-gray-700 mb-4">
-                What started as a one-person operation has grown into a full-service pressure washing company serving hundreds of satisfied customers across Midlothian, Waxahachie, Cedar Hill, Mansfield, and the entire DFW region.
+                What started as a one-person operation has grown into a full-service pressure washing company serving hundreds of satisfied customers across Arlington, Mansfield, Dallas, Fort Worth, and the entire DFW region.
               </p>
               <p className="text-lg text-gray-700">
                 Every member of our team shares the same commitment to quality and customer satisfaction. We treat every property—whether it's a small residential driveway or a large commercial building—with the same attention to detail and professionalism.

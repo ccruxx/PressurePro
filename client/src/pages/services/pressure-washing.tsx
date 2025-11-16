@@ -22,7 +22,7 @@ export default function PressureWashing() {
   return (
     <div className="font-sans bg-slate-50">
       <SEOHead
-        title={`${service.name} in DFW (Midlothian) | ${SEO_CONSTANTS.BUSINESS_NAME}`}
+        title={`${service.name} in DFW (Arlington) | ${SEO_CONSTANTS.BUSINESS_NAME}`}
         description={`Professional ${service.name.toLowerCase()} services in the DFW area. ${service.description}. Free quotes, same-week scheduling. Call ${SEO_CONSTANTS.CONTACT.PHONE}.`}
         canonical={`/services/${service.slug}`}
       />

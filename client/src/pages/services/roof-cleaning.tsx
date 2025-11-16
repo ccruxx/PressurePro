@@ -22,7 +22,7 @@ export default function RoofCleaning() {
   return (
     <div className="font-sans bg-slate-50">
       <SEOHead
-        title={`${service.name} in DFW (Midlothian) | ${SEO_CONSTANTS.BUSINESS_NAME}`}
+        title={`${service.name} in DFW (Arlington) | ${SEO_CONSTANTS.BUSINESS_NAME}`}
         description={`Professional roof cleaning in DFW. Soft wash method protects shingles while removing algae, moss, and black streaks. Extends roof life. Call ${SEO_CONSTANTS.CONTACT.PHONE}.`}
         canonical={`/services/${service.slug}`}
       />

@@ -21,7 +21,7 @@ export default function Home() {
     <div className="font-sans bg-slate-50">
       <SEOHead
         title={`Pressure Washing in ${SEO_CONSTANTS.PRIMARY_CITY} & DFW | ${SEO_CONSTANTS.BUSINESS_NAME}`}
-        description={`Minority-Owned & Choctaw Nation Certified professional pressure washing in Midlothian, Waxahachie, Cedar Hill & DFW. House washing, roof cleaning, driveway cleaning. Free quotes, same-week service. Call ${SEO_CONSTANTS.CONTACT.PHONE}.`}
+        description={`Minority-Owned & Choctaw Nation Certified professional pressure washing in Arlington, Mansfield, Dallas, Fort Worth & all of DFW. House washing, roof cleaning, driveway cleaning. Free quotes, same-week service. Call ${SEO_CONSTANTS.CONTACT.PHONE}.`}
         canonical="/"
       />
       <SchemaOrg schema={localBusinessSchema} />
