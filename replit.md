@@ -79,7 +79,7 @@ DFW Pristine Power Washing is a comprehensive, SEO-optimized multi-page website 
 ### Contact System
 1. User views contact information and service details
 2. User clicks phone button to call directly: (817) 585-6388
-3. User clicks email button to send email: joshuacllns@yahoo.com
+3. User clicks email button to send email: joshua.dfwpristine@gmail.com
 4. No form submission or backend processing required
 
 ### Content Rendering
@@ -202,6 +202,7 @@ Changelog:
   - Updated homepage meta description to feature Arlington, Mansfield, Dallas, Fort Worth
   - Updated About page to list Arlington first in service areas
   - Updated footer Google Maps embed from Midlothian to DFW Metroplex (centered on Arlington)
+  - Updated all email references site-wide to joshua.dfwpristine@gmail.com (was info@dfwpristine.com and joshuacllns@yahoo.com)
   - All changes verified via comprehensive end-to-end Playwright tests
 
 ## User Preferences

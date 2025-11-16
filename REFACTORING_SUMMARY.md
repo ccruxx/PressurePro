@@ -17,7 +17,7 @@
 - Replaced form submission with direct contact methods
 - Contact now uses `tel:` and `mailto:` links
 - Phone: (817) 585-6388
-- Email: joshuacllns@yahoo.com
+- Email: joshua.dfwpristine@gmail.com
 - No server-side processing required
 
 ### 4. **Updated App Architecture**
@@ -77,7 +77,7 @@ npx vite preview
 
 The contact system now works via direct methods:
 - **Phone Button**: Opens device dialer with (817) 585-6388
-- **Email Button**: Opens email client with joshuacllns@yahoo.com
+- **Email Button**: Opens email client with joshua.dfwpristine@gmail.com
 - **No Forms**: No backend form processing required
 - **No APIs**: No external service dependencies
 

@@ -67,8 +67,8 @@ export const SEO_CONSTANTS = {
   CONTACT: {
     PHONE: "(817) 585-6388",
     PHONE_RAW: "8175856388",
-    EMAIL: "info@dfwpristine.com",
-    ACTUAL_EMAIL: "joshuacllns@yahoo.com", // Keep for backend, use info@ for public display
+    EMAIL: "joshua.dfwpristine@gmail.com",
+    ACTUAL_EMAIL: "joshua.dfwpristine@gmail.com",
   },
   SITE_URL: "https://dfwpristinepowerwashing.com",
   NAP: {

@@ -67,10 +67,10 @@ Contact us: (817) 585-6388
 **Title:** Serving All of DFW! 🌟
 
 **Content:**  
-From Midlothian to Dallas, Waxahachie to Fort Worth—we bring professional pressure washing to your neighborhood. House washing, roof cleaning, driveway restoration, and more.
+From Arlington to Dallas, Fort Worth to Plano—we bring professional pressure washing to your neighborhood. House washing, roof cleaning, driveway restoration, and more.
 
 📞 Call (817) 585-6388  
-✉️ info@dfwpristine.com  
+✉️ joshua.dfwpristine@gmail.com  
 🌐 www.dfwpristine.com
 
 5+ years of 5-star service!

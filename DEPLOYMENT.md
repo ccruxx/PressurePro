@@ -13,7 +13,7 @@ This project has been refactored to be a static frontend-only application optimi
 ✅ **Simplified Contact System**
 - Contact form replaced with direct contact methods
 - Phone button: `tel:+18175856388`
-- Email button: `mailto:joshuacllns@yahoo.com`
+- Email button: `mailto:joshua.dfwpristine@gmail.com`
 - No server-side form processing required
 
 ✅ **Optimized Build Process**
