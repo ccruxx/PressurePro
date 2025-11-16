@@ -201,6 +201,7 @@ Changelog:
   - Updated all 6 service pages "Areas We Serve" sections to say "Based in Arlington" with priority city links
   - Updated homepage meta description to feature Arlington, Mansfield, Dallas, Fort Worth
   - Updated About page to list Arlington first in service areas
+  - Updated footer Google Maps embed from Midlothian to DFW Metroplex (centered on Arlington)
   - All changes verified via comprehensive end-to-end Playwright tests
 
 ## User Preferences

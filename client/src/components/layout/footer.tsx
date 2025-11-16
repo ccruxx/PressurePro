@@ -139,15 +139,15 @@ export default function Footer() {
             
             {/* Google Maps Embed */}
             <div className="mt-4 rounded-lg overflow-hidden border border-gray-700">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d215129.45344716893!2d-97.06943969999999!3d32.4776269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e82d581da8f9f%3A0x9c51ae1e3c3c5e8!2sMidlothian%2C%20TX!5e0!3m2!1sen!2sus!4v1642000000000!5m2!1sen!2sus"
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d173190.58006905862!2d-97.297362!3d32.802955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e9929aefddf83%3A0xdda59dbc56a64a6b!2sDallas-Fort%20Worth%20Metroplex!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
                 width="100%"
-                height="150"
+                height="200"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="DFW Pristine Power Washing Location"
+                title="DFW Pristine Power Washing - Arlington, TX"
               ></iframe>
             </div>
           </div>
