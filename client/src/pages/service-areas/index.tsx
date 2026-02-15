@@ -11,38 +11,38 @@ import { MapPin } from "lucide-react";
 export default function ServiceAreasIndex() {
   const breadcrumbs = getBreadcrumbSchema([
     { name: "Home", url: "/" },
-    { name: "Service Areas", url: "/service-areas" }
+    { name: "Service Areas", url: "/service-areas" },
   ]);
 
   const localBusiness = getLocalBusinessSchema();
 
-  const northCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter(city => 
-    ['Plano', 'Frisco', 'Carrollton', 'Farmers Branch', 'Addison'].includes(city.name)
+  const northCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter((city) =>
+    ["Plano", "Frisco", "Carrollton", "Farmers Branch", "Addison", "Coppell"].includes(city.name),
   );
 
-  const centralCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter(city => 
-    ['Arlington', 'Grand Prairie', 'Irving', 'Dallas', 'Hurst', 'Euless', 'Bedford', 'Las Colinas'].includes(city.name)
+  const centralCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter((city) =>
+    ["Arlington", "Grand Prairie", "Irving", "Dallas", "Hurst", "Euless", "Bedford", "Las Colinas"].includes(city.name),
   );
 
-  const westCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter(city => 
-    ['Fort Worth', 'Keller', 'Southlake', 'Grapevine', 'North Richland Hills', 'Richland Hills'].includes(city.name)
+  const westCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter((city) =>
+    ["Fort Worth", "Keller", "Southlake", "Grapevine", "Colleyville", "North Richland Hills", "Richland Hills"].includes(city.name),
   );
 
-  const southCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter(city => 
-    ['Mansfield', 'Burleson', 'Midlothian', 'Waxahachie', 'Cedar Hill', 'DeSoto', 'Ennis', 'Ovilla', 'Red Oak', 'Venus'].includes(city.name)
+  const southCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter((city) =>
+    ["Mansfield", "Burleson", "Midlothian", "Waxahachie", "Cedar Hill", "DeSoto", "Ennis", "Ovilla", "Red Oak", "Venus"].includes(city.name),
   );
 
   return (
     <div className="font-sans bg-slate-50">
       <SEOHead
         title={`Service Areas - DFW Pressure Washing | ${SEO_CONSTANTS.BUSINESS_NAME}`}
-        description={`Professional pressure washing serving Arlington, Mansfield, Dallas, Fort Worth, and all of the DFW metro area. Free quotes available.`}
+        description={`Professional pressure washing serving Arlington, Mansfield, Dallas, Fort Worth, Colleyville, Coppell, and all of DFW. Free quotes available.`}
         canonical="/service-areas"
       />
       <SchemaOrg schema={[breadcrumbs, localBusiness]} />
-      
+
       <Header />
-      
+
       <main className="min-h-screen">
         <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
           <div className="container mx-auto px-4">
@@ -77,9 +77,7 @@ export default function ServiceAreasIndex() {
                   <Link key={city.slug} href={`/service-areas/${city.slug}`} data-testid={`link-city-${city.slug}`}>
                     <Card className="hover:shadow-lg transition-shadow cursor-pointer">
                       <CardHeader>
-                        <CardTitle className="text-lg">
-                          Pressure Washing in {city.name}
-                        </CardTitle>
+                        <CardTitle className="text-lg">Pressure Washing in {city.name}</CardTitle>
                       </CardHeader>
                     </Card>
                   </Link>
@@ -97,9 +95,7 @@ export default function ServiceAreasIndex() {
                   <Link key={city.slug} href={`/service-areas/${city.slug}`} data-testid={`link-city-${city.slug}`}>
                     <Card className="hover:shadow-lg transition-shadow cursor-pointer">
                       <CardHeader>
-                        <CardTitle className="text-lg">
-                          Pressure Washing in {city.name}
-                        </CardTitle>
+                        <CardTitle className="text-lg">Pressure Washing in {city.name}</CardTitle>
                       </CardHeader>
                     </Card>
                   </Link>
@@ -117,9 +113,7 @@ export default function ServiceAreasIndex() {
                   <Link key={city.slug} href={`/service-areas/${city.slug}`} data-testid={`link-city-${city.slug}`}>
                     <Card className="hover:shadow-lg transition-shadow cursor-pointer">
                       <CardHeader>
-                        <CardTitle className="text-lg">
-                          Pressure Washing in {city.name}
-                        </CardTitle>
+                        <CardTitle className="text-lg">Pressure Washing in {city.name}</CardTitle>
                       </CardHeader>
                     </Card>
                   </Link>
@@ -137,9 +131,7 @@ export default function ServiceAreasIndex() {
                   <Link key={city.slug} href={`/service-areas/${city.slug}`} data-testid={`link-city-${city.slug}`}>
                     <Card className="hover:shadow-lg transition-shadow cursor-pointer">
                       <CardHeader>
-                        <CardTitle className="text-lg">
-                          Pressure Washing in {city.name}
-                        </CardTitle>
+                        <CardTitle className="text-lg">Pressure Washing in {city.name}</CardTitle>
                       </CardHeader>
                     </Card>
                   </Link>
@@ -149,13 +141,11 @@ export default function ServiceAreasIndex() {
 
             <div className="bg-blue-50 rounded-lg p-8">
               <h2 className="text-2xl font-bold mb-4">Our Services</h2>
-              <p className="text-gray-700 mb-4">
-                We offer comprehensive exterior cleaning services in all of our service areas:
-              </p>
+              <p className="text-gray-700 mb-4">We offer comprehensive exterior cleaning services in all of our service areas:</p>
               <div className="grid md:grid-cols-2 gap-3">
                 {SEO_CONSTANTS.PRIMARY_SERVICES.map((service) => (
                   <Link key={service.slug} href={`/services/${service.slug}`} className="text-blue-600 hover:text-blue-800" data-testid={`link-service-${service.slug}`}>
-                    → {service.name}
+                    -&gt; {service.name}
                   </Link>
                 ))}
               </div>
@@ -163,8 +153,9 @@ export default function ServiceAreasIndex() {
           </div>
         </section>
       </main>
-      
+
       <Footer />
     </div>
   );
 }
+

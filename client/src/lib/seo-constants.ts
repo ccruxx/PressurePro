@@ -9,6 +9,8 @@ export const SEO_CONSTANTS = {
     { name: "Plano", state: "TX", slug: "plano-tx" },
     { name: "Southlake", state: "TX", slug: "southlake-tx" },
     { name: "Grapevine", state: "TX", slug: "grapevine-tx" },
+    { name: "Colleyville", state: "TX", slug: "colleyville-tx" },
+    { name: "Coppell", state: "TX", slug: "coppell-tx" },
     { name: "Carrollton", state: "TX", slug: "carrollton-tx" },
     { name: "Midlothian", state: "TX", slug: "midlothian-tx" },
     { name: "Waxahachie", state: "TX", slug: "waxahachie-tx" },
@@ -36,32 +38,32 @@ export const SEO_CONSTANTS = {
     {
       name: "Pressure Washing",
       slug: "pressure-washing",
-      description: "Professional high-pressure cleaning for all exterior surfaces"
+      description: "Professional high-pressure cleaning for all exterior surfaces",
     },
     {
       name: "House Washing (Soft Wash)",
       slug: "house-washing",
-      description: "Gentle soft wash cleaning for siding, stucco, and painted surfaces"
+      description: "Gentle soft wash cleaning for siding, stucco, and painted surfaces",
     },
     {
       name: "Roof Cleaning",
       slug: "roof-cleaning",
-      description: "Safe, effective roof cleaning that protects your shingles"
+      description: "Safe, effective roof cleaning that protects your shingles",
     },
     {
       name: "Driveway / Concrete Cleaning",
       slug: "driveway-concrete-cleaning",
-      description: "Deep cleaning for driveways, sidewalks, and concrete surfaces"
+      description: "Deep cleaning for driveways, sidewalks, and concrete surfaces",
     },
     {
       name: "Commercial Pressure Washing",
       slug: "commercial-pressure-washing",
-      description: "Professional commercial cleaning for businesses and properties"
+      description: "Professional commercial cleaning for businesses and properties",
     },
     {
       name: "Window Cleaning",
       slug: "window-cleaning",
-      description: "Streak-free window cleaning for homes and businesses"
+      description: "Streak-free window cleaning for homes and businesses",
     },
   ],
   CONTACT: {
@@ -98,7 +100,7 @@ export const SEO_CONSTANTS = {
     "Tribal Certified Pressure Washing",
     "Minority-Owned Business DFW",
     "Native American Owned Business Texas",
-  ]
+  ],
 };
 
 export const TOP_CITIES_FOR_DISPLAY = [
@@ -109,8 +111,8 @@ export const TOP_CITIES_FOR_DISPLAY = [
   "Plano",
   "Southlake",
   "Grapevine",
+  "Colleyville",
+  "Coppell",
   "Carrollton",
-  "Midlothian",
-  "Waxahachie",
-  "Burleson"
+  "Bedford",
 ];

@@ -1,28 +1,33 @@
 import { SEO_CONSTANTS } from "./seo-constants";
 
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 export function getLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": SEO_CONSTANTS.BUSINESS_NAME,
-    "image": `${SEO_CONSTANTS.SITE_URL}/og-default.jpg`,
-    "telephone": SEO_CONSTANTS.CONTACT.PHONE,
-    "email": SEO_CONSTANTS.CONTACT.EMAIL,
-    "address": {
+    name: SEO_CONSTANTS.BUSINESS_NAME,
+    image: `${SEO_CONSTANTS.SITE_URL}/og-default.jpg`,
+    telephone: SEO_CONSTANTS.CONTACT.PHONE,
+    email: SEO_CONSTANTS.CONTACT.EMAIL,
+    address: {
       "@type": "PostalAddress",
-      "streetAddress": SEO_CONSTANTS.NAP.STREET || undefined,
-      "addressLocality": SEO_CONSTANTS.NAP.CITY,
-      "addressRegion": SEO_CONSTANTS.NAP.STATE,
-      "postalCode": SEO_CONSTANTS.NAP.ZIP || undefined,
-      "addressCountry": "US"
+      streetAddress: SEO_CONSTANTS.NAP.STREET || undefined,
+      addressLocality: SEO_CONSTANTS.NAP.CITY,
+      addressRegion: SEO_CONSTANTS.NAP.STATE,
+      postalCode: SEO_CONSTANTS.NAP.ZIP || undefined,
+      addressCountry: "US",
     },
-    "areaServed": SEO_CONSTANTS.SERVICE_AREA_CITIES.map(city => ({
+    areaServed: SEO_CONSTANTS.SERVICE_AREA_CITIES.map((city) => ({
       "@type": "Place",
-      "name": `${city.name}, ${city.state}`
+      name: `${city.name}, ${city.state}`,
     })),
-    "openingHours": SEO_CONSTANTS.HOURS,
-    "url": SEO_CONSTANTS.SITE_URL,
-    "priceRange": "$$"
+    openingHours: SEO_CONSTANTS.HOURS,
+    url: SEO_CONSTANTS.SITE_URL,
+    priceRange: "$$",
   };
 }
 
@@ -30,17 +35,17 @@ export function getServiceSchema(serviceName: string, serviceDescription: string
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    "serviceType": serviceName,
-    "provider": {
+    serviceType: serviceName,
+    provider: {
       "@type": "LocalBusiness",
-      "name": SEO_CONSTANTS.BUSINESS_NAME,
-      "telephone": SEO_CONSTANTS.CONTACT.PHONE
+      name: SEO_CONSTANTS.BUSINESS_NAME,
+      telephone: SEO_CONSTANTS.CONTACT.PHONE,
     },
-    "description": serviceDescription,
-    "areaServed": SEO_CONSTANTS.SERVICE_AREA_CITIES.map(city => ({
+    description: serviceDescription,
+    areaServed: SEO_CONSTANTS.SERVICE_AREA_CITIES.map((city) => ({
       "@type": "Place",
-      "name": `${city.name}, ${city.state}`
-    }))
+      name: `${city.name}, ${city.state}`,
+    })),
   };
 }
 
@@ -48,16 +53,16 @@ export function getCityServiceSchema(cityName: string, stateName: string) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    "serviceType": "Pressure Washing",
-    "provider": {
+    serviceType: "Pressure Washing",
+    provider: {
       "@type": "LocalBusiness",
-      "name": SEO_CONSTANTS.BUSINESS_NAME,
-      "telephone": SEO_CONSTANTS.CONTACT.PHONE
+      name: SEO_CONSTANTS.BUSINESS_NAME,
+      telephone: SEO_CONSTANTS.CONTACT.PHONE,
     },
-    "areaServed": {
+    areaServed: {
       "@type": "Place",
-      "name": `${cityName}, ${stateName}`
-    }
+      name: `${cityName}, ${stateName}`,
+    },
   };
 }
 
@@ -65,44 +70,51 @@ export function getBreadcrumbSchema(items: { name: string; url: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": items.map((item, index) => ({
+    itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
-      "position": index + 1,
-      "name": item.name,
-      "item": `${SEO_CONSTANTS.SITE_URL}${item.url}`
-    }))
+      position: index + 1,
+      name: item.name,
+      item: `${SEO_CONSTANTS.SITE_URL}${item.url}`,
+    })),
   };
 }
 
-export function getCityFAQSchema(cityName: string) {
+export function getCityFAQSchema(cityName: string, faqItems?: FAQItem[]) {
+  const defaults: FAQItem[] = [
+    {
+      question: `How often should I schedule pressure washing in ${cityName}?`,
+      answer: `Most properties in ${cityName} benefit from routine annual cleaning, with high-traffic concrete often cleaned every 12 to 18 months.`,
+    },
+    {
+      question: `Can you remove algae and mold from siding in ${cityName}?`,
+      answer: "Yes. We use a house-washing process that removes algae, mold, and organic growth safely from common exterior materials.",
+    },
+    {
+      question: `Do you clean driveways, patios, and porches in ${cityName}?`,
+      answer: "Yes. We pressure wash and pretreat concrete and hardscape surfaces to improve oil, grease, rust, and general weather staining.",
+    },
+    {
+      question: `Do you offer roof and gutter cleaning in ${cityName}?`,
+      answer: "Yes. We soft wash roofs and clean gutter faces to remove streaks, algae, and grime.",
+    },
+    {
+      question: "Are estimates free?",
+      answer: `Yes. Call ${SEO_CONSTANTS.CONTACT.PHONE} for a free quote and scheduling options.`,
+    },
+  ];
+
+  const source = faqItems && faqItems.length > 0 ? faqItems : defaults;
+
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": `Do you soft wash roofs in ${cityName}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes—our soft-wash method protects shingles while removing algae streaks. We never use high-pressure washing on roofs, which can damage shingles and void warranties."
-        }
+    mainEntity: source.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
       },
-      {
-        "@type": "Question",
-        "name": `How fast can you schedule in ${cityName}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most jobs are scheduled within 2–5 days, weather permitting. We work efficiently to minimize disruption to your day."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are estimates free?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Yes—call ${SEO_CONSTANTS.CONTACT.PHONE} or email ${SEO_CONSTANTS.CONTACT.EMAIL} for a free, no-obligation quote.`
-        }
-      }
-    ]
+    })),
   };
 }

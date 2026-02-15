@@ -33,6 +33,8 @@ import EnnisTX from "@/pages/service-areas/ennis-tx";
 import PlanoTX from "@/pages/service-areas/plano-tx";
 import SouthlakeTX from "@/pages/service-areas/southlake-tx";
 import GrapevineTX from "@/pages/service-areas/grapevine-tx";
+import ColleyvilleTX from "@/pages/service-areas/colleyville-tx";
+import CoppellTX from "@/pages/service-areas/coppell-tx";
 import CarrolltonTX from "@/pages/service-areas/carrollton-tx";
 import HurstTX from "@/pages/service-areas/hurst-tx";
 import EulessTX from "@/pages/service-areas/euless-tx";
@@ -50,7 +52,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/about" component={About} />
-      
+
       <Route path="/services" component={ServicesIndex} />
       <Route path="/services/pressure-washing" component={PressureWashing} />
       <Route path="/services/house-washing" component={HouseWashing} />
@@ -58,7 +60,7 @@ function Router() {
       <Route path="/services/driveway-concrete-cleaning" component={DrivewayConcreteCleaning} />
       <Route path="/services/commercial-pressure-washing" component={CommercialPressureWashing} />
       <Route path="/services/window-cleaning" component={WindowCleaning} />
-      
+
       <Route path="/service-areas" component={ServiceAreasIndex} />
       <Route path="/service-areas/midlothian-tx" component={MidlothianTX} />
       <Route path="/service-areas/waxahachie-tx" component={WaxahachieTX} />
@@ -78,6 +80,8 @@ function Router() {
       <Route path="/service-areas/plano-tx" component={PlanoTX} />
       <Route path="/service-areas/southlake-tx" component={SouthlakeTX} />
       <Route path="/service-areas/grapevine-tx" component={GrapevineTX} />
+      <Route path="/service-areas/colleyville-tx" component={ColleyvilleTX} />
+      <Route path="/service-areas/coppell-tx" component={CoppellTX} />
       <Route path="/service-areas/carrollton-tx" component={CarrolltonTX} />
       <Route path="/service-areas/hurst-tx" component={HurstTX} />
       <Route path="/service-areas/euless-tx" component={EulessTX} />
@@ -89,7 +93,7 @@ function Router() {
       <Route path="/service-areas/richland-hills-tx" component={RichlandHillsTX} />
       <Route path="/service-areas/las-colinas-tx" component={LasColinasTX} />
       <Route path="/service-areas/north-richland-hills-tx" component={NorthRichlandHillsTX} />
-      
+
       <Route component={NotFound} />
     </Switch>
   );
