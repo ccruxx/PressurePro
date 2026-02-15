@@ -26,8 +26,8 @@ export default function Footer() {
               />
             </div>
             <p className="text-gray-300 mb-4">
-              Professional pressure washing services that transform your
-              property and exceed your expectations.
+              Residential-first power washing and pressure washing for cleaner
+              driveways, patios, porches, roofs, and gutters across DFW.
             </p>
             <div className="flex space-x-4">
               <a
@@ -102,7 +102,7 @@ export default function Footer() {
                   className="hover:text-primary transition-colors font-semibold"
                   data-testid="footer-all-areas"
                 >
-                  View All Areas →
+                  View All Areas -&gt;
                 </Link>
               </li>
             </ul>
@@ -136,7 +136,7 @@ export default function Footer() {
                 <span>{SEO_CONSTANTS.HOURS}</span>
               </div>
             </div>
-            
+
             {/* Google Maps Embed */}
             <div className="mt-4 rounded-lg overflow-hidden border border-gray-700">
               <iframe
@@ -163,3 +163,4 @@ export default function Footer() {
     </footer>
   );
 }
+

@@ -16,7 +16,8 @@ export default function Contact() {
     {
       icon: "fas fa-map-marker-alt",
       title: "Service Area",
-      value: "DFW Metro Area & Surrounding Communities",
+      value:
+        "Colleyville, Southlake, Grapevine, Dallas, Fort Worth, Euless, Bedford, Plano, Carrollton, Addison, Farmers Branch, Coppell, Arlington, and Mansfield",
     },
     {
       icon: "fas fa-clock",
@@ -31,11 +32,11 @@ export default function Contact() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-800 mb-4">
-            Contact Us Today
+            Get Your Free Exterior Cleaning Quote
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Ready to transform your property? Get in touch for professional
-            pressure washing services
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Need pressure washing for your driveway, patio, porch, roof, or
+            gutters? Call now for fast scheduling and clear pricing.
           </p>
         </div>
 
@@ -76,9 +77,9 @@ export default function Contact() {
                     Ready to Get Started?
                   </h4>
                   <p className="mb-6">
-                    Contact us today for your free estimate. We'll discuss your
-                    needs and provide a competitive quote for professional
-                    pressure washing services.
+                    We specialize in residential power washing that removes mold,
+                    algae, rust, red clay, grease, and oil stains while helping
+                    your home look its best.
                   </p>
                   <div className="space-y-4">
                     <Button

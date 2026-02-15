@@ -36,12 +36,12 @@ export default function About() {
           {/* Text Content */}
           <div>
             <h2 className="text-4xl font-bold text-gray-800 mb-6">
-              Why Choose DFW Pristine Power Washing?
+              Why Homeowners Choose DFW Pristine Power Washing
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              With over a decade of experience, DFW Pristine Power Washing is
-              trusted throughout the Dallas-Fort Worth area for delivering
-              exceptional results, reliable service, and customer-first care.
+              We help homeowners across DFW restore curb appeal with reliable
+              pressure washing and soft washing for siding, driveway concrete,
+              patios, porches, roofs, and gutters.
             </p>
 
             <div className="space-y-6">
@@ -79,7 +79,7 @@ export default function About() {
                 Founder & Owner, DFW Pristine Power Washing
               </p>
               <p className="text-sm text-gray-600 italic mt-1">
-                “Proudly restoring homes & businesses across DFW.”
+                "Proudly restoring homes and businesses across DFW."
               </p>
             </div>
           </div>

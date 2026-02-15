@@ -16,16 +16,16 @@ import { getLocalBusinessSchema } from "@/lib/schema-helpers";
 
 export default function Home() {
   const localBusinessSchema = getLocalBusinessSchema();
-  
+
   return (
     <div className="font-sans bg-slate-50">
       <SEOHead
-        title={`Pressure Washing in ${SEO_CONSTANTS.PRIMARY_CITY} & DFW | ${SEO_CONSTANTS.BUSINESS_NAME}`}
-        description={`Minority-Owned & Choctaw Nation Certified professional pressure washing in Arlington, Mansfield, Dallas, Fort Worth & all of DFW. House washing, roof cleaning, driveway cleaning. Free quotes, same-week service. Call ${SEO_CONSTANTS.CONTACT.PHONE}.`}
+        title={`Residential Power Washing & Pressure Washing in DFW | ${SEO_CONSTANTS.BUSINESS_NAME}`}
+        description={`Residential pressure washing and power washing for driveways, patios, porches, roofs, and gutters across Colleyville, Southlake, Grapevine, Dallas, Fort Worth, Euless, Bedford, Plano, Carrollton, Addison, Farmers Branch, Coppell, Arlington, and Mansfield. Call ${SEO_CONSTANTS.CONTACT.PHONE} for a free quote.`}
         canonical="/"
       />
       <SchemaOrg schema={localBusinessSchema} />
-      
+
       <Header />
       <Hero />
       <ServingCities />

@@ -3,75 +3,75 @@ import { Card, CardContent } from "@/components/ui/card";
 export default function Services() {
   const services = [
     {
-      icon: "fas fa-trash-alt",
-      title: "Pad Cleaning",
-      description:
-        "Targeted cleaning for dumpster pads, trash areas, and grease zones to maintain hygiene and eliminate odors.",
-      features: [
-        "Dumpster Pad Cleaning",
-        "Trash Enclosure Sanitation",
-        "Grease & Oil Removal",
-        "Odor Control & Disinfection",
-      ],
-    },
-    {
       icon: "fas fa-home",
-      title: "Residential Cleaning",
+      title: "Residential House Washing",
       description:
-        "Complete exterior cleaning for homes including driveways, sidewalks, decks, and siding.",
+        "Low-pressure soft washing for siding, brick, and painted exteriors to remove organic growth without damage.",
       features: [
-        "Driveway & Sidewalk Cleaning",
-        "Deck & Patio Restoration",
         "House Washing",
-        "Fence Cleaning",
+        "Algae, Mold, and Organic Growth Removal",
+        "Cobweb and Wasp Nest Knockdown",
+        "Safe Soft Wash Methods",
       ],
     },
     {
-      icon: "fas fa-building",
-      title: "Commercial Cleaning",
+      icon: "fas fa-road",
+      title: "Driveway, Patio, and Porch Cleaning",
       description:
-        "Professional cleaning services for businesses, storefronts, and commercial properties.",
+        "Restore curb appeal with deep concrete and stone cleaning for high-traffic outdoor living areas.",
       features: [
-        "Storefront Cleaning",
-        "Parking Lot Maintenance",
-        "Building Exterior Washing",
-        "Loading Dock Cleaning",
-      ],
-    },
-    {
-      icon: "fas fa-car",
-      title: "Vehicle & Equipment",
-      description:
-        "Specialized cleaning for vehicles, heavy equipment, and industrial machinery.",
-      features: [
-        "Fleet Vehicle Washing",
-        "Heavy Equipment Cleaning",
-        "Boat & RV Washing",
-        "Agricultural Equipment",
+        "Driveway Pressure Washing",
+        "Patio and Porch Cleaning",
+        "Rust and Red Clay Stain Treatment",
+        "Grease and Oil Spot Removal",
       ],
     },
     {
       icon: "fas fa-tint",
-      title: "Soft Washing",
+      title: "Roof and Gutter Exterior Wash",
       description:
-        "Gentle cleaning solution for delicate surfaces that require special care.",
+        "Gentle roof cleaning and exterior gutter brightening to remove black streaks, algae, and buildup.",
       features: [
-        "Roof Cleaning",
-        "Vinyl Siding",
-        "Stucco & Brick",
-        "Painted Surfaces",
+        "Soft Wash Roof Cleaning",
+        "Black Streak and Algae Removal",
+        "Gutter Face Cleaning",
+        "Mold and Mildew Treatment",
       ],
     },
     {
       icon: "fas fa-leaf",
-      title: "Eco-Friendly Options",
+      title: "Eco-Conscious Cleaning Options",
       description:
-        "Environmentally safe cleaning solutions that protect your property and surroundings.",
+        "Property-safe detergents and methods designed for homes with landscaping, pets, and children.",
       features: [
-        "Biodegradable Detergents",
-        "Water Reclamation",
-        "Safe for Plants & Pets",
-        "EPA Approved Products",
+        "Biodegradable Cleaning Agents",
+        "Surface-Appropriate Pressure Settings",
+        "Plant and Lawn Protection",
+        "Pet-Friendly Rinse Practices",
+      ],
+    },
+    {
+      icon: "fas fa-building",
+      title: "Light Commercial Pressure Washing",
+      description:
+        "Storefronts and small commercial properties cleaned with the same detail-focused process we use for homes.",
+      features: [
+        "Storefront and Entry Cleaning",
+        "Sidewalk and Concrete Washing",
+        "Building Exterior Rinse",
+        "Routine Maintenance Plans",
+      ],
+    },
+    {
+      icon: "fas fa-trash-alt",
+      title: "Problem Area Cleanup",
+      description:
+        "Targeted treatment for grease zones and heavily stained surfaces where grime and odors build up.",
+      features: [
+        "Trash Pad Surface Cleaning",
+        "Grease Zone Treatment",
+        "Oil and Grime Breakdown",
+        "Odor-Causing Residue Removal",
       ],
     },
   ];
@@ -81,11 +81,11 @@ export default function Services() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-800 mb-4">
-            Our Professional Services
+            Residential Pressure Washing Services in DFW
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            We provide comprehensive pressure washing solutions for residential
-            and commercial properties
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Our core focus is residential exterior cleaning, with proven pressure
+            washing and power washing solutions that restore curb appeal fast.
           </p>
         </div>
 
