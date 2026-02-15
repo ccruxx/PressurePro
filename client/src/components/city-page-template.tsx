@@ -405,7 +405,7 @@ export default function CityPageTemplate({ cityName, stateName, slug }: CityPage
                     Call (817) 585-6388
                   </a>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-blue-700" data-testid="button-email">
+                <Button asChild size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white hover:text-blue-600" data-testid="button-email">
                   <a href={`mailto:${SEO_CONSTANTS.CONTACT.EMAIL}`}>
                     <Mail className="mr-2 h-5 w-5" />
                     Email Us
@@ -421,3 +421,4 @@ export default function CityPageTemplate({ cityName, stateName, slug }: CityPage
     </div>
   );
 }
+
