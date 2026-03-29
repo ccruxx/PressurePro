@@ -3,6 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Analytics from "@/components/seo/Analytics";
 import Home from "@/pages/home";
+import QuotePreview from "@/pages/quote-preview";
 import About from "@/pages/about";
 import NotFound from "@/pages/not-found";
 
@@ -51,6 +52,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/quote-preview" component={QuotePreview} />
       <Route path="/about" component={About} />
 
       <Route path="/services" component={ServicesIndex} />
