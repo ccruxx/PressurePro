@@ -3,6 +3,7 @@ import Hero from "@/components/sections/hero";
 import FeaturedVideo from "@/components/sections/featured-video";
 import ServingCities from "@/components/sections/serving-cities";
 import Services from "@/components/sections/services";
+import InstantQuote from "@/components/sections/instant-quote";
 import Gallery from "@/components/sections/gallery";
 import Testimonials from "@/components/sections/testimonials";
 import About from "@/components/sections/about";
@@ -31,6 +32,7 @@ export default function Home() {
       <ServingCities />
       <FeaturedVideo />
       <Services />
+      <InstantQuote />
       <Gallery />
       <Testimonials />
       <About />
