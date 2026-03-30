@@ -29,10 +29,10 @@ export default function Home() {
 
       <Header />
       <Hero />
+      <InstantQuote />
       <ServingCities />
       <FeaturedVideo />
       <Services />
-      <InstantQuote />
       <Gallery />
       <Testimonials />
       <About />
