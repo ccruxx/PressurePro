@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { useState, useMemo } from "react";
+import { CheckCircle, AlertCircle, Loader2, X } from "lucide-react";
 import { PRICING } from "@/config/pricing.config";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -17,7 +17,7 @@ type ServiceKey =
   | "roof";
 
 type DirtLevel = "light" | "moderate" | "heavy";
-type RoofTier = "under1500" | "mid6000" | "over6000";
+type RoofTier = "under1500" | "r1800to2800" | "r3000to4000" | "r4200to5000" | "over5000";
 
 interface Addons {
   sameWeek: boolean;
@@ -39,6 +39,15 @@ interface PriceRange {
   high: number;
   subtotal: number;
   lineItems: LineItem[];
+}
+
+interface ServiceItem {
+  id: string;
+  service: ServiceKey;
+  measurement: string;
+  roofTier: RoofTier;
+  dirtLevel: DirtLevel;
+  price: PriceRange;
 }
 
 // ─── Service Config ───────────────────────────────────────────────────────────
@@ -69,9 +78,11 @@ const DIRT_LEVELS: { key: DirtLevel; label: string; description: string; multipl
 ];
 
 const ROOF_TIERS: { key: RoofTier; label: string; icon: string; price: string }[] = [
-  { key: "under1500", label: "Under 1,500 sq ft",    icon: "🏘️", price: `$${PRICING.roof.under1500}` },
-  { key: "mid6000",   label: "1,500 – 6,000 sq ft",  icon: "🏰", price: `$${PRICING.roof.mid6000}` },
-  { key: "over6000",  label: "Over 6,000 sq ft",      icon: "🏗️", price: "Custom Quote" },
+  { key: "under1500",    label: "1,500 sq ft & under",  icon: "🏘️", price: `$${PRICING.roof.under1500}` },
+  { key: "r1800to2800",  label: "1,800 – 2,800 sq ft",  icon: "🏠", price: `$${PRICING.roof.r1800to2800}` },
+  { key: "r3000to4000",  label: "3,000 – 4,000 sq ft",  icon: "🏰", price: `$${PRICING.roof.r3000to4000}` },
+  { key: "r4200to5000",  label: "4,200 – 5,000 sq ft",  icon: "🏗️", price: `$${PRICING.roof.r4200to5000}` },
+  { key: "over5000",     label: "Over 5,000 sq ft",      icon: "🏢", price: "Specialized Quote" },
 ];
 
 // ─── Calculation ──────────────────────────────────────────────────────────────
@@ -81,10 +92,9 @@ function calcPrice(
   measurement: string,
   roofTier: RoofTier,
   dirtLevel: DirtLevel,
-  addons: Addons
 ): PriceRange | null {
   if (!service) return null;
-  if (service === "roof" && roofTier === "over6000") return null;
+  if (service === "roof" && roofTier === "over5000") return null;
 
   const sqft = parseFloat(measurement) || 0;
   if (service !== "roof" && sqft <= 0) return null;
@@ -149,7 +159,13 @@ function calcPrice(
       break;
     }
     case "roof": {
-      basePrice = roofTier === "under1500" ? PRICING.roof.under1500 : PRICING.roof.mid6000;
+      const roofPrices: Record<string, number> = {
+        under1500:   PRICING.roof.under1500,
+        r1800to2800: PRICING.roof.r1800to2800,
+        r3000to4000: PRICING.roof.r3000to4000,
+        r4200to5000: PRICING.roof.r4200to5000,
+      };
+      basePrice = roofPrices[roofTier] ?? 0;
       const tierLabel = ROOF_TIERS.find((t) => t.key === roofTier)?.label ?? "";
       lineItems.push({ label: `${serviceLabel} (${tierLabel})`, amount: basePrice });
       break;
@@ -158,21 +174,15 @@ function calcPrice(
 
   const dirtConfig = DIRT_LEVELS.find((d) => d.key === dirtLevel)!;
   const surcharge = basePrice * (dirtConfig.multiplier - 1);
-  lineItems.push({ label: `${dirtConfig.label} dirt level surcharge (+${Math.round((dirtConfig.multiplier - 1) * 100)}%)`, amount: surcharge });
+  if (surcharge > 0) {
+    lineItems.push({ label: `${dirtConfig.label} dirt level surcharge (+${Math.round((dirtConfig.multiplier - 1) * 100)}%)`, amount: surcharge });
+  }
   basePrice *= dirtConfig.multiplier;
 
-  let addonsTotal = 0;
-  if (addons.sameWeek) {
-    const cost = PRICING.addons.sameWeekScheduling.flat;
-    lineItems.push({ label: "Same-Week Scheduling", amount: cost });
-    addonsTotal += cost;
-  }
-
-  const subtotal = basePrice + addonsTotal;
   return {
-    low:      Math.floor(subtotal * PRICING.rangeVariance.low),
-    high:     Math.ceil(subtotal * PRICING.rangeVariance.high),
-    subtotal,
+    low:      Math.floor(basePrice * PRICING.rangeVariance.low),
+    high:     Math.ceil(basePrice * PRICING.rangeVariance.high),
+    subtotal: basePrice,
     lineItems,
   };
 }
@@ -189,22 +199,23 @@ function fmt(n: number) {
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function QuoteCalculator() {
+  // Accumulated quote items
+  const [items, setItems]                     = useState<ServiceItem[]>([]);
+
+  // Current service being configured
   const [selectedService, setSelectedService] = useState<ServiceKey | "">("");
   const [measurement, setMeasurement]         = useState("");
   const [roofTier, setRoofTier]               = useState<RoofTier>("under1500");
   const [dirtLevel, setDirtLevel]             = useState<DirtLevel>("light");
+
+  // Whole-quote fields
   const [addons, setAddons]                   = useState<Addons>({ sameWeek: false });
   const [customer, setCustomer]               = useState<CustomerInfo>({ name: "", email: "", phone: "" });
-  const [priceRange, setPriceRange]           = useState<PriceRange | null>(null);
   const [submitted, setSubmitted]             = useState(false);
   const [isSubmitting, setIsSubmitting]       = useState(false);
   const [submitError, setSubmitError]         = useState("");
 
-  const isCustomQuote = selectedService === "roof" && roofTier === "over6000";
-
-  useEffect(() => {
-    setPriceRange(calcPrice(selectedService, measurement, roofTier, dirtLevel, addons));
-  }, [selectedService, measurement, roofTier, dirtLevel, addons]);
+  const isCustomQuote = selectedService === "roof" && roofTier === "over5000";
 
   const selectedServiceConfig = SERVICES.find((s) => s.key === selectedService);
   const measurementUnit = selectedServiceConfig?.unit ?? "sq ft";
@@ -212,32 +223,81 @@ export default function QuoteCalculator() {
     ? roofTier !== "over6000"
     : parseFloat(measurement) > 0;
 
+  // Price preview for the service currently being configured
+  const currentPrice = useMemo(
+    () => calcPrice(selectedService, measurement, roofTier, dirtLevel),
+    [selectedService, measurement, roofTier, dirtLevel]
+  );
+
+  const canAddToQuote = !!currentPrice && !isCustomQuote;
+
+  // Aggregate total across all added items
+  const totalPrice = useMemo(() => {
+    if (items.length === 0) return null;
+
+    const allLineItems: LineItem[] = [];
+    let subtotal = 0;
+
+    for (const item of items) {
+      allLineItems.push(...item.price.lineItems);
+      subtotal += item.price.subtotal;
+    }
+
+    if (addons.sameWeek) {
+      const cost = PRICING.addons.sameWeekScheduling.flat;
+      allLineItems.push({ label: "Same-Week Scheduling", amount: cost });
+      subtotal += cost;
+    }
+
+    return {
+      low:      Math.floor(subtotal * PRICING.rangeVariance.low),
+      high:     Math.ceil(subtotal * PRICING.rangeVariance.high),
+      subtotal,
+      lineItems: allLineItems,
+    };
+  }, [items, addons]);
+
+  function handleAddToQuote() {
+    if (!currentPrice || !selectedService || isCustomQuote) return;
+    setItems((prev) => [
+      ...prev,
+      {
+        id: Math.random().toString(36).slice(2),
+        service: selectedService,
+        measurement,
+        roofTier,
+        dirtLevel,
+        price: currentPrice,
+      },
+    ]);
+    // Reset form for next service
+    setSelectedService("");
+    setMeasurement("");
+    setRoofTier("under1500");
+    setDirtLevel("light");
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!priceRange || !selectedService) return;
+    if (!totalPrice) return;
     setIsSubmitting(true);
     setSubmitError("");
-
-    const service    = SERVICES.find((s) => s.key === selectedService);
-    const dirtConfig = DIRT_LEVELS.find((d) => d.key === dirtLevel)!;
-    const addonsLabels = addons.sameWeek ? ["Same-Week Scheduling"] : [];
-
-    const measurementLabel =
-      selectedService === "roof"
-        ? ROOF_TIERS.find((t) => t.key === roofTier)?.label ?? ""
-        : `${parseFloat(measurement).toLocaleString()} ${measurementUnit}`;
 
     const payload = {
       customer,
       quote: {
-        service:     service?.label ?? selectedService,
-        measurement: measurementLabel,
-        dirtLevel:   dirtConfig.label,
-        addons:      addonsLabels,
-        lineItems:   priceRange.lineItems,
-        subtotal:    priceRange.subtotal,
-        priceLow:    priceRange.low,
-        priceHigh:   priceRange.high,
+        services: items.map((item) => ({
+          service:     SERVICES.find((s) => s.key === item.service)?.label ?? item.service,
+          measurement: item.service === "roof"
+            ? ROOF_TIERS.find((t) => t.key === item.roofTier)?.label ?? ""
+            : `${parseFloat(item.measurement).toLocaleString()} ${SERVICES.find((s) => s.key === item.service)?.unit ?? "sq ft"}`,
+          dirtLevel:   DIRT_LEVELS.find((d) => d.key === item.dirtLevel)?.label ?? item.dirtLevel,
+        })),
+        addons:      addons.sameWeek ? ["Same-Week Scheduling"] : [],
+        lineItems:   totalPrice.lineItems,
+        subtotal:    totalPrice.subtotal,
+        priceLow:    totalPrice.low,
+        priceHigh:   totalPrice.high,
       },
     };
 
@@ -259,11 +319,10 @@ export default function QuoteCalculator() {
     }
   }
 
-  const canSeePrice = !!priceRange;
-  const canSubmit   = canSeePrice && customer.name.trim() && customer.email.trim() && customer.phone.trim();
+  const canSubmit = !!totalPrice && customer.name.trim() && customer.email.trim() && customer.phone.trim();
 
   // ── Step header helper ─────────────────────────────────────────────────────
-  function StepHeader({ n, label, active }: { n: number; label: string; active?: boolean }) {
+  function StepHeader({ n, label, active }: { n: number | string; label: string; active?: boolean }) {
     return (
       <div className="bg-blue-50 border-b border-blue-100 px-6 py-4 flex items-center gap-3">
         <span className={`text-sm font-bold w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 ${active !== false ? "bg-blue-600 text-white" : "bg-slate-200 text-slate-400"}`}>{n}</span>
@@ -275,9 +334,56 @@ export default function QuoteCalculator() {
   return (
     <div className="space-y-6">
 
-      {/* ── Step 1: Service ─────────────────────────────────────────────── */}
+      {/* ── Quote Summary (shows once items are added) ───────────────────── */}
+      {items.length > 0 && (
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+          <div className="bg-blue-50 border-b border-blue-100 px-6 py-4 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span className="text-sm font-bold w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0">✓</span>
+              <h2 className="font-semibold text-lg text-gray-900">
+                Quote Items <span className="text-blue-600 font-bold">({items.length})</span>
+              </h2>
+            </div>
+          </div>
+          <div className="divide-y divide-slate-100">
+            {items.map((item) => {
+              const svc = SERVICES.find((s) => s.key === item.service)!;
+              const dirt = DIRT_LEVELS.find((d) => d.key === item.dirtLevel)!;
+              const measurementLabel = item.service === "roof"
+                ? ROOF_TIERS.find((t) => t.key === item.roofTier)?.label ?? ""
+                : `${parseFloat(item.measurement).toLocaleString()} ${svc.unit}`;
+              return (
+                <div key={item.id} className="flex items-center gap-4 px-6 py-4">
+                  <span className="text-2xl flex-shrink-0">{svc.icon}</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-gray-900 text-sm leading-tight">{svc.label}</p>
+                    <p className="text-gray-500 text-xs mt-0.5">
+                      {measurementLabel} · {dirt.label} dirt
+                    </p>
+                  </div>
+                  <div className="text-right flex-shrink-0">
+                    <p className="text-sm font-bold text-gray-800">{fmt(item.price.low)}–{fmt(item.price.high)}</p>
+                  </div>
+                  <button
+                    onClick={() => setItems((prev) => prev.filter((i) => i.id !== item.id))}
+                    className="ml-1 p-1.5 rounded-lg hover:bg-red-50 hover:text-red-500 text-slate-400 transition-colors flex-shrink-0"
+                    title="Remove"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* ── Add a Service ───────────────────────────────────────────────── */}
       <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-        <StepHeader n={1} label="Choose Your Service" />
+        <StepHeader
+          n={items.length === 0 ? 1 : "+"}
+          label={items.length === 0 ? "Choose Your Service" : "Add Another Service"}
+        />
         <div className="p-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
           {SERVICES.map((s) => (
             <button
@@ -298,15 +404,15 @@ export default function QuoteCalculator() {
         </div>
       </div>
 
-      {/* ── Step 2: Measurement ─────────────────────────────────────────── */}
+      {/* ── Measurements ────────────────────────────────────────────────── */}
       {selectedService && (
         <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-          <StepHeader n={2} label="Enter Measurements" />
+          <StepHeader n={items.length === 0 ? 2 : "›"} label="Enter Measurements" />
           <div className="p-6">
             {selectedService === "roof" ? (
               <div>
                 <p className="text-gray-600 mb-4 text-sm">Select your approximate roof size:</p>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
                   {ROOF_TIERS.map((tier) => (
                     <button
                       key={tier.key}
@@ -325,11 +431,11 @@ export default function QuoteCalculator() {
                     </button>
                   ))}
                 </div>
-                {roofTier === "over6000" && (
+                {roofTier === "over5000" && (
                   <div className="mt-4 bg-orange-50 border border-orange-200 rounded-xl px-5 py-4 text-sm text-orange-800">
-                    <strong>Large roof — custom quote required.</strong> Roofs over 6,000 sq ft are priced individually.
+                    <strong>Large roof — specialized quote required.</strong> Roofs over 5,000 sq ft require an on-site assessment.
                     Please <a href="tel:+18175856388" className="underline font-semibold">call us at (817) 585-6388</a> or
-                    fill out the contact form below for a free on-site estimate.
+                    fill out the contact form below for a free estimate.
                   </div>
                 )}
               </div>
@@ -362,10 +468,10 @@ export default function QuoteCalculator() {
         </div>
       )}
 
-      {/* ── Step 3: Dirt Level ──────────────────────────────────────────── */}
+      {/* ── Dirt Level ──────────────────────────────────────────────────── */}
       {selectedService && measurementReady && !isCustomQuote && (
         <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-          <StepHeader n={3} label="How Dirty Is It?" />
+          <StepHeader n={items.length === 0 ? 3 : "›"} label="How Dirty Is It?" />
           <div className="p-6">
             <div className="grid grid-cols-3 gap-3">
               {DIRT_LEVELS.map((d) => (
@@ -389,14 +495,27 @@ export default function QuoteCalculator() {
                 </button>
               ))}
             </div>
+
+            {/* Add to Quote button */}
+            <div className="mt-5 flex items-center gap-4">
+              <button
+                onClick={handleAddToQuote}
+                disabled={!canAddToQuote}
+                className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white font-bold py-3 px-6 rounded-xl text-base transition-colors flex items-center justify-center gap-2"
+              >
+                {currentPrice
+                  ? `+ Add to Quote (${fmt(currentPrice.low)}–${fmt(currentPrice.high)})`
+                  : "+ Add to Quote"}
+              </button>
+            </div>
           </div>
         </div>
       )}
 
-      {/* ── Step 4: Add-ons ─────────────────────────────────────────────── */}
-      {selectedService && measurementReady && !isCustomQuote && (
+      {/* ── Add-on Services ─────────────────────────────────────────────── */}
+      {items.length > 0 && (
         <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-          <StepHeader n={4} label="Add-On Services" />
+          <StepHeader n={2} label="Add-On Services" />
           <div className="p-6">
             <label className={`flex items-start gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${addons.sameWeek ? "border-blue-500 bg-blue-50" : "border-slate-200 hover:border-blue-200"}`}>
               <input
@@ -417,21 +536,23 @@ export default function QuoteCalculator() {
         </div>
       )}
 
-      {/* ── Live Price Range ─────────────────────────────────────────────── */}
-      {canSeePrice && priceRange && (
+      {/* ── Total Price Range ────────────────────────────────────────────── */}
+      {totalPrice && (
         <div className="bg-white rounded-2xl shadow-sm border-2 border-green-400 overflow-hidden">
           <div className="bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-4">
-            <p className="text-white/80 text-sm font-medium uppercase tracking-wide">Your Estimated Price Range</p>
+            <p className="text-white/80 text-sm font-medium uppercase tracking-wide">
+              Total Estimated Price Range · {items.length} {items.length === 1 ? "service" : "services"}
+            </p>
             <div className="flex items-baseline gap-3 mt-1">
-              <span className="text-white text-4xl font-extrabold">{fmt(priceRange.low)}</span>
+              <span className="text-white text-4xl font-extrabold">{fmt(totalPrice.low)}</span>
               <span className="text-white/70 text-2xl font-light">–</span>
-              <span className="text-white text-4xl font-extrabold">{fmt(priceRange.high)}</span>
+              <span className="text-white text-4xl font-extrabold">{fmt(totalPrice.high)}</span>
             </div>
           </div>
           <div className="p-6">
-            <p className="text-sm font-semibold text-gray-700 mb-3">Estimate Breakdown</p>
+            <p className="text-sm font-semibold text-gray-700 mb-3">Full Breakdown</p>
             <div className="space-y-2">
-              {priceRange.lineItems.map((item, i) => (
+              {totalPrice.lineItems.map((item, i) => (
                 <div key={i} className="flex justify-between items-center text-sm">
                   <span className="text-gray-600">{item.label}</span>
                   <span className="font-semibold text-gray-900">{fmt(item.amount)}</span>
@@ -440,17 +561,17 @@ export default function QuoteCalculator() {
             </div>
             <div className="mt-3 pt-3 border-t border-slate-100 flex justify-between items-center">
               <span className="text-xs text-gray-400 italic">Range accounts for on-site variables</span>
-              <span className="text-sm font-bold text-gray-500">{fmt(priceRange.low)} – {fmt(priceRange.high)}</span>
+              <span className="text-sm font-bold text-gray-500">{fmt(totalPrice.low)} – {fmt(totalPrice.high)}</span>
             </div>
           </div>
         </div>
       )}
 
       {/* ── No Price Yet Placeholder ─────────────────────────────────────── */}
-      {!canSeePrice && !isCustomQuote && (
+      {!totalPrice && !isCustomQuote && (
         <div className="bg-white rounded-2xl shadow-sm border-2 border-dashed border-slate-200 p-8 text-center">
           <div className="text-4xl mb-3">💲</div>
-          <p className="text-gray-500 font-medium">Select a service and enter measurements above to see your instant price range.</p>
+          <p className="text-gray-500 font-medium">Select a service, enter measurements, and click "Add to Quote" to build your estimate.</p>
         </div>
       )}
 
@@ -469,15 +590,15 @@ export default function QuoteCalculator() {
         </div>
       ) : (
         <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-          <StepHeader n={5} label={canSeePrice || isCustomQuote ? "Email My Quote" : "Email My Quote"} active={canSeePrice || isCustomQuote} />
-          {!canSeePrice && !isCustomQuote && (
-            <p className="px-6 pt-0 pb-0 text-xs text-gray-400 bg-blue-50 border-b border-blue-100 pb-2 px-6">Complete steps above to unlock</p>
+          <StepHeader n={3} label="Email My Quote" active={!!totalPrice} />
+          {!totalPrice && (
+            <p className="px-6 pt-0 pb-2 text-xs text-gray-400 bg-blue-50 border-b border-blue-100">
+              Add at least one service above to unlock
+            </p>
           )}
-          <div className={`p-6 transition-opacity ${canSeePrice || isCustomQuote ? "opacity-100" : "opacity-40 pointer-events-none"}`}>
+          <div className={`p-6 transition-opacity ${totalPrice ? "opacity-100" : "opacity-40 pointer-events-none"}`}>
             <p className="text-gray-600 text-sm mb-5">
-              {isCustomQuote
-                ? "Enter your info and we'll follow up with a custom quote for your large roof."
-                : "Enter your info and we'll email you a full itemized quote — plus our team will follow up to confirm details."}
+              Enter your info and we'll email you a full itemized quote — plus our team will follow up to confirm details.
             </p>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">
@@ -525,7 +646,7 @@ export default function QuoteCalculator() {
 
               <button
                 type="submit"
-                disabled={!(canSubmit || (isCustomQuote && customer.name.trim() && customer.email.trim() && customer.phone.trim())) || isSubmitting}
+                disabled={!canSubmit || isSubmitting}
                 className="w-full bg-[hsl(142,76%,36%)] hover:bg-[hsl(142,76%,32%)] disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3.5 px-6 rounded-xl text-base transition-colors flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
