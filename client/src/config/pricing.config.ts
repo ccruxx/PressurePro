@@ -49,9 +49,11 @@ export const PRICING = {
 
   // ── Roof soft wash — tiered flat rates ───────────────────────────────────
   roof: {
-    under1500:  450,   // $ for roofs under 1,500 sq ft
-    mid6000:    600,   // $ for roofs 1,500–6,000 sq ft
-    // over 6,000 sq ft → custom quote required (no price shown)
+    under1500:    450,   // ≤ 1,500 sq ft
+    r1800to2800:  675,   // 1,800 – 2,800 sq ft
+    r3000to4000:  850,   // 3,000 – 4,000 sq ft
+    r4200to5000: 1200,   // 4,200 – 5,000 sq ft
+    // over 5,000 sq ft → specialized quote required (no price shown)
   },
 
   // ── Dirt level surcharge multipliers ─────────────────────────────────────
