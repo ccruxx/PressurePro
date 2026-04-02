@@ -59,9 +59,9 @@ export const PRICING = {
   // ── Dirt level surcharge multipliers ─────────────────────────────────────
   // Applied on top of the base service price.
   dirtLevel: {
-    light:    1.00,  // +0%
-    moderate: 1.15,  // +15%
-    heavy:    1.30,  // +30%
+    light:    1.25,  // +25%
+    moderate: 1.50,  // +50%
+    heavy:    1.75,  // +75%
   },
 
   // ── Add-on services ───────────────────────────────────────────────────────
