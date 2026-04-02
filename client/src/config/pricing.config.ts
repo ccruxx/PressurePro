@@ -42,7 +42,7 @@ export const PRICING = {
       minimum:         250,
     },
     "concrete-sealing": {
-      ratePerSqFt: 0.50,
+      ratePerSqFt: 2.00,
       minimum:     250,
     },
   },
