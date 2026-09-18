@@ -43,7 +43,7 @@ export default function ServiceAreasIndex() {
 
       <Header />
 
-      <main className="min-h-screen">
+      <main className="min-h-screen pt-header">
         <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl md:text-5xl font-bold mb-4" data-testid="heading-page-title">

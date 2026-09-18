@@ -25,6 +25,8 @@
   --destructive-foreground: hsl(60, 9.1%, 97.8%);
   --ring: hsl(20, 14.3%, 4.1%);
   --radius: 0.5rem;
+  /* Height of the fixed site header (logo h-28 = 7rem + nav py-4 = 2rem) */
+  --header-height: 9rem;
 }
 
 .dark {
@@ -66,10 +68,17 @@
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    /* Keep anchor targets clear of the fixed header */
+    scroll-padding-top: var(--header-height);
   }
 }
 
 @layer utilities {
+  /* Offsets page content below the fixed header */
+  .pt-header {
+    padding-top: var(--header-height);
+  }
+
   .bg-primary {
     background-color: hsl(200, 85%, 55%);
   }

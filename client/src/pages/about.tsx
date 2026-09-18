@@ -25,7 +25,7 @@ export default function About() {
       
       <Header />
       
-      <main className="min-h-screen pt-32 pb-12">
+      <main className="min-h-screen pt-header pb-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900" data-testid="heading-about-title">
