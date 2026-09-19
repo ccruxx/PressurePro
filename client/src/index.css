@@ -69,8 +69,8 @@
   --shadow-md: 0 4px 16px -4px hsl(210 24% 10% / 0.08);
   --shadow-lg: 0 24px 48px -16px hsl(210 24% 10% / 0.14);
 
-  /* Height of the fixed site header (logo h-28 = 7rem + nav py-4 = 2rem) */
-  --header-height: 9rem;
+  /* Height of the fixed site header (h-20 row). */
+  --header-height: 5rem;
 }
 
 .dark {
