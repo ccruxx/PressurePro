@@ -123,7 +123,7 @@ export default function DelicateStoneCleaning() {
                   <WorkImage
                     slug={stone.heroImage}
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    aspect="aspect-[4/3]"
+                    aspect="aspect-[4/5]"
                     className="transition-transform duration-500 group-hover:scale-[1.02]"
                   />
                   <h3 className="mt-5 text-step-2 group-hover:text-brand">

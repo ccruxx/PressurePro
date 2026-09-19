@@ -40,7 +40,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full border-b bg-surface/95 backdrop-blur transition-[border-color,box-shadow] ${
+      className={`fixed top-0 z-50 w-full border-b bg-[hsl(0_0%_100%/0.92)] backdrop-blur transition-[border-color,box-shadow] ${
         isScrolled ? "border-stone-200 shadow-sm" : "border-transparent"
       }`}
     >
