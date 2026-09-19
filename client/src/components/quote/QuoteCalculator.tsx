@@ -626,7 +626,9 @@ export default function QuoteCalculator() {
             <a href="tel:+18175856388" className="text-blue-600 font-semibold">(817) 585-6388</a>.
           </p>
         </div>
-      ) : (
+      ) : isCustomQuote && items.length === 0 ? null : (
+        /* Someone on a custom-quote service has nothing to email until they add
+           a priced item, so this form would only read "unlock" at them. */
         <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
           <StepHeader n={3} label="Email My Quote" active={!!totalPrice} />
           {!totalPrice && (
