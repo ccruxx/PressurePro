@@ -26,9 +26,12 @@ export default function Hero() {
           sizes="100vw"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        {/* Scrim: heavier on the left where the type sits. */}
+        {/* Scrim in two layers: a flat base so contrast holds at every width
+            (the directional gradient alone leaves mobile text over bright stone),
+            plus a left-weighted gradient behind the type. */}
+        <div className="absolute inset-0 bg-ink/45" aria-hidden="true" />
         <div
-          className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/75 to-ink/35"
+          className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/55 to-transparent"
           aria-hidden="true"
         />
 

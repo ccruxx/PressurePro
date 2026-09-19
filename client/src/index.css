@@ -31,24 +31,24 @@
      text, and the brand blue used sparingly as the single action colour.     */
 
   /* Ink + surfaces */
-  --ink:            hsl(210, 24%, 10%);
-  --ink-soft:       hsl(212, 14%, 32%);
-  --ink-faint:      hsl(210, 10%, 48%);
-  --canvas:         hsl(40, 24%, 98%);
-  --surface:        hsl(0, 0%, 100%);
-  --surface-sunken: hsl(38, 18%, 95%);
+  --ink:            210 24% 10%;
+  --ink-soft:       212 14% 32%;
+  --ink-faint:      210 10% 48%;
+  --canvas:         40 24% 98%;
+  --surface:        0 0% 100%;
+  --surface-sunken: 38 18% 95%;
 
   /* Warm stone neutrals for rules, borders and quiet type */
-  --stone-100: hsl(40, 20%, 95%);
-  --stone-200: hsl(38, 14%, 88%);
-  --stone-300: hsl(36, 11%, 78%);
-  --stone-500: hsl(33, 8%, 55%);
-  --stone-700: hsl(28, 7%, 34%);
+  --stone-100: 40 20% 95%;
+  --stone-200: 38 14% 88%;
+  --stone-300: 36 11% 78%;
+  --stone-500: 33 8% 55%;
+  --stone-700: 28 7% 34%;
 
   /* Brand blue, deepened so it passes AA on white */
-  --brand:        hsl(202, 80%, 38%);
-  --brand-strong: hsl(204, 84%, 27%);
-  --brand-tint:   hsl(202, 58%, 96%);
+  --brand:        202 80% 38%;
+  --brand-strong: 204 84% 27%;
+  --brand-tint:   202 58% 96%;
 
   /* Fluid type scale */
   --step--1: clamp(0.875rem, 0.84rem + 0.17vw, 0.95rem);
@@ -106,8 +106,8 @@
   body {
     @apply font-sans antialiased;
     font-family: "Inter", system-ui, sans-serif;
-    background: var(--canvas);
-    color: var(--ink);
+    background: hsl(var(--canvas));
+    color: hsl(var(--ink));
     font-size: var(--step-0);
     line-height: 1.6;
     overflow-x: hidden;
@@ -131,7 +131,7 @@
 
   /* Anything that opts out of the design system keeps its own colour. */
   ::selection {
-    background: var(--brand);
+    background: hsl(var(--brand));
     color: #fff;
   }
   
