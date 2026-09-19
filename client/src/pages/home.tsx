@@ -1,6 +1,6 @@
 import Header from "@/components/layout/header";
 import Hero from "@/components/sections/hero";
-import FeaturedVideo from "@/components/sections/featured-video";
+import FocusAreas from "@/components/sections/focus-areas";
 import ServingCities from "@/components/sections/serving-cities";
 import Services from "@/components/sections/services";
 import InstantQuote from "@/components/sections/instant-quote";
@@ -19,22 +19,22 @@ export default function Home() {
   const localBusinessSchema = getLocalBusinessSchema();
 
   return (
-    <div className="font-sans bg-slate-50">
+    <div className="bg-canvas">
       <SEOHead
-        title={`Residential Power Washing & Pressure Washing in DFW | ${SEO_CONSTANTS.BUSINESS_NAME}`}
-        description={`Residential pressure washing and power washing for driveways, patios, porches, roofs, and gutters across Colleyville, Southlake, Grapevine, Dallas, Fort Worth, Euless, Bedford, Plano, Carrollton, Addison, Farmers Branch, Coppell, Arlington, and Mansfield. Call ${SEO_CONSTANTS.CONTACT.PHONE} for a free quote.`}
+        title={`Pressure Washing & Exterior Cleaning in DFW | ${SEO_CONSTANTS.BUSINESS_NAME}`}
+        description={`Soft washing, pressure washing, roof and gutter cleaning, delicate stone restoration and commercial work across the DFW metroplex. Based in ${SEO_CONSTANTS.NAP.CITY}. Call ${SEO_CONSTANTS.CONTACT.PHONE} for a free quote.`}
         canonical="/"
       />
       <SchemaOrg schema={localBusinessSchema} />
 
       <Header />
       <Hero />
+      <Services />
+      <FocusAreas />
+      <Gallery limit={8} />
+      <Testimonials />
       <InstantQuote />
       <ServingCities />
-      <FeaturedVideo />
-      <Services />
-      <Gallery />
-      <Testimonials />
       <About />
       <Certification />
       <Contact />

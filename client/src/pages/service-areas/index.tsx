@@ -1,156 +1,87 @@
 import { Link } from "wouter";
+import { Phone } from "lucide-react";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import SEOHead from "@/components/seo/SEOHead";
 import SchemaOrg from "@/components/seo/SchemaOrg";
+import WorkImage from "@/components/work-image";
 import { SEO_CONSTANTS } from "@/lib/seo-constants";
-import { getLocalBusinessSchema, getBreadcrumbSchema } from "@/lib/schema-helpers";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { MapPin } from "lucide-react";
+import { getBreadcrumbSchema, getLocalBusinessSchema } from "@/lib/schema-helpers";
 
 export default function ServiceAreasIndex() {
-  const breadcrumbs = getBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Service Areas", url: "/service-areas" },
-  ]);
-
-  const localBusiness = getLocalBusinessSchema();
-
-  const northCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter((city) =>
-    ["Plano", "Frisco", "Carrollton", "Farmers Branch", "Addison", "Coppell"].includes(city.name),
-  );
-
-  const centralCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter((city) =>
-    ["Arlington", "Grand Prairie", "Irving", "Dallas", "Hurst", "Euless", "Bedford", "Las Colinas"].includes(city.name),
-  );
-
-  const westCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter((city) =>
-    ["Fort Worth", "Keller", "Southlake", "Grapevine", "Colleyville", "North Richland Hills", "Richland Hills"].includes(city.name),
-  );
-
-  const southCities = SEO_CONSTANTS.SERVICE_AREA_CITIES.filter((city) =>
-    ["Mansfield", "Burleson", "Midlothian", "Waxahachie", "Cedar Hill", "DeSoto", "Ennis", "Ovilla", "Red Oak", "Venus"].includes(city.name),
-  );
+  const cities = SEO_CONSTANTS.SERVICE_AREA_CITIES;
+  const schema = [
+    getBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Service Areas", url: "/service-areas" },
+    ]),
+    getLocalBusinessSchema(),
+  ];
 
   return (
-    <div className="font-sans bg-slate-50">
+    <div className="bg-canvas">
       <SEOHead
-        title={`Service Areas - DFW Pressure Washing | ${SEO_CONSTANTS.BUSINESS_NAME}`}
-        description={`Professional pressure washing serving Arlington, Mansfield, Dallas, Fort Worth, Colleyville, Coppell, and all of DFW. Free quotes available.`}
+        title={`Service Areas | Pressure Washing Across DFW | ${SEO_CONSTANTS.BUSINESS_NAME}`}
+        description={`Pressure washing, soft washing and delicate stone cleaning across ${cities.length} cities in the DFW metroplex, from ${SEO_CONSTANTS.NAP.CITY}. Call ${SEO_CONSTANTS.CONTACT.PHONE}.`}
         canonical="/service-areas"
       />
-      <SchemaOrg schema={[breadcrumbs, localBusiness]} />
-
+      <SchemaOrg schema={schema} />
       <Header />
 
       <main className="min-h-screen pt-header">
-        <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4" data-testid="heading-page-title">
-              Service Areas
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100">
-              Proudly serving homes and businesses throughout the DFW metro area
-            </p>
+        <section className="border-b border-stone-200 bg-surface">
+          <div className="mx-auto grid max-w-7xl items-center gap-gutter px-gutter py-section lg:grid-cols-2">
+            <div>
+              <p className="text-step--1 uppercase tracking-[0.18em] text-brand">
+                Service areas
+              </p>
+              <h1 className="mt-4 max-w-[18ch] text-step-5">
+                {cities.length} cities across the Metroplex
+              </h1>
+              <p className="mt-6 max-w-measure text-step-1 text-ink-soft">
+                Based at {SEO_CONSTANTS.NAP.STREET}, {SEO_CONSTANTS.NAP.CITY}, and
+                working outward across Dallas&ndash;Fort Worth for homes and
+                commercial property alike.
+              </p>
+              <div className="mt-10">
+                <a
+                  href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                  className="inline-flex items-center gap-2 bg-brand px-6 py-3 text-step-0 font-medium text-white transition-colors hover:bg-brand-strong"
+                >
+                  <Phone className="h-4 w-4" aria-hidden="true" />
+                  {SEO_CONSTANTS.CONTACT.PHONE}
+                </a>
+              </div>
+            </div>
+            <WorkImage
+              slug="austin-stone-home-exterior-cleaning"
+              priority
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              aspect="aspect-[4/3]"
+              className="shadow-lg"
+            />
           </div>
         </section>
 
-        <section className="container mx-auto px-4 py-12">
-          <div className="max-w-6xl mx-auto">
-            <div className="bg-white rounded-lg shadow-md p-8 mb-12">
-              <h2 className="text-3xl font-bold mb-4">Professional Pressure Washing Across DFW</h2>
-              <p className="text-lg text-gray-700 mb-4">
-                DFW Pristine Power Washing provides professional pressure washing, house washing, roof cleaning, and concrete cleaning services throughout the Dallas-Fort Worth metro area. Based in Arlington, we serve homeowners and businesses across northern, central, western, and southern DFW communities.
-              </p>
-              <p className="text-lg text-gray-700">
-                Whether you need residential house washing, commercial building cleaning, or driveway restoration, we deliver the same high-quality service to every city we serve. Call us today for a free quote: <a href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`} className="text-blue-600 font-semibold hover:text-blue-800" data-testid="link-call">{SEO_CONSTANTS.CONTACT.PHONE}</a>
-              </p>
-            </div>
-
-            <div className="mb-12">
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                <MapPin className="h-6 w-6 text-blue-600" />
-                North DFW
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {northCities.map((city) => (
-                  <Link key={city.slug} href={`/service-areas/${city.slug}`} data-testid={`link-city-${city.slug}`}>
-                    <Card className="hover:shadow-lg transition-shadow cursor-pointer">
-                      <CardHeader>
-                        <CardTitle className="text-lg">Pressure Washing in {city.name}</CardTitle>
-                      </CardHeader>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div className="mb-12">
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                <MapPin className="h-6 w-6 text-blue-600" />
-                Central DFW
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {centralCities.map((city) => (
-                  <Link key={city.slug} href={`/service-areas/${city.slug}`} data-testid={`link-city-${city.slug}`}>
-                    <Card className="hover:shadow-lg transition-shadow cursor-pointer">
-                      <CardHeader>
-                        <CardTitle className="text-lg">Pressure Washing in {city.name}</CardTitle>
-                      </CardHeader>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div className="mb-12">
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                <MapPin className="h-6 w-6 text-blue-600" />
-                West DFW
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {westCities.map((city) => (
-                  <Link key={city.slug} href={`/service-areas/${city.slug}`} data-testid={`link-city-${city.slug}`}>
-                    <Card className="hover:shadow-lg transition-shadow cursor-pointer">
-                      <CardHeader>
-                        <CardTitle className="text-lg">Pressure Washing in {city.name}</CardTitle>
-                      </CardHeader>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div className="mb-12">
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                <MapPin className="h-6 w-6 text-blue-600" />
-                South DFW
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {southCities.map((city) => (
-                  <Link key={city.slug} href={`/service-areas/${city.slug}`} data-testid={`link-city-${city.slug}`}>
-                    <Card className="hover:shadow-lg transition-shadow cursor-pointer">
-                      <CardHeader>
-                        <CardTitle className="text-lg">Pressure Washing in {city.name}</CardTitle>
-                      </CardHeader>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-blue-50 rounded-lg p-8">
-              <h2 className="text-2xl font-bold mb-4">Our Services</h2>
-              <p className="text-gray-700 mb-4">We offer comprehensive exterior cleaning services in all of our service areas:</p>
-              <div className="grid md:grid-cols-2 gap-3">
-                {SEO_CONSTANTS.PRIMARY_SERVICES.map((service) => (
-                  <Link key={service.slug} href={`/services/${service.slug}`} className="text-blue-600 hover:text-blue-800" data-testid={`link-service-${service.slug}`}>
-                    -&gt; {service.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
+        <section className="mx-auto max-w-7xl px-gutter py-section">
+          <h2 className="text-step-3">Every city we serve</h2>
+          <ul className="mt-10 grid gap-x-gutter gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
+            {cities.map((city) => (
+              <li key={city.slug} className="border-t border-stone-200 pt-4">
+                <Link
+                  href={`/service-areas/${city.slug}`}
+                  className="text-step-1 text-ink-soft underline-offset-4 hover:text-brand hover:underline"
+                  data-testid={`area-${city.slug}`}
+                >
+                  {city.name}, {city.state}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-10 max-w-measure text-ink-soft">
+            Not listed? Call anyway &mdash; if it is a reasonable drive we will
+            usually say yes.
+          </p>
         </section>
       </main>
 
@@ -158,4 +89,3 @@ export default function ServiceAreasIndex() {
     </div>
   );
 }
-

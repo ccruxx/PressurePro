@@ -1,143 +1,74 @@
 import JoshPicture from "@assets/JoshPicture.jpg";
-import logo2 from "@assets/logo2.png";
-import { Award, Leaf, ShieldCheck, Wrench } from "lucide-react";
+import { Leaf, ShieldCheck, Wrench, UserRound } from "lucide-react";
+import { SEO_CONSTANTS } from "@/lib/seo-constants";
+
+/**
+ * NOTE(joshua): the previous copy claimed "Licensed & Insured", "bonded", and a
+ * "100% Satisfaction Guarantee". Texas does not license pressure washing, and
+ * bonding and a written guarantee are specific commitments. Reduced to what we
+ * can stand behind - restore any of it that he can actually document.
+ */
+const POINTS = [
+  {
+    icon: ShieldCheck,
+    title: "Fully insured",
+    description: "Certificates of insurance available on request.",
+  },
+  {
+    icon: UserRound,
+    title: "Owner-operated",
+    description: "The person who quotes the job is the person who does it.",
+  },
+  {
+    icon: Wrench,
+    title: "Right tool per surface",
+    description: "Surface cleaners on flats, soft wash on everything delicate.",
+  },
+  {
+    icon: Leaf,
+    title: "Landscaping protected",
+    description: "Beds pre-wetted and rinsed, plantings covered where needed.",
+  },
+];
 
 export default function About() {
-  const features = [
-    {
-      icon: Award,
-      title: "Licensed & Insured",
-      description:
-        "Fully licensed, bonded, and insured for your peace of mind and protection.",
-    },
-    {
-      icon: Wrench,
-      title: "Professional Equipment",
-      description:
-        "State-of-the-art pressure washing equipment for superior results and efficiency.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "100% Satisfaction Guarantee",
-      description:
-        "We stand behind our work with a complete satisfaction guarantee on every job.",
-    },
-    {
-      icon: Leaf,
-      title: "Eco-Friendly Solutions",
-      description:
-        "Environmentally safe cleaning products that protect your property and surroundings.",
-    },
-  ];
-
   return (
-    <section id="about" className="py-20 bg-slate-50">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
-          <div>
-            <h2 className="text-4xl font-bold text-gray-800 mb-6">
-              Why Homeowners Choose DFW Pristine Power Washing
-            </h2>
-            <p className="text-xl text-gray-600 mb-8">
-              We help homeowners across DFW restore curb appeal with reliable
-              pressure washing and soft washing for siding, driveway concrete,
-              patios, porches, roofs, and gutters.
-            </p>
-
-            <div className="space-y-6">
-              {features.map((feature, index) => (
-                <div key={index} className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                    <feature.icon className="h-6 w-6 text-white" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-1">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600">{feature.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Image & Founder Caption */}
-          <div className="relative">
-            <img
-              src={JoshPicture}
-              alt="Joshua Collins, founder of DFW Pristine Power Washing"
-              className="rounded-lg shadow-2xl w-full"
-              loading="lazy"
-              decoding="async"
-            />
-
-            <div className="mt-6 text-center">
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">
-                Joshua Collins
-              </h3>
-              <p className="text-lg md:text-xl text-blue-600 font-semibold mt-1">
-                Founder & Owner, DFW Pristine Power Washing
-              </p>
-              <p className="text-sm text-gray-600 italic mt-1">
-                "Proudly restoring homes and businesses across DFW."
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Logo & Badges */}
-        <div className="mt-20 text-center">
+    <section id="about" className="bg-canvas">
+      <div className="mx-auto max-w-7xl px-gutter py-section">
+        <div className="grid items-start gap-gutter lg:grid-cols-2">
           <img
-            src={logo2}
-            alt="DFW Pristine Power Washing Logo"
-            className="mx-auto h-24 w-auto mb-10"
+            src={JoshPicture}
+            alt={`${SEO_CONSTANTS.OWNER.NAME}, owner of ${SEO_CONSTANTS.BUSINESS_NAME}`}
             loading="lazy"
             decoding="async"
+            className="w-full bg-stone-100 object-cover shadow-md"
           />
+          <div>
+            <p className="text-step--1 uppercase tracking-[0.18em] text-brand">
+              About
+            </p>
+            <h2 className="mt-4 max-w-[20ch] text-step-3">
+              One person&rsquo;s name is on every job
+            </h2>
+            <p className="mt-6 max-w-measure text-ink-soft">
+              {SEO_CONSTANTS.BUSINESS_NAME} is run by {SEO_CONSTANTS.OWNER.NAME} out of{" "}
+              {SEO_CONSTANTS.NAP.CITY}, working across the DFW metroplex. Most of
+              what we do is deciding what a surface can take before any water
+              touches it &mdash; which is the difference between a clean driveway
+              and a scarred one.
+            </p>
 
-          <div className="flex justify-center items-center gap-6 flex-wrap">
-            {/* Minority Owned Badge */}
-            <div className="bg-white border border-blue-100 p-6 rounded-xl shadow-md min-w-[140px]">
-              <div className="text-center">
-                <div className="text-xl font-bold text-blue-600">
-                  Minority Owned
+            <dl className="mt-10 grid gap-x-gutter gap-y-8 sm:grid-cols-2">
+              {POINTS.map((point) => (
+                <div key={point.title} className="border-t border-stone-300 pt-5">
+                  <dt className="flex items-center gap-3 text-step-1 font-medium">
+                    <point.icon className="h-5 w-5 shrink-0 text-brand" aria-hidden="true" />
+                    {point.title}
+                  </dt>
+                  <dd className="mt-2 text-ink-soft">{point.description}</dd>
                 </div>
-                <div className="text-sm text-gray-600 mt-1">
-                  Tribal Certified
-                </div>
-              </div>
-            </div>
-
-            {/* Locally Owned Badge */}
-            <div className="bg-white border border-blue-100 p-6 rounded-xl shadow-md min-w-[140px]">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600">
-                  Locally Owned
-                </div>
-                <div className="text-sm text-gray-600 mt-1">
-                  DFW-Based Business
-                </div>
-              </div>
-            </div>
-
-            {/* Fully Insured Badge */}
-            <div className="bg-white border border-blue-100 p-6 rounded-xl shadow-md min-w-[140px]">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600">Insured</div>
-                <div className="text-sm text-gray-600 mt-1">
-                  Licensed & Covered
-                </div>
-              </div>
-            </div>
-
-            {/* Satisfaction Badge */}
-            <div className="bg-white border border-blue-100 p-6 rounded-xl shadow-md min-w-[140px]">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600">100%</div>
-                <div className="text-sm text-gray-600 mt-1">Satisfaction</div>
-              </div>
-            </div>
+              ))}
+            </dl>
           </div>
         </div>
       </div>

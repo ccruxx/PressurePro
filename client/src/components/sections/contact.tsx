@@ -1,110 +1,76 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { SEO_CONSTANTS } from "@/lib/seo-constants";
 
 export default function Contact() {
-  const contactInfo = [
-    {
-      icon: Phone,
-      title: "Phone",
-      value: "(817) 585-6388",
-    },
-    {
-      icon: Mail,
-      title: "Email",
-      value: "joshua.dfwpristine@gmail.com",
-    },
-    {
-      icon: MapPin,
-      title: "Service Area",
-      value:
-        "Colleyville, Southlake, Grapevine, Dallas, Fort Worth, Euless, Bedford, Plano, Carrollton, Addison, Farmers Branch, Coppell, Arlington, and Mansfield",
-    },
-    {
-      icon: Clock,
-      title: "Business Hours",
-      value:
-        "Mon-Fri: 7:00 AM - 7:00 PM\nSat: 8:00 AM - 6:00 PM\nSun: 9:00 AM - 5:00 PM",
-    },
-  ];
+  const { CONTACT, NAP } = SEO_CONSTANTS;
 
   return (
-    <section id="contact" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">
-            Get Your Free Exterior Cleaning Quote
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Need pressure washing for your driveway, patio, porch, roof, or
-            gutters? Call now for fast scheduling and clear pricing.
-          </p>
-        </div>
+    <section id="contact" className="border-t border-stone-200 bg-ink text-white">
+      <div className="mx-auto max-w-7xl px-gutter py-section">
+        <div className="grid gap-gutter lg:grid-cols-2">
+          <div>
+            <h2 className="max-w-[18ch] text-step-4 text-white">
+              Tell us the surface. We&rsquo;ll tell you what it needs.
+            </h2>
+            <p className="mt-6 max-w-measure text-white/70">
+              Free estimates across the metroplex, for homes and commercial property.
+              If it is urgent &mdash; an event, an inspection, a storm &mdash; call
+              rather than email and we will tell you straight away whether we can get
+              there in time.
+            </p>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Information */}
-            <div>
-              <div className="mb-8">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-6">
-                  Contact Information
-                </h3>
-
-                <div className="space-y-6">
-                  {contactInfo.map((info, index) => (
-                    <div key={index} className="flex items-center space-x-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                        <info.icon className="h-5 w-5 text-white" aria-hidden="true" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-gray-800">
-                          {info.title}
-                        </div>
-                        <div className="text-gray-600 whitespace-pre-line">
-                          {info.value}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Call to Action Card */}
-            <div>
-              <Card className="bg-primary text-white rounded-xl p-8">
-                <CardContent className="p-0">
-                  <h4 className="text-2xl font-semibold mb-4">
-                    Ready to Get Started?
-                  </h4>
-                  <p className="mb-6">
-                    We specialize in residential power washing that removes mold,
-                    algae, rust, red clay, grease, and oil stains while helping
-                    your home look its best.
-                  </p>
-                  <div className="space-y-4">
-                    <Button
-                      onClick={() => window.open("tel:+18175856388", "_self")}
-                      className="w-full bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100"
-                    >
-                      <Phone className="mr-2 inline h-4 w-4" aria-hidden="true" />Call (817) 585-6388
-                    </Button>
-                    <Button
-                      onClick={() =>
-                        window.open(
-                          "mailto:joshua.dfwpristine@gmail.com",
-                          "_self",
-                        )
-                      }
-                      className="w-full bg-success text-white px-6 py-3 rounded-lg font-semibold hover:bg-success/90"
-                    >
-                      <Mail className="mr-2 inline h-4 w-4" aria-hidden="true" />Send Email
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a
+                href={`tel:${CONTACT.PHONE_RAW}`}
+                className="inline-flex items-center gap-2 bg-white px-6 py-3.5 font-medium text-ink transition-colors hover:bg-stone-100"
+                data-testid="contact-call"
+              >
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                {CONTACT.PHONE}
+              </a>
+              <a
+                href={`mailto:${CONTACT.EMAIL}`}
+                className="inline-flex items-center gap-2 border border-white/40 px-6 py-3.5 font-medium text-white transition-colors hover:border-white hover:bg-white/10"
+                data-testid="contact-email"
+              >
+                <Mail className="h-4 w-4" aria-hidden="true" />
+                Email us
+              </a>
             </div>
           </div>
+
+          <dl className="space-y-8 lg:pl-gutter">
+            <div className="flex gap-4 border-t border-white/15 pt-6">
+              <Phone className="mt-1 h-5 w-5 shrink-0 text-white/50" aria-hidden="true" />
+              <div>
+                <dt className="text-white">Phone</dt>
+                <dd className="mt-1 text-white/70">{CONTACT.PHONE}</dd>
+              </div>
+            </div>
+            <div className="flex gap-4 border-t border-white/15 pt-6">
+              <Mail className="mt-1 h-5 w-5 shrink-0 text-white/50" aria-hidden="true" />
+              <div>
+                <dt className="text-white">Email</dt>
+                <dd className="mt-1 break-all text-white/70">{CONTACT.EMAIL}</dd>
+              </div>
+            </div>
+            <div className="flex gap-4 border-t border-white/15 pt-6">
+              <MapPin className="mt-1 h-5 w-5 shrink-0 text-white/50" aria-hidden="true" />
+              <div>
+                <dt className="text-white">Based in</dt>
+                <dd className="mt-1 text-white/70">
+                  {NAP.STREET}, {NAP.CITY}, {NAP.STATE} {NAP.ZIP}
+                </dd>
+              </div>
+            </div>
+            <div className="flex gap-4 border-t border-white/15 pt-6">
+              <Clock className="mt-1 h-5 w-5 shrink-0 text-white/50" aria-hidden="true" />
+              <div>
+                <dt className="text-white">Hours</dt>
+                <dd className="mt-1 text-white/70">{SEO_CONSTANTS.HOURS}</dd>
+              </div>
+            </div>
+          </dl>
         </div>
       </div>
     </section>

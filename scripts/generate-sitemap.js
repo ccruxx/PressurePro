@@ -35,6 +35,7 @@ const routes = [
   { path: 'about', priority: '0.8', changefreq: 'monthly' },
   { path: 'services', priority: '0.9', changefreq: 'weekly' },
   { path: 'service-areas', priority: '0.9', changefreq: 'weekly' },
+  { path: 'gallery', priority: '0.7', changefreq: 'monthly' },
   
   ...stoneTypes.map(slug => ({
     path: `services/delicate-stone-cleaning/${slug}`,

@@ -2,21 +2,18 @@ import QuoteCalculator from "@/components/quote/QuoteCalculator";
 
 export default function InstantQuote() {
   return (
-    <section id="instant-quote" className="bg-slate-50 py-16 px-4">
-      <div className="container mx-auto max-w-3xl">
-        {/* Section header */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
-            ⚡ No Phone Call Needed
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-            Get an Instant Price Estimate
-          </h2>
-          <p className="text-gray-600 text-lg max-w-xl mx-auto">
-            Pick your service, enter your measurements, and see a real price range in seconds.
+    <section id="instant-quote" className="border-y border-stone-200 bg-surface-sunken">
+      <div className="mx-auto max-w-3xl px-gutter py-section">
+        <div className="mb-12">
+          <p className="text-step--1 uppercase tracking-[0.18em] text-brand">
+            No phone call needed
+          </p>
+          <h2 className="mt-4 text-step-3">Price it yourself</h2>
+          <p className="mt-4 max-w-measure text-ink-soft">
+            Pick a service, enter the measurements, and see a real range. Commercial
+            and delicate stone are quoted on site, so those route straight to us.
           </p>
         </div>
-
         <QuoteCalculator />
       </div>
     </section>

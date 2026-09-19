@@ -4,6 +4,7 @@ import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import SEOHead from "@/components/seo/SEOHead";
 import SchemaOrg from "@/components/seo/SchemaOrg";
+import WorkImage from "@/components/work-image";
 import { SEO_CONSTANTS } from "@/lib/seo-constants";
 import { getCityServiceSchema, getBreadcrumbSchema, getCityFAQSchema } from "@/lib/schema-helpers";
 import { CITY_LOCAL_CONTENT } from "@/lib/city-content";
@@ -270,16 +271,15 @@ export default function CityPageTemplate({ cityName, stateName, slug }: CityPage
       .slice(0, 6)
       .map((city) => city.slug);
 
-  const mapQuery = encodeURIComponent(`${cityName}, ${stateName}`);
   const overview =
     CITY_OVERVIEW_BY_SLUG[slug] ||
     `Homes and businesses in ${cityName} face year-round buildup from dust, humidity, irrigation overspray, and seasonal organic debris. Our professional pressure washing and soft wash process removes grime safely while protecting your exterior materials.`;
 
   return (
-    <div className="font-sans bg-slate-50">
+    <div className="bg-canvas">
       <SEOHead
-        title={`Power Washing in ${cityName}, ${stateName} | ${SEO_CONSTANTS.BUSINESS_NAME}`}
-        description={`Power washing and pressure washing in ${cityName}, ${stateName} for driveways, patios, porches, roofs, and gutters. Remove algae, mold, rust, red clay, oil, grease, cobwebs, and wasp nests. Call ${SEO_CONSTANTS.CONTACT.PHONE}.`}
+        title={`Pressure Washing in ${cityName}, ${stateName} | ${SEO_CONSTANTS.BUSINESS_NAME}`}
+        description={`Pressure washing, soft washing and delicate stone cleaning in ${cityName}, ${stateName}. Driveways, patios, siding, roofs and gutters, plus commercial property. Call ${SEO_CONSTANTS.CONTACT.PHONE}.`}
         canonical={`/service-areas/${slug}`}
       />
       <SchemaOrg schema={[breadcrumbs, cityServiceSchema, cityFAQSchema]} />
@@ -287,131 +287,210 @@ export default function CityPageTemplate({ cityName, stateName, slug }: CityPage
       <Header />
 
       <main className="min-h-screen pt-header">
-        <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4" data-testid="heading-city-title">
-              Power Washing in {cityName}, {stateName}
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100">
-              Residential exterior cleaning specialists serving {cityName} homeowners
+        {/* Hero ------------------------------------------------------------ */}
+        <section className="border-b border-stone-200 bg-surface">
+          <div className="mx-auto grid max-w-7xl items-center gap-gutter px-gutter py-section lg:grid-cols-2">
+            <div>
+              <nav aria-label="Breadcrumb" className="mb-6">
+                <ol className="flex flex-wrap items-center gap-2 text-step--1 text-ink-faint">
+                  <li>
+                    <Link href="/service-areas" className="hover:text-brand">
+                      Service areas
+                    </Link>
+                  </li>
+                  <li aria-hidden="true">/</li>
+                  <li className="text-ink-soft">
+                    {cityName}, {stateName}
+                  </li>
+                </ol>
+              </nav>
+
+              <h1 className="text-step-5" data-testid="heading-city-title">
+                Pressure washing in {cityName}, {stateName}
+              </h1>
+              <p className="mt-6 max-w-measure text-step-1 text-ink-soft">
+                Exterior cleaning for homes and commercial property in {cityName},
+                from {SEO_CONSTANTS.NAP.CITY}.
+              </p>
+
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <a
+                  href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                  className="inline-flex items-center gap-2 bg-brand px-6 py-3 text-step-0 font-medium text-white transition-colors hover:bg-brand-strong"
+                  data-testid="button-call"
+                >
+                  <Phone className="h-4 w-4" aria-hidden="true" />
+                  {SEO_CONSTANTS.CONTACT.PHONE}
+                </a>
+                <a
+                  href={`mailto:${SEO_CONSTANTS.CONTACT.EMAIL}`}
+                  className="inline-flex items-center gap-2 border border-stone-300 px-6 py-3 text-step-0 font-medium text-ink transition-colors hover:border-ink"
+                  data-testid="button-email"
+                >
+                  <Mail className="h-4 w-4" aria-hidden="true" />
+                  Email us
+                </a>
+              </div>
+            </div>
+
+            <WorkImage
+              slug="curved-concrete-walkway-after"
+              priority
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              aspect="aspect-[4/3]"
+              className="shadow-lg"
+            />
+          </div>
+        </section>
+
+        {/* Long-form local copy --------------------------------------------- */}
+        <section className="mx-auto max-w-7xl px-gutter py-section">
+          <div className="grid gap-gutter lg:grid-cols-[1fr_1.4fr]">
+            <h2 className="text-step-3">
+              Exterior cleaning in {cityName}
+            </h2>
+            <div className="max-w-measure space-y-5 text-ink-soft">
+              <p>
+                {SEO_CONSTANTS.BUSINESS_NAME} cleans the surfaces that decide how a
+                property in {cityName} looks from the street: driveway concrete,
+                patios and porch entries, siding, rooflines and gutter faces. Every
+                job starts by working out what the surface can take, because the
+                pressure that strips a driveway will scar limestone and force water
+                behind siding.
+              </p>
+              <p>
+                The buildup here is predictable: algae and mould in shaded areas,
+                rust and red clay on driveways and walkways, oil and grease near
+                garages and trash pads. Each responds to different chemistry, and
+                treating them properly is what keeps the result even instead of
+                patchy.
+              </p>
+              <p>{overview}</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Local conditions -------------------------------------------------- */}
+        <section className="border-y border-stone-200 bg-surface-sunken">
+          <div className="mx-auto max-w-7xl px-gutter py-section">
+            <div className="grid gap-gutter lg:grid-cols-[1fr_1.4fr]">
+              <h2 className="text-step-3">What {cityName} throws at a building</h2>
+              <div className="max-w-measure space-y-5 text-ink-soft">
+                <p>{cityContent.localSpecifics}</p>
+                <p>{cityContent.projectSnippet}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Services in this city --------------------------------------------- */}
+        <section className="mx-auto max-w-7xl px-gutter py-section">
+          <h2 className="text-step-3">Services in {cityName}</h2>
+          <ul className="mt-8 grid gap-x-gutter gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
+            {SEO_CONSTANTS.PRIMARY_SERVICES.map((service) => (
+              <li key={service.slug}>
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="text-step-1 text-ink-soft underline-offset-4 hover:text-brand hover:underline"
+                  data-testid={`city-service-${service.slug}`}
+                >
+                  {service.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-10 border-t border-stone-200 pt-8">
+            <p className="max-w-measure text-ink-soft">
+              Limestone, Austin stone or flagstone on the property?{" "}
+              <Link
+                href="/services/delicate-stone-cleaning"
+                className="text-brand underline underline-offset-4 hover:no-underline"
+              >
+                Delicate stone is cleaned differently
+              </Link>
+              .
             </p>
           </div>
         </section>
 
-        <section className="container mx-auto px-4 py-12">
-          <div className="max-w-5xl mx-auto space-y-8">
-            <div className="bg-white rounded-lg shadow-md p-8">
-              <h2 className="text-2xl font-bold mb-4">Residential Pressure Washing Services in {cityName}, {stateName}</h2>
-              <p className="text-lg text-gray-700 mb-4">
-                {SEO_CONSTANTS.BUSINESS_NAME} helps homeowners in {cityName} protect and refresh their properties with professional power washing and pressure washing. We clean the surfaces that matter most for curb appeal and long-term value, including driveway concrete, patio entertainment spaces, front porch entries, house siding, roof lines, and exterior gutters. Every project starts with a surface assessment so we can choose the right approach for each material and stain type, whether that means soft washing for delicate exteriors or stronger pressure washing for concrete that can handle deeper cleaning.
-              </p>
-              <p className="text-lg text-gray-700 mb-4">
-                Our residential-first process is built to remove the buildup that homeowners in {cityName} deal with most often: algae, mold, and other organic growth in shaded areas; rust and red clay transfer on driveways and walkways; and oil or grease stains near garages, trash-pad zones, and high-traffic concrete. We also clear cobwebs and wasp nests from accessible exterior points to leave the property looking cleaner and more cared for from top to bottom. The goal is simple: deliver a visibly brighter home exterior without cutting corners or using the wrong pressure on sensitive surfaces.
-              </p>
-              <p className="text-lg text-gray-700">
-                {overview} Because Texas weather is unpredictable, regular maintenance is often the smartest way to avoid permanent discoloration and reduce future cleaning costs. A properly cleaned exterior not only looks better right away, it can also help protect paint life, preserve concrete appearance, and reduce slip hazards on patio and porch surfaces where organic growth can become slick after rain. If your home has started to look dull, streaked, or stained, a professional wash can make an immediate difference.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-md p-8">
-              <h2 className="text-2xl font-bold mb-4">What We Clean for Homeowners in {cityName}</h2>
-              <p className="text-gray-700 mb-4">
-                Most calls we receive in {cityName} are for exterior areas that receive daily wear and weather exposure. Driveway cleaning is one of the highest-impact services because oil, grease, and red clay marks stand out quickly and reduce curb appeal. Patio and porch cleaning is also in high demand, especially before gatherings, listing photos, or seasonal maintenance. Roof cleaning and gutter face cleaning round out the exterior by removing black streaks, algae discoloration, and grime along upper elevations.
-              </p>
-              <p className="text-gray-700 mb-4">
-                House washing is performed with a low-pressure soft wash method for siding, painted trim, stucco, and other sensitive materials. This removes mold, mildew, and surface contaminants without forcing water behind siding or damaging finishes. For harder surfaces like concrete and select stone areas, we use calibrated pressure washing with pretreatment to break down stubborn staining and improve overall results. If a surface requires extra care, we adjust technique and chemistry accordingly.
-              </p>
-              <p className="text-gray-700">
-                We also understand that every property has unique constraints, from landscaping and drainage to HOA visibility and access. That is why our process includes practical prep and communication before we begin. You get straightforward recommendations, clear scope, and a cleaner result that aligns with your goals, whether you are preparing for guests, protecting long-term property value, or simply restoring a home exterior that has built up too much grime.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-md p-8">
-              <h2 className="text-2xl font-bold mb-4">Local Conditions and Stain Problems in {cityName}</h2>
-              <p className="text-gray-700 mb-4">{cityContent.localSpecifics}</p>
-              <p className="text-gray-700 mb-4">
-                A recent project in {cityName} highlights what the right process can do: "{cityContent.projectSnippet}" This kind of transformation is common when surface prep, stain treatment, and pressure levels are matched correctly to the material. Rushing the process or using one method for every area often leaves uneven results or avoidable damage.
-              </p>
-              <p className="text-gray-700">
-                For homeowners, the biggest benefit is confidence that the job is done safely and thoroughly. We treat each property like a long-term asset, not a quick spray-and-go service. If you want dependable power washing in {cityName}, our team is ready to help.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-md p-8">
-              <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                <MapPin className="h-6 w-6 text-blue-600" />
-                Service Area Map: {cityName}, {stateName}
+        {/* Nearby ------------------------------------------------------------- */}
+        <section className="border-y border-stone-200 bg-surface">
+          <div className="mx-auto max-w-7xl px-gutter py-section">
+            <div className="grid gap-gutter lg:grid-cols-[1fr_1.4fr]">
+              <h2 className="flex items-start gap-3 text-step-3">
+                <MapPin className="mt-2 h-5 w-5 shrink-0 text-brand" aria-hidden="true" />
+                Nearby areas
               </h2>
-              <p className="text-gray-700 mb-4">
-                We provide residential pressure washing throughout {cityName} and nearby DFW communities.
-              </p>
-              <div className="rounded-lg overflow-hidden border border-gray-200">
-                <iframe
-                  title={`Map of ${cityName}, ${stateName}`}
-                  src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
-                  width="100%"
-                  height="320"
-                  style={{ border: 0 }}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+              <div>
+                <p className="max-w-measure text-ink-soft">
+                  If you are near {cityName}, we also serve these communities:
+                </p>
+                <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+                  {nearbyAreaSlugs.slice(0, 6).map((areaSlug) => {
+                    const area = SEO_CONSTANTS.SERVICE_AREA_CITIES.find((c) => c.slug === areaSlug);
+                    if (!area) return null;
+                    return (
+                      <li key={areaSlug}>
+                        <Link
+                          href={`/service-areas/${areaSlug}`}
+                          className="text-step-1 text-ink-soft underline-offset-4 hover:text-brand hover:underline"
+                          data-testid={`link-nearby-${areaSlug}`}
+                        >
+                          {area.name}, {area.state}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+                <Link
+                  href="/service-areas"
+                  className="mt-8 inline-block text-step--1 font-medium uppercase tracking-wider text-brand underline-offset-4 hover:underline"
+                >
+                  All service areas &rarr;
+                </Link>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div className="bg-blue-50 rounded-lg p-8">
-              <h2 className="text-2xl font-bold mb-4">Nearby Service Areas</h2>
-              <p className="text-gray-700 mb-5">
-                If you are near {cityName}, we also serve these surrounding communities:
-              </p>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                {nearbyAreaSlugs.slice(0, 6).map((areaSlug) => {
-                  const area = SEO_CONSTANTS.SERVICE_AREA_CITIES.find((c) => c.slug === areaSlug);
-                  if (!area) return null;
-                  return (
-                    <Link
-                      key={areaSlug}
-                      href={`/service-areas/${areaSlug}`}
-                      className="text-blue-700 hover:text-blue-900 font-medium"
-                      data-testid={`link-nearby-${areaSlug}`}
-                    >
-                      {area.name}, {area.state}
-                    </Link>
-                  );
-                })}
-              </div>
+        {/* FAQ ----------------------------------------------------------------- */}
+        <section className="mx-auto max-w-7xl px-gutter py-section">
+          <div className="grid gap-gutter lg:grid-cols-[1fr_1.4fr]">
+            <h2 className="text-step-3">
+              Questions from {cityName}
+            </h2>
+            <div className="divide-y divide-stone-200">
+              {faqItems.map((faq, idx) => (
+                <div key={idx} className="py-6 first:pt-0">
+                  <h3 className="text-step-1">{faq.question}</h3>
+                  <p className="mt-3 max-w-measure text-ink-soft">{faq.answer}</p>
+                </div>
+              ))}
             </div>
+          </div>
+        </section>
 
-            <div className="bg-white rounded-lg shadow-md p-8">
-              <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions About Pressure Washing in {cityName}</h2>
-              <div className="space-y-6">
-                {faqItems.map((faq, idx) => (
-                  <div key={idx}>
-                    <h3 className="text-lg font-semibold mb-2">{faq.question}</h3>
-                    <p className="text-gray-700">{faq.answer}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-blue-600 text-white rounded-lg p-8 text-center">
-              <h2 className="text-3xl font-bold mb-4">Get a Free Quote for {cityName}, {stateName}</h2>
-              <p className="text-xl mb-6">
-                Call now to schedule residential power washing and pressure washing services.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-gray-100" data-testid="button-call">
-                  <a href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}>
-                    <Phone className="mr-2 h-5 w-5" />
-                    Call (817) 585-6388
-                  </a>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white hover:text-blue-600" data-testid="button-email">
-                  <a href={`mailto:${SEO_CONSTANTS.CONTACT.EMAIL}`}>
-                    <Mail className="mr-2 h-5 w-5" />
-                    Email Us
-                  </a>
-                </Button>
-              </div>
+        {/* CTA ------------------------------------------------------------------ */}
+        <section className="border-t border-stone-200 bg-ink text-white">
+          <div className="mx-auto max-w-7xl px-gutter py-section">
+            <h2 className="max-w-[20ch] text-step-4 text-white">
+              Free quote for {cityName}, {stateName}
+            </h2>
+            <div className="mt-10 flex flex-wrap items-center gap-6">
+              <a
+                href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                className="inline-flex items-center gap-2 bg-white px-6 py-3 font-medium text-ink transition-colors hover:bg-stone-100"
+              >
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                {SEO_CONSTANTS.CONTACT.PHONE}
+              </a>
+              <a
+                href={`mailto:${SEO_CONSTANTS.CONTACT.EMAIL}`}
+                className="text-white/70 underline-offset-4 hover:text-white hover:underline"
+              >
+                {SEO_CONSTANTS.CONTACT.EMAIL}
+              </a>
             </div>
           </div>
         </section>
@@ -421,4 +500,3 @@ export default function CityPageTemplate({ cityName, stateName, slug }: CityPage
     </div>
   );
 }
-

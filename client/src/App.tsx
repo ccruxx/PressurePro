@@ -5,6 +5,7 @@ import Analytics from "@/components/seo/Analytics";
 import Home from "@/pages/home";
 import QuotePreview from "@/pages/quote-preview";
 import About from "@/pages/about";
+import GalleryPage from "@/pages/gallery";
 import NotFound from "@/pages/not-found";
 
 import ServicesIndex from "@/pages/services/index";
@@ -56,6 +57,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/quote-preview" component={QuotePreview} />
       <Route path="/about" component={About} />
+      <Route path="/gallery" component={GalleryPage} />
 
       <Route path="/services" component={ServicesIndex} />
       <Route path="/services/pressure-washing" component={PressureWashing} />

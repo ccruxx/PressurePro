@@ -1,40 +1,47 @@
 import { Link } from "wouter";
-
-const linkedCities = [
-  { name: "Arlington", slug: "arlington-tx" },
-  { name: "Mansfield", slug: "mansfield-tx" },
-  { name: "Southlake", slug: "southlake-tx" },
-  { name: "Grapevine", slug: "grapevine-tx" },
-  { name: "Dallas", slug: "dallas-tx" },
-  { name: "Fort Worth", slug: "fort-worth-tx" },
-  { name: "Euless", slug: "euless-tx" },
-  { name: "Bedford", slug: "bedford-tx" },
-  { name: "Plano", slug: "plano-tx" },
-  { name: "Carrollton", slug: "carrollton-tx" },
-  { name: "Addison", slug: "addison-tx" },
-  { name: "Farmers Branch", slug: "farmers-branch-tx" },
-];
+import { SEO_CONSTANTS, TOP_CITIES_FOR_DISPLAY } from "@/lib/seo-constants";
 
 export default function ServingCities() {
+  const bySlug = new Map(SEO_CONSTANTS.SERVICE_AREA_CITIES.map((c) => [c.name, c.slug]));
+
   return (
-    <section className="bg-white py-8">
-      <div className="container mx-auto px-4 text-center">
-        <p className="text-gray-700 text-lg">
-          <strong className="text-gray-900">Proudly serving homeowners in:</strong>{" "}
-          {linkedCities.map((city, index) => (
-            <span key={city.slug}>
-              <Link
-                href={`/service-areas/${city.slug}`}
-                className="text-blue-600 hover:text-blue-800 font-medium"
-                data-testid={`link-city-${city.slug}`}
-              >
-                {city.name}
-              </Link>
-              {index < linkedCities.length - 1 && <span className="mx-2">|</span>}
-            </span>
-          ))}
-          <span className="ml-2 text-gray-600">plus Colleyville and Coppell.</span>
-        </p>
+    <section className="bg-canvas">
+      <div className="mx-auto max-w-7xl px-gutter py-section">
+        <div className="grid gap-gutter lg:grid-cols-[1fr_1.4fr]">
+          <div>
+            <h2 className="text-step-3">Where we work</h2>
+            <p className="mt-4 max-w-measure text-ink-soft">
+              Based in {SEO_CONSTANTS.NAP.CITY}, working across the DFW metroplex.
+            </p>
+          </div>
+          <div>
+            <ul className="flex flex-wrap gap-x-6 gap-y-3">
+              {TOP_CITIES_FOR_DISPLAY.map((name) => {
+                const slug = bySlug.get(name);
+                return (
+                  <li key={name}>
+                    {slug ? (
+                      <Link
+                        href={`/service-areas/${slug}`}
+                        className="text-step-1 text-ink-soft underline-offset-4 hover:text-brand hover:underline"
+                      >
+                        {name}
+                      </Link>
+                    ) : (
+                      <span className="text-step-1 text-ink-soft">{name}</span>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+            <Link
+              href="/service-areas"
+              className="mt-8 inline-block text-step--1 font-medium uppercase tracking-wider text-brand underline-offset-4 hover:underline"
+            >
+              All {SEO_CONSTANTS.SERVICE_AREA_CITIES.length} service areas &rarr;
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );

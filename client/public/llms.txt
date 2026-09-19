@@ -1,0 +1,55 @@
+# DFW Pristine Power Washing
+
+> Owner-operated exterior cleaning based at 203 Walnut Way, Euless, TX 76039,
+> serving the Dallas-Fort Worth metroplex. Soft washing, pressure washing,
+> delicate natural stone restoration, and commercial property work.
+
+Contact: (817) 585-6388 | joshua.dfwpristine@gmail.com
+Hours: open 24 hours
+Owner: Josh Collins
+
+## What distinguishes this business
+
+Surfaces are matched to a cleaning method rather than everything receiving the
+same pressure. Concrete is cleaned with rotary surface cleaners at working
+pressure. Siding, stucco, roofs and natural stone are soft washed - detergent,
+dwell time and a low-pressure rinse - because high pressure permanently damages
+them. No acidic cleaners are used on limestone or other calcium-carbonate stone.
+
+## Services
+
+- Pressure Washing: /services/pressure-washing
+- House Washing (Soft Wash): /services/house-washing
+- Roof Cleaning: /services/roof-cleaning
+- Driveway / Concrete Cleaning: /services/driveway-concrete-cleaning
+- Delicate Stone Cleaning: /services/delicate-stone-cleaning
+- Commercial Pressure Washing: /services/commercial-pressure-washing
+- Window Cleaning: /services/window-cleaning
+
+## Delicate stone specialisms
+
+Soft, porous or acid-sensitive natural stone, each with its own page:
+
+- Limestone: /services/delicate-stone-cleaning/limestone
+- Austin Stone (cream Texas limestone veneer): /services/delicate-stone-cleaning/austin-stone
+- Flagstone (usually Oklahoma sandstone): /services/delicate-stone-cleaning/flagstone
+- Pennsylvania Stone / bluestone: /services/delicate-stone-cleaning/pennsylvania-stone
+- Lueders Stone (also spelled Leuders): /services/delicate-stone-cleaning/lueders-stone
+
+## Commercial
+
+Parking lots and drive lanes, loading docks and aprons, dumpster pads, fuel
+islands and canopies, storefronts and sidewalks, and fleet washing. Usually
+scheduled overnight. Certificates of insurance available on request.
+/services/commercial-pressure-washing
+
+## Coverage
+
+31 cities across the DFW metroplex. Full list: /service-areas
+
+## Other pages
+
+- All services: /services
+- Work gallery, filterable by surface: /gallery
+- About: /about
+- Sitemap: /sitemap.xml

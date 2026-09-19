@@ -1,123 +1,117 @@
 import { Link } from "wouter";
+import { Phone } from "lucide-react";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import SEOHead from "@/components/seo/SEOHead";
 import SchemaOrg from "@/components/seo/SchemaOrg";
-import { SEO_CONSTANTS } from "@/lib/seo-constants";
+import WorkImage from "@/components/work-image";
+import { SEO_CONSTANTS, STONE_TYPES } from "@/lib/seo-constants";
+import { serviceIcon, serviceContent } from "@/lib/service-content";
 import { getLocalBusinessSchema, getBreadcrumbSchema } from "@/lib/schema-helpers";
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Droplets, Home, Triangle, Square, Building2, Sparkles } from "lucide-react";
 
-const serviceIcons = {
-  "pressure-washing": Droplets,
-  "house-washing": Home,
-  "roof-cleaning": Triangle,
-  "driveway-concrete-cleaning": Square,
-  "commercial-pressure-washing": Building2,
-  "window-cleaning": Sparkles
+const HERO_BY_SLUG: Record<string, string> = {
+  "pressure-washing": "curved-concrete-walkway-after",
+  "house-washing": "stucco-eave-soft-wash",
+  "roof-cleaning": "gutter-and-roofline-after",
+  "driveway-concrete-cleaning": "concrete-walkway-rust-removal",
+  "delicate-stone-cleaning": "flagstone-entry-walk-austin-stone-home",
+  "commercial-pressure-washing": "truck-stop-fuel-canopy-cleaning",
+  "window-cleaning": "stucco-window-trim-cleaning",
 };
 
 export default function ServicesIndex() {
-  const breadcrumbs = getBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Services", url: "/services" }
-  ]);
-
-  const localBusiness = getLocalBusinessSchema();
+  const schema = [
+    getBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Services", url: "/services" },
+    ]),
+    getLocalBusinessSchema(),
+  ];
 
   return (
-    <div className="font-sans bg-slate-50">
+    <div className="bg-canvas">
       <SEOHead
-        title={`Pressure Washing Services in DFW | ${SEO_CONSTANTS.BUSINESS_NAME}`}
-        description={`Professional pressure washing, house washing, roof cleaning, and more in the DFW area. Free quotes, same-week scheduling. Serving Arlington, Mansfield, Dallas, Fort Worth and all of DFW.`}
+        title={`Pressure Washing & Exterior Cleaning Services in DFW | ${SEO_CONSTANTS.BUSINESS_NAME}`}
+        description={`Soft washing, pressure washing, roof and gutter cleaning, delicate stone restoration and commercial work across the DFW metroplex. Call ${SEO_CONSTANTS.CONTACT.PHONE} for a free quote.`}
         canonical="/services"
       />
-      <SchemaOrg schema={[breadcrumbs, localBusiness]} />
-      
+      <SchemaOrg schema={schema} />
       <Header />
-      
+
       <main className="min-h-screen pt-header">
-        <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4" data-testid="heading-page-title">
-              Our Services
+        <section className="border-b border-stone-200 bg-surface">
+          <div className="mx-auto max-w-7xl px-gutter py-section">
+            <p className="text-step--1 uppercase tracking-[0.18em] text-brand">Services</p>
+            <h1 className="mt-4 max-w-[20ch] text-step-5">
+              Every surface on the property, cleaned the way it should be
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100">
-              Professional pressure washing and exterior cleaning for homes and businesses in DFW
+            <p className="mt-6 max-w-measure text-step-1 text-ink-soft">
+              Concrete takes pressure. Siding, roofs and natural stone do not. The
+              difference between those is most of the job.
             </p>
+            <div className="mt-10">
+              <a
+                href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                className="inline-flex items-center gap-2 bg-brand px-6 py-3 text-step-0 font-medium text-white transition-colors hover:bg-brand-strong"
+              >
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                {SEO_CONSTANTS.CONTACT.PHONE}
+              </a>
+            </div>
           </div>
         </section>
 
-        <section className="container mx-auto px-4 py-12">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-              {SEO_CONSTANTS.PRIMARY_SERVICES.map((service) => {
-                const Icon = serviceIcons[service.slug as keyof typeof serviceIcons];
-                return (
-                  <Link key={service.slug} href={`/services/${service.slug}`} data-testid={`link-service-${service.slug}`}>
-                    <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
-                      <CardHeader>
-                        <div className="flex items-start gap-4">
-                          <div className="p-3 bg-blue-100 rounded-lg">
-                            <Icon className="h-6 w-6 text-blue-600" />
-                          </div>
-                          <div>
-                            <CardTitle className="text-xl mb-2">{service.name}</CardTitle>
-                            <CardDescription className="text-base">
-                              {service.description}
-                            </CardDescription>
-                          </div>
-                        </div>
-                      </CardHeader>
-                    </Card>
+        <section className="mx-auto max-w-7xl px-gutter py-section">
+          <div className="grid gap-x-gutter gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+            {SEO_CONSTANTS.PRIMARY_SERVICES.map((service) => {
+              const Icon = serviceIcon(service.slug);
+              const content = serviceContent(service.slug);
+              return (
+                <article key={service.slug} className="group">
+                  <Link href={`/services/${service.slug}`} data-testid={`card-service-${service.slug}`}>
+                    <WorkImage
+                      slug={HERO_BY_SLUG[service.slug] ?? "curved-concrete-walkway-after"}
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      aspect="aspect-[4/3]"
+                      className="transition-transform duration-500 group-hover:scale-[1.02]"
+                    />
+                    <h2 className="mt-5 flex items-center gap-3 text-step-2 group-hover:text-brand">
+                      <Icon className="h-5 w-5 shrink-0 text-brand" aria-hidden="true" />
+                      {service.name}
+                    </h2>
                   </Link>
-                );
-              })}
-            </div>
+                  <p className="mt-2 max-w-measure text-ink-soft">
+                    {content?.summary ?? service.description}
+                  </p>
+                </article>
+              );
+            })}
+          </div>
+        </section>
 
-            <div className="bg-white rounded-lg shadow-md p-8 mb-8">
-              <h2 className="text-3xl font-bold mb-6">Why Choose DFW Pristine Power Washing?</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Professional Equipment</h3>
-                  <p className="text-gray-700">
-                    We use commercial-grade pressure washers and soft wash systems to deliver superior results on every project.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Experienced Team</h3>
-                  <p className="text-gray-700">
-                    {SEO_CONSTANTS.OWNER.YEARS_IN_BUSINESS} years serving the DFW area with consistent 5-star reviews from satisfied customers.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Free Quotes</h3>
-                  <p className="text-gray-700">
-                    Every project starts with a free, detailed quote with no obligation or pressure to commit.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Same-Week Service</h3>
-                  <p className="text-gray-700">
-                    Most jobs can be scheduled within 2-5 days, weather permitting. We work around your schedule.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-blue-50 rounded-lg p-8 text-center">
-              <h2 className="text-2xl font-bold mb-4">Ready to Get Started?</h2>
-              <p className="text-lg text-gray-700 mb-6">
-                Call us today for a free quote: <a href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`} className="text-blue-600 font-semibold hover:text-blue-800" data-testid="link-call">{SEO_CONSTANTS.CONTACT.PHONE}</a>
-              </p>
-              <Link href="/service-areas" className="text-blue-600 hover:text-blue-800 font-medium" data-testid="link-service-areas">
-                → View All Service Areas
-              </Link>
-            </div>
+        <section className="border-y border-stone-200 bg-surface-sunken">
+          <div className="mx-auto max-w-7xl px-gutter py-section">
+            <h2 className="text-step-3">Delicate stone, by type</h2>
+            <p className="mt-4 max-w-measure text-ink-soft">
+              Soft natural stone needs a different approach from everything else on
+              this page. Each of these behaves differently under water and chemistry.
+            </p>
+            <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+              {STONE_TYPES.map((stone) => (
+                <li key={stone.slug}>
+                  <Link
+                    href={`/services/delicate-stone-cleaning/${stone.slug}`}
+                    className="text-step-1 text-brand underline-offset-4 hover:underline"
+                  >
+                    {stone.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       </main>
-      
+
       <Footer />
     </div>
   );
