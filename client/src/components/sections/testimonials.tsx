@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Star } from "lucide-react";
 
 export default function Testimonials() {
   const testimonials = [
@@ -66,7 +67,7 @@ export default function Testimonials() {
                 <div className="flex items-center mb-4">
                   <div className="flex text-yellow-400 text-xl">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <i key={i} className="fas fa-star"></i>
+                      <Star key={i} className="h-4 w-4 fill-current" aria-hidden="true" />
                     ))}
                   </div>
                 </div>

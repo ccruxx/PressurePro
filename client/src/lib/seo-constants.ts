@@ -97,8 +97,7 @@ export const SEO_CONSTANTS = {
   SOCIAL: {
     FACEBOOK: "https://www.facebook.com/profile.php?id=61578681147252",
     INSTAGRAM: "",
-    // Paste the "Share" link from the Google Business Profile here.
-    GOOGLE_BUSINESS: "",
+    GOOGLE_BUSINESS: "https://share.google/FqAUHWw5ykceLj5Jr",
   },
   OWNER: {
     NAME: "Josh Collins",

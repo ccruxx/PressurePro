@@ -410,8 +410,41 @@ export default function QuoteCalculator() {
         </div>
       </div>
 
+      {/* ── Services we never price from a form: straight to a human ────── */}
+      {selectedService && CUSTOM_QUOTE_SERVICES.includes(selectedService) && (
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+          <StepHeader n={items.length === 0 ? 2 : "\u203a"} label="Free On-Site Estimate" />
+          <div className="p-6">
+            <p className="text-gray-700">
+              {selectedService === "commercial"
+                ? "Commercial pricing depends on square footage, surface type and how often the work recurs \u2014 so it is quoted on site rather than from a form."
+                : "Delicate stone is quoted after we see it. The stone type, its finish and what has stained it all change the approach, and guessing a price would mean guessing the method."}
+            </p>
+            <p className="mt-3 text-gray-700">
+              Tell us what you have and we will give you a real number. Estimates are free.
+            </p>
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
+              <a
+                href="tel:+18175856388"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-700"
+                data-testid="custom-quote-call"
+              >
+                Call (817) 585-6388
+              </a>
+              <a
+                href="mailto:joshua.dfwpristine@gmail.com?subject=Estimate%20request"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-slate-200 px-6 py-3 font-semibold text-gray-900 transition-colors hover:border-blue-400 hover:bg-blue-50"
+                data-testid="custom-quote-email"
+              >
+                Email for an estimate
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ── Step 2: Measurements ────────────────────────────────────────── */}
-      {selectedService && (
+      {selectedService && !CUSTOM_QUOTE_SERVICES.includes(selectedService) && (
         <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
           <StepHeader n={items.length === 0 ? 2 : "›"} label="Enter Measurements" />
           <div className="p-6">
@@ -440,8 +473,8 @@ export default function QuoteCalculator() {
                 {roofTier === "over5000" && (
                   <div className="mt-4 bg-orange-50 border border-orange-200 rounded-xl px-5 py-4 text-sm text-orange-800">
                     <strong>Large roof — specialized quote required.</strong> Roofs over 5,000 sq ft require an on-site assessment.
-                    Please <a href="tel:+18175856388" className="underline font-semibold">call us at (817) 585-6388</a> or
-                    fill out the contact form below for a free estimate.
+                    Please <a href="tel:+18175856388" className="underline font-semibold">call (817) 585-6388</a> or{" "}
+                    <a href="mailto:joshua.dfwpristine@gmail.com?subject=Estimate%20request" className="underline font-semibold">email us</a> for a free estimate.
                   </div>
                 )}
               </div>

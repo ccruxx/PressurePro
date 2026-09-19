@@ -15,6 +15,7 @@ import drivewayBefore from "@assets/driveway_1757974664720.jpg";
 import drivewayAfter from "@assets/driveway2_1757974664720.jpg";
 import walkwayDeckingBefore from "@assets/walkway_decking_1757974664720.jpg";
 import walkwayDeckingAfter from "@assets/walkway_decking2_1757974664720.jpg";
+import { Calculator, Phone } from "lucide-react";
 
 export default function Gallery() {
   // Interactive before/after sliders data
@@ -203,7 +204,7 @@ export default function Gallery() {
                 }}
                 className="bg-success text-white px-6 py-3 rounded-lg font-semibold hover:bg-success/90"
               >
-                <i className="fas fa-calculator mr-2"></i>Get Free Quote
+                <Calculator className="mr-2 inline h-4 w-4" aria-hidden="true" />Get Free Quote
               </Button>
               <Button
                 onClick={() => {
@@ -211,7 +212,7 @@ export default function Gallery() {
                 }}
                 className="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary"
               >
-                <i className="fas fa-phone mr-2"></i>Call Now
+                <Phone className="mr-2 inline h-4 w-4" aria-hidden="true" />Call Now
               </Button>
             </div>
           </div>

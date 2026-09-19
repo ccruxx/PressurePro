@@ -1,28 +1,29 @@
 import JoshPicture from "@assets/JoshPicture.jpg";
 import logo2 from "@assets/logo2.png";
+import { Award, Leaf, ShieldCheck, Wrench } from "lucide-react";
 
 export default function About() {
   const features = [
     {
-      icon: "fas fa-certificate",
+      icon: Award,
       title: "Licensed & Insured",
       description:
         "Fully licensed, bonded, and insured for your peace of mind and protection.",
     },
     {
-      icon: "fas fa-tools",
+      icon: Wrench,
       title: "Professional Equipment",
       description:
         "State-of-the-art pressure washing equipment for superior results and efficiency.",
     },
     {
-      icon: "fas fa-shield-alt",
+      icon: ShieldCheck,
       title: "100% Satisfaction Guarantee",
       description:
         "We stand behind our work with a complete satisfaction guarantee on every job.",
     },
     {
-      icon: "fas fa-leaf",
+      icon: Leaf,
       title: "Eco-Friendly Solutions",
       description:
         "Environmentally safe cleaning products that protect your property and surroundings.",
@@ -48,7 +49,7 @@ export default function About() {
               {features.map((feature, index) => (
                 <div key={index} className="flex items-start space-x-4">
                   <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                    <i className={`${feature.icon} text-white text-xl`}></i>
+                    <feature.icon className="h-6 w-6 text-white" aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-800 mb-1">

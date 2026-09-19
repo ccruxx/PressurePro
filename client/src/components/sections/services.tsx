@@ -1,9 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { ArrowRight, Building2, Check, Droplets, Home, Leaf, Route, Trash2 } from "lucide-react";
 
 export default function Services() {
   const services = [
     {
-      icon: "fas fa-home",
+      icon: Home,
       title: "Residential House Washing",
       description:
         "Low-pressure soft washing for siding, brick, and painted exteriors to remove organic growth without damage.",
@@ -15,7 +16,7 @@ export default function Services() {
       ],
     },
     {
-      icon: "fas fa-road",
+      icon: Route,
       title: "Driveway, Patio, and Porch Cleaning",
       description:
         "Restore curb appeal with deep concrete and stone cleaning for high-traffic outdoor living areas.",
@@ -27,7 +28,7 @@ export default function Services() {
       ],
     },
     {
-      icon: "fas fa-tint",
+      icon: Droplets,
       title: "Roof and Gutter Exterior Wash",
       description:
         "Gentle roof cleaning and exterior gutter brightening to remove black streaks, algae, and buildup.",
@@ -39,7 +40,7 @@ export default function Services() {
       ],
     },
     {
-      icon: "fas fa-leaf",
+      icon: Leaf,
       title: "Eco-Conscious Cleaning Options",
       description:
         "Property-safe detergents and methods designed for homes with landscaping, pets, and children.",
@@ -51,7 +52,7 @@ export default function Services() {
       ],
     },
     {
-      icon: "fas fa-building",
+      icon: Building2,
       title: "Commercial Pressure Washing",
       description:
         "Parking lots, loading docks, dumpster pads, storefronts and fleet, scheduled around your operating hours.",
@@ -63,7 +64,7 @@ export default function Services() {
       ],
     },
     {
-      icon: "fas fa-trash-alt",
+      icon: Trash2,
       title: "Problem Area Cleanup",
       description:
         "Targeted treatment for grease zones and heavily stained surfaces where grime and odors build up.",
@@ -96,8 +97,8 @@ export default function Services() {
               className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-shadow"
             >
               <CardContent className="p-0">
-                <div className="text-4xl text-primary mb-4">
-                  <i className={service.icon}></i>
+                <div className="mb-4 text-brand">
+                  <service.icon className="h-8 w-8" aria-hidden="true" />
                 </div>
                 <h3 className="text-2xl font-semibold text-gray-800 mb-3">
                   {service.title}
@@ -106,13 +107,13 @@ export default function Services() {
                 <ul className="text-sm text-gray-600 space-y-2 mb-6">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex}>
-                      <i className="fas fa-check text-success mr-2"></i>
+                      <Check className="mr-2 inline h-4 w-4 text-brand" aria-hidden="true" />
                       {feature}
                     </li>
                   ))}
                 </ul>
                 <button className="text-primary font-semibold hover:text-secondary transition-colors">
-                  Learn More <i className="fas fa-arrow-right ml-1"></i>
+                  Learn More <ArrowRight className="ml-1 inline h-4 w-4" aria-hidden="true" />
                 </button>
               </CardContent>
             </Card>

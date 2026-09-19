@@ -29,9 +29,9 @@ export default function Hero() {
         {/* Scrim in two layers: a flat base so contrast holds at every width
             (the directional gradient alone leaves mobile text over bright stone),
             plus a left-weighted gradient behind the type. */}
-        <div className="absolute inset-0 bg-ink/45" aria-hidden="true" />
+        <div className="absolute inset-0 bg-ink/25" aria-hidden="true" />
         <div
-          className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/55 to-transparent"
+          className="absolute inset-0 bg-gradient-to-r from-ink/70 via-ink/40 to-transparent"
           aria-hidden="true"
         />
 

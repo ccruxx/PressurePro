@@ -1,26 +1,27 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 
 export default function Contact() {
   const contactInfo = [
     {
-      icon: "fas fa-phone",
+      icon: Phone,
       title: "Phone",
       value: "(817) 585-6388",
     },
     {
-      icon: "fas fa-envelope",
+      icon: Mail,
       title: "Email",
       value: "joshua.dfwpristine@gmail.com",
     },
     {
-      icon: "fas fa-map-marker-alt",
+      icon: MapPin,
       title: "Service Area",
       value:
         "Colleyville, Southlake, Grapevine, Dallas, Fort Worth, Euless, Bedford, Plano, Carrollton, Addison, Farmers Branch, Coppell, Arlington, and Mansfield",
     },
     {
-      icon: "fas fa-clock",
+      icon: Clock,
       title: "Business Hours",
       value:
         "Mon-Fri: 7:00 AM - 7:00 PM\nSat: 8:00 AM - 6:00 PM\nSun: 9:00 AM - 5:00 PM",
@@ -53,7 +54,7 @@ export default function Contact() {
                   {contactInfo.map((info, index) => (
                     <div key={index} className="flex items-center space-x-4">
                       <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                        <i className={`${info.icon} text-white`}></i>
+                        <info.icon className="h-5 w-5 text-white" aria-hidden="true" />
                       </div>
                       <div>
                         <div className="font-semibold text-gray-800">
@@ -86,7 +87,7 @@ export default function Contact() {
                       onClick={() => window.open("tel:+18175856388", "_self")}
                       className="w-full bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100"
                     >
-                      <i className="fas fa-phone mr-2"></i>Call (817) 585-6388
+                      <Phone className="mr-2 inline h-4 w-4" aria-hidden="true" />Call (817) 585-6388
                     </Button>
                     <Button
                       onClick={() =>
@@ -97,7 +98,7 @@ export default function Contact() {
                       }
                       className="w-full bg-success text-white px-6 py-3 rounded-lg font-semibold hover:bg-success/90"
                     >
-                      <i className="fas fa-envelope mr-2"></i>Send Email
+                      <Mail className="mr-2 inline h-4 w-4" aria-hidden="true" />Send Email
                     </Button>
                   </div>
                 </CardContent>

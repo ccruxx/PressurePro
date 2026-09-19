@@ -1,77 +1,68 @@
 import { Link } from "wouter";
+import { Building2, Clock, Mail, MapPin, Phone } from "lucide-react";
 import logoImage from "@assets/logo2.png";
-import { SEO_CONSTANTS } from "@/lib/seo-constants";
+import { SEO_CONSTANTS, STONE_TYPES } from "@/lib/seo-constants";
+
+const STONE_HUB = "/services/delicate-stone-cleaning";
 
 export default function Footer() {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
+  const year = new Date().getFullYear();
+  const { NAP, CONTACT, SOCIAL } = SEO_CONSTANTS;
 
   return (
-    <footer className="bg-gray-800 text-white py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div>
-            <div className="mb-4">
-              <img
-                src={logoImage}
-                alt="DFW Pristine Power Washing Logo"
-                className="h-24 w-auto object-contain"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <p className="text-gray-300 mb-4">
-              Residential-first power washing and pressure washing for cleaner
-              driveways, patios, porches, roofs, and gutters across DFW.
+    <footer className="bg-ink text-white">
+      <div className="mx-auto max-w-7xl px-gutter py-section">
+        <div className="grid gap-12 lg:grid-cols-4">
+          {/* Brand ------------------------------------------------------- */}
+          <div className="lg:col-span-1">
+            <img
+              src={logoImage}
+              alt={`${SEO_CONSTANTS.BUSINESS_NAME} logo`}
+              width={160}
+              height={64}
+              loading="lazy"
+              decoding="async"
+              className="h-16 w-auto object-contain brightness-0 invert"
+            />
+            <p className="mt-6 max-w-[38ch] text-white/70">
+              Soft washing, pressure washing and delicate stone restoration for
+              homes and commercial property across Dallas&ndash;Fort Worth.
             </p>
-            <div className="flex space-x-4">
-              <a
-                href="https://www.facebook.com/profile.php?id=61578681147252"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-primary transition-colors"
-                data-testid="facebook-link"
-              >
-                <i className="fab fa-facebook text-xl"></i>
-              </a>
-              <a
-                href="#"
-                className="text-gray-300 hover:text-primary transition-colors"
-              >
-                <i className="fab fa-instagram text-xl"></i>
-              </a>
-              <a
-                href="https://share.google/FqAUHWw5ykceLj5Jr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-primary transition-colors"
-                data-testid="google-business-link"
-              >
-                <i className="fab fa-google text-xl"></i>
-              </a>
-              <a
-                href="#"
-                className="text-gray-300 hover:text-primary transition-colors"
-              >
-                <i className="fab fa-yelp text-xl"></i>
-              </a>
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-step--1">
+              {SOCIAL.FACEBOOK && (
+                <a
+                  href={SOCIAL.FACEBOOK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/70 underline-offset-4 hover:text-white hover:underline"
+                  data-testid="facebook-link"
+                >
+                  Facebook
+                </a>
+              )}
+              {SOCIAL.GOOGLE_BUSINESS && (
+                <a
+                  href={SOCIAL.GOOGLE_BUSINESS}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/70 underline-offset-4 hover:text-white hover:underline"
+                  data-testid="google-business-link"
+                >
+                  Google Business Profile
+                </a>
+              )}
             </div>
           </div>
 
-          {/* Services */}
+          {/* Services ---------------------------------------------------- */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">Our Services</h3>
-            <ul className="space-y-2 text-gray-300">
-              {SEO_CONSTANTS.PRIMARY_SERVICES.slice(0, 5).map((service) => (
+            <h2 className="font-display text-step-1 text-white">Services</h2>
+            <ul className="mt-5 space-y-2.5 text-white/70">
+              {SEO_CONSTANTS.PRIMARY_SERVICES.map((service) => (
                 <li key={service.slug}>
                   <Link
                     href={`/services/${service.slug}`}
-                    className="hover:text-primary transition-colors"
+                    className="underline-offset-4 hover:text-white hover:underline"
                     data-testid={`footer-service-${service.slug}`}
                   >
                     {service.name}
@@ -81,15 +72,30 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Service Areas */}
+          {/* Stone + areas ------------------------------------------------ */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">Service Areas</h3>
-            <ul className="space-y-2 text-gray-300">
-              {SEO_CONSTANTS.SERVICE_AREA_CITIES.slice(0, 6).map((city) => (
+            <h2 className="font-display text-step-1 text-white">Stone we clean</h2>
+            <ul className="mt-5 space-y-2.5 text-white/70">
+              {STONE_TYPES.map((stone) => (
+                <li key={stone.slug}>
+                  <Link
+                    href={`${STONE_HUB}/${stone.slug}`}
+                    className="underline-offset-4 hover:text-white hover:underline"
+                    data-testid={`footer-stone-${stone.slug}`}
+                  >
+                    {stone.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <h2 className="mt-10 font-display text-step-1 text-white">Service areas</h2>
+            <ul className="mt-5 space-y-2.5 text-white/70">
+              {SEO_CONSTANTS.SERVICE_AREA_CITIES.slice(0, 5).map((city) => (
                 <li key={city.slug}>
                   <Link
                     href={`/service-areas/${city.slug}`}
-                    className="hover:text-primary transition-colors"
+                    className="underline-offset-4 hover:text-white hover:underline"
                     data-testid={`footer-city-${city.slug}`}
                   >
                     {city.name}
@@ -99,68 +105,80 @@ export default function Footer() {
               <li>
                 <Link
                   href="/service-areas"
-                  className="hover:text-primary transition-colors font-semibold"
+                  className="text-white underline underline-offset-4 hover:no-underline"
                   data-testid="footer-all-areas"
                 >
-                  View All Areas -&gt;
+                  All {SEO_CONSTANTS.SERVICE_AREA_CITIES.length} areas &rarr;
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact Info - NAP Block */}
+          {/* NAP ---------------------------------------------------------- */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
-            <div className="space-y-3 text-gray-300 mb-4">
-              <div className="flex items-start space-x-3">
-                <i className="fas fa-building text-primary mt-1"></i>
+            <h2 className="font-display text-step-1 text-white">Contact</h2>
+            {/* Matches the Google Business Profile exactly - see seo-constants. */}
+            <address className="mt-5 space-y-4 not-italic text-white/70">
+              <div className="flex gap-3">
+                <Building2 className="mt-1 h-4 w-4 shrink-0 text-white/50" aria-hidden="true" />
                 <div>
-                  <div className="font-semibold text-white">{SEO_CONSTANTS.BUSINESS_NAME}</div>
-                  <div>{SEO_CONSTANTS.NAP.CITY}, {SEO_CONSTANTS.NAP.STATE}</div>
+                  <div className="text-white">{SEO_CONSTANTS.BUSINESS_NAME}</div>
+                  <div>{NAP.STREET}</div>
+                  <div>
+                    {NAP.CITY}, {NAP.STATE} {NAP.ZIP}
+                  </div>
                 </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <i className="fas fa-phone text-primary"></i>
-                <a href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`} className="hover:text-primary transition-colors" data-testid="footer-phone">
-                  {SEO_CONSTANTS.CONTACT.PHONE}
+              <div className="flex gap-3">
+                <Phone className="h-4 w-4 shrink-0 text-white/50" aria-hidden="true" />
+                <a
+                  href={`tel:${CONTACT.PHONE_RAW}`}
+                  className="underline-offset-4 hover:text-white hover:underline"
+                  data-testid="footer-phone"
+                >
+                  {CONTACT.PHONE}
                 </a>
               </div>
-              <div className="flex items-center space-x-3">
-                <i className="fas fa-envelope text-primary"></i>
-                <a href={`mailto:${SEO_CONSTANTS.CONTACT.EMAIL}`} className="hover:text-primary transition-colors" data-testid="footer-email">
-                  {SEO_CONSTANTS.CONTACT.EMAIL}
+              <div className="flex gap-3">
+                <Mail className="h-4 w-4 shrink-0 text-white/50" aria-hidden="true" />
+                <a
+                  href={`mailto:${CONTACT.EMAIL}`}
+                  className="break-all underline-offset-4 hover:text-white hover:underline"
+                  data-testid="footer-email"
+                >
+                  {CONTACT.EMAIL}
                 </a>
               </div>
-              <div className="flex items-center space-x-3">
-                <i className="fas fa-clock text-primary"></i>
+              <div className="flex gap-3">
+                <Clock className="h-4 w-4 shrink-0 text-white/50" aria-hidden="true" />
                 <span>{SEO_CONSTANTS.HOURS}</span>
               </div>
-            </div>
-
-            {/* Google Maps Embed */}
-            <div className="mt-4 rounded-lg overflow-hidden border border-gray-700">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d173190.58006905862!2d-97.297362!3d32.802955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e9929aefddf83%3A0xdda59dbc56a64a6b!2sDallas-Fort%20Worth%20Metroplex!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
-                width="100%"
-                height="200"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="DFW Pristine Power Washing - Arlington, TX"
-              ></iframe>
-            </div>
+              {SOCIAL.GOOGLE_BUSINESS && (
+                <div className="flex gap-3">
+                  <MapPin className="h-4 w-4 shrink-0 text-white/50" aria-hidden="true" />
+                  <a
+                    href={SOCIAL.GOOGLE_BUSINESS}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline-offset-4 hover:text-white hover:underline"
+                  >
+                    Directions and reviews
+                  </a>
+                </div>
+              )}
+            </address>
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+        <div className="mt-16 flex flex-col gap-3 border-t border-white/15 pt-8 text-step--1 text-white/50 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            &copy; 2024 DFW Pristine Power Washing. All rights reserved. |
-            Licensed, Bonded & Insured
+            &copy; {year} {SEO_CONSTANTS.BUSINESS_NAME}. All rights reserved.
+          </p>
+          <p>
+            Insured &middot; Free estimates &middot; {NAP.CITY}, {NAP.STATE}
           </p>
         </div>
       </div>
     </footer>
   );
 }
-
