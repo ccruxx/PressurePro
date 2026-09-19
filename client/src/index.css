@@ -114,13 +114,14 @@
     text-rendering: optimizeLegibility;
   }
 
-  /* Headings carry the display face; sizes come from the fluid scale. */
+  /* Headings take the display face but NOT a colour: they inherit, so a
+     heading inside a dark section (`.text-white`) stays white. Setting colour
+     here overrides the inherited value and silently blacks out hero text. */
   h1, h2, h3 {
     font-family: "Fraunces", Georgia, serif;
     font-weight: 600;
     letter-spacing: -0.015em;
     line-height: 1.1;
-    color: var(--ink);
     text-wrap: balance;
   }
 
