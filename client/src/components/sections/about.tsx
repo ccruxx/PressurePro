@@ -44,7 +44,7 @@ export default function About() {
             className="w-full bg-stone-100 object-cover shadow-md"
           />
           <div>
-            <p className="text-step--1 font-medium text-brand">
+            <p className="text-step--1 font-medium text-ink-faint">
               About
             </p>
             <h2 className="mt-4 max-w-[20ch] text-step-3">

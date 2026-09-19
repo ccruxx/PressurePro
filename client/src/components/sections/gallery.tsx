@@ -76,7 +76,7 @@ export default function Gallery({ limit, showSliders = true, headingLevel = 2 }:
   return (
     <section id="gallery" className="bg-canvas">
       <div className="mx-auto max-w-7xl px-gutter py-section">
-        <p className="text-step--1 font-medium text-brand">Our work</p>
+        <p className="text-step--1 font-medium text-ink-faint">Our work</p>
         <Heading className={`mt-4 max-w-[20ch] ${headingLevel === 1 ? "text-step-5" : "text-step-3"}`}>
           {headingLevel === 1
             ? "Every job, photographed"

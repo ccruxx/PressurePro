@@ -26,7 +26,7 @@ export default function Services() {
       <div className="mx-auto max-w-7xl px-gutter py-section">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className="text-step--1 font-medium text-brand">Services</p>
+            <p className="text-step--1 font-medium text-ink-faint">Services</p>
             <h2 className="mt-4 max-w-[22ch] text-step-3">
               Concrete takes pressure. Almost nothing else does.
             </h2>
