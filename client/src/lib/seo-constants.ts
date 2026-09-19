@@ -75,6 +75,9 @@ export const SEO_CONSTANTS = {
   CONTACT: {
     PHONE: "(817) 585-6388",
     PHONE_RAW: "8175856388",
+    // E.164, for tel: hrefs. Bare 10-digit tel: values are handled
+    // inconsistently outside the US, so every call link uses this.
+    PHONE_TEL: "+18175856388",
     EMAIL: "joshua.dfwpristine@gmail.com",
     ACTUAL_EMAIL: "joshua.dfwpristine@gmail.com",
   },

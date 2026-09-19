@@ -32,7 +32,7 @@ export default function ServiceAreasIndex() {
         <section className="border-b border-stone-200 bg-surface">
           <div className="mx-auto grid max-w-7xl items-center gap-gutter px-gutter py-section lg:grid-cols-2">
             <div>
-              <p className="text-step--1 uppercase tracking-[0.18em] text-brand">
+              <p className="text-step--1 font-medium text-brand">
                 Service areas
               </p>
               <h1 className="mt-4 max-w-[18ch] text-step-5">
@@ -45,7 +45,7 @@ export default function ServiceAreasIndex() {
               </p>
               <div className="mt-10">
                 <a
-                  href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                  href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
                   className="inline-flex items-center gap-2 bg-brand px-6 py-3 text-step-0 font-medium text-white transition-colors hover:bg-brand-strong"
                 >
                   <Phone className="h-4 w-4" aria-hidden="true" />
@@ -70,7 +70,7 @@ export default function ServiceAreasIndex() {
               <li key={city.slug} className="border-t border-stone-200 pt-4">
                 <Link
                   href={`/service-areas/${city.slug}`}
-                  className="text-step-1 text-ink-soft underline-offset-4 hover:text-brand hover:underline"
+                  className="inline-block py-2 text-step-1 text-ink-soft underline-offset-4 hover:text-brand hover:underline"
                   data-testid={`area-${city.slug}`}
                 >
                   {city.name}, {city.state}

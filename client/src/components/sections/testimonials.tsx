@@ -52,9 +52,9 @@ export default function Testimonials() {
               href={SEO_CONSTANTS.SOCIAL.GOOGLE_BUSINESS}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-step--1 font-medium uppercase tracking-wider text-brand underline-offset-4 hover:underline"
+              className="inline-block py-2 text-step--1 font-medium text-brand underline-offset-4 hover:underline"
             >
-              Read every review &rarr;
+              Read every review
             </a>
           )}
         </div>
@@ -65,7 +65,7 @@ export default function Testimonials() {
               <blockquote className="text-ink-soft">&ldquo;{review.text}&rdquo;</blockquote>
               <figcaption className="mt-5">
                 <div className="font-medium text-ink">{review.name}</div>
-                <div className="text-step--1 text-ink-faint">{review.context} &middot; via Google</div>
+                <div className="text-step--1 text-ink-faint">{review.context}, via Google</div>
               </figcaption>
             </figure>
           ))}

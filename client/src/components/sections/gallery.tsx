@@ -76,7 +76,7 @@ export default function Gallery({ limit, showSliders = true, headingLevel = 2 }:
   return (
     <section id="gallery" className="bg-canvas">
       <div className="mx-auto max-w-7xl px-gutter py-section">
-        <p className="text-step--1 uppercase tracking-[0.18em] text-brand">Our work</p>
+        <p className="text-step--1 font-medium text-brand">Our work</p>
         <Heading className={`mt-4 max-w-[20ch] ${headingLevel === 1 ? "text-step-5" : "text-step-3"}`}>
           {headingLevel === 1
             ? "Every job, photographed"
@@ -111,7 +111,7 @@ export default function Gallery({ limit, showSliders = true, headingLevel = 2 }:
                 key={item.key}
                 onClick={() => setFilter(item.key)}
                 aria-pressed={filter === item.key}
-                className={`border px-4 py-2 text-step--1 transition-colors ${
+                className={`min-h-[44px] border px-4 py-2 text-step--1 transition-colors ${
                   filter === item.key
                     ? "border-ink bg-ink text-white"
                     : "border-stone-300 text-ink-soft hover:border-ink hover:text-ink"
@@ -138,9 +138,9 @@ export default function Gallery({ limit, showSliders = true, headingLevel = 2 }:
           {limit && all.length > images.length ? (
             <Link
               href="/gallery"
-              className="mt-8 inline-block text-step--1 font-medium uppercase tracking-wider text-brand underline-offset-4 hover:underline"
+              className="mt-6 inline-block py-2 text-step--1 font-medium text-brand underline-offset-4 hover:underline"
             >
-              See all {WORK_IMAGES.length} photographs &rarr;
+              See all {WORK_IMAGES.length} photographs
             </Link>
           ) : (
             <p className="mt-6 text-step--1 text-ink-faint">
@@ -151,7 +151,7 @@ export default function Gallery({ limit, showSliders = true, headingLevel = 2 }:
 
         <div className="mt-16 flex flex-wrap items-center gap-6 border-t border-stone-200 pt-10">
           <a
-            href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+            href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
             className="inline-flex items-center gap-2 bg-brand px-6 py-3 font-medium text-white transition-colors hover:bg-brand-strong"
           >
             <Phone className="h-4 w-4" aria-hidden="true" />
@@ -159,7 +159,7 @@ export default function Gallery({ limit, showSliders = true, headingLevel = 2 }:
           </a>
           <Link
             href="/services"
-            className="text-ink-soft underline-offset-4 hover:text-brand hover:underline"
+            className="inline-block py-2 text-ink-soft underline-offset-4 hover:text-brand hover:underline"
           >
             See all services
           </Link>

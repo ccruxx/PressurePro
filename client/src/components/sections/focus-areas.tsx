@@ -42,7 +42,7 @@ export default function FocusAreas() {
                 className="transition-transform duration-500 group-hover:scale-[1.02]"
               />
             </Link>
-            <p className="mt-6 text-step--1 uppercase tracking-[0.18em] text-brand">
+            <p className="mt-6 text-step--1 font-medium text-brand">
               {area.eyebrow}
             </p>
             <h2 className="mt-3 max-w-[22ch] text-step-2">
@@ -53,7 +53,7 @@ export default function FocusAreas() {
             <p className="mt-3 max-w-measure text-ink-soft">{area.body}</p>
             <Link
               href={area.href}
-              className="mt-5 inline-flex items-center gap-2 text-step--1 font-medium uppercase tracking-wider text-brand underline-offset-4 hover:underline"
+              className="mt-5 inline-flex items-center gap-2 text-step--1 font-medium text-brand underline-offset-4 hover:underline"
             >
               {area.cta}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

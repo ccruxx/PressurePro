@@ -34,7 +34,7 @@ export default function Footer() {
                   href={SOCIAL.FACEBOOK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/70 underline-offset-4 hover:text-white hover:underline"
+                  className="inline-block py-2 text-white/70 underline-offset-4 hover:text-white hover:underline"
                   data-testid="facebook-link"
                 >
                   Facebook
@@ -45,7 +45,7 @@ export default function Footer() {
                   href={SOCIAL.GOOGLE_BUSINESS}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/70 underline-offset-4 hover:text-white hover:underline"
+                  className="inline-block py-2 text-white/70 underline-offset-4 hover:text-white hover:underline"
                   data-testid="google-business-link"
                 >
                   Google Business Profile
@@ -62,7 +62,7 @@ export default function Footer() {
                 <li key={service.slug}>
                   <Link
                     href={`/services/${service.slug}`}
-                    className="underline-offset-4 hover:text-white hover:underline"
+                    className="inline-block py-1.5 underline-offset-4 hover:text-white hover:underline"
                     data-testid={`footer-service-${service.slug}`}
                   >
                     {service.name}
@@ -80,7 +80,7 @@ export default function Footer() {
                 <li key={stone.slug}>
                   <Link
                     href={`${STONE_HUB}/${stone.slug}`}
-                    className="underline-offset-4 hover:text-white hover:underline"
+                    className="inline-block py-1.5 underline-offset-4 hover:text-white hover:underline"
                     data-testid={`footer-stone-${stone.slug}`}
                   >
                     {stone.name}
@@ -95,7 +95,7 @@ export default function Footer() {
                 <li key={city.slug}>
                   <Link
                     href={`/service-areas/${city.slug}`}
-                    className="underline-offset-4 hover:text-white hover:underline"
+                    className="inline-block py-1.5 underline-offset-4 hover:text-white hover:underline"
                     data-testid={`footer-city-${city.slug}`}
                   >
                     {city.name}
@@ -108,7 +108,7 @@ export default function Footer() {
                   className="text-white underline underline-offset-4 hover:no-underline"
                   data-testid="footer-all-areas"
                 >
-                  All {SEO_CONSTANTS.SERVICE_AREA_CITIES.length} areas &rarr;
+                  All {SEO_CONSTANTS.SERVICE_AREA_CITIES.length} areas
                 </Link>
               </li>
             </ul>
@@ -132,8 +132,8 @@ export default function Footer() {
               <div className="flex gap-3">
                 <Phone className="h-4 w-4 shrink-0 text-white/50" aria-hidden="true" />
                 <a
-                  href={`tel:${CONTACT.PHONE_RAW}`}
-                  className="underline-offset-4 hover:text-white hover:underline"
+                  href={CONTACT.PHONE_TEL}
+                  className="inline-block py-1.5 underline-offset-4 hover:text-white hover:underline"
                   data-testid="footer-phone"
                 >
                   {CONTACT.PHONE}
@@ -143,7 +143,7 @@ export default function Footer() {
                 <Mail className="h-4 w-4 shrink-0 text-white/50" aria-hidden="true" />
                 <a
                   href={`mailto:${CONTACT.EMAIL}`}
-                  className="break-all underline-offset-4 hover:text-white hover:underline"
+                  className="inline-block break-all py-1.5 underline-offset-4 hover:text-white hover:underline"
                   data-testid="footer-email"
                 >
                   {CONTACT.EMAIL}
@@ -160,7 +160,7 @@ export default function Footer() {
                     href={SOCIAL.GOOGLE_BUSINESS}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline-offset-4 hover:text-white hover:underline"
+                    className="inline-block py-1.5 underline-offset-4 hover:text-white hover:underline"
                   >
                     Directions and reviews
                   </a>
@@ -175,7 +175,7 @@ export default function Footer() {
             &copy; {year} {SEO_CONSTANTS.BUSINESS_NAME}. All rights reserved.
           </p>
           <p>
-            Insured &middot; Free estimates &middot; {NAP.CITY}, {NAP.STATE}
+            Insured, Free estimates, {NAP.CITY}, {NAP.STATE}
           </p>
         </div>
       </div>

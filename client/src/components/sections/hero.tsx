@@ -37,8 +37,8 @@ export default function Hero() {
 
         <div className="relative mx-auto max-w-7xl px-gutter pb-section pt-[calc(var(--header-height)+var(--section-y))]">
           <div className="max-w-[46ch]">
-            <p className="text-step--1 uppercase tracking-[0.18em] text-white/70">
-              {SEO_CONSTANTS.NAP.CITY}, {SEO_CONSTANTS.NAP.STATE} &middot; Serving the DFW Metroplex
+            <p className="text-step--1 font-medium text-white/70">
+              {SEO_CONSTANTS.NAP.CITY}, {SEO_CONSTANTS.NAP.STATE}, Serving the DFW Metroplex
             </p>
 
             <h1 className="mt-5 text-step-5 text-white">
@@ -52,7 +52,7 @@ export default function Hero() {
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <a
-                href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
                 className="inline-flex items-center gap-2 bg-white px-6 py-3.5 text-step-0 font-medium text-ink transition-colors hover:bg-stone-100"
                 data-testid="hero-call"
               >

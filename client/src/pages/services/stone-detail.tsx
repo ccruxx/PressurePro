@@ -76,7 +76,7 @@ export default function StoneDetail() {
 
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <a
-                  href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                  href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
                   className="inline-flex items-center gap-2 bg-brand px-6 py-3 text-step-0 font-medium text-white transition-colors hover:bg-brand-strong"
                   data-testid="button-call"
                 >
@@ -195,7 +195,7 @@ export default function StoneDetail() {
                 <li key={stone.slug}>
                   <Link
                     href={`${HUB}/${stone.slug}`}
-                    className="text-step-1 text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline"
+                    className="inline-block py-2 text-step-1 text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline"
                     data-testid={`link-stone-${stone.slug}`}
                   >
                     {stone.name}
@@ -206,16 +206,16 @@ export default function StoneDetail() {
 
             <div className="mt-12 flex flex-wrap items-center gap-6 border-t border-white/15 pt-10">
               <a
-                href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
                 className="inline-flex items-center gap-2 bg-white px-6 py-3 font-medium text-ink transition-colors hover:bg-stone-100"
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />
                 {SEO_CONSTANTS.CONTACT.PHONE}
               </a>
-              <Link href={HUB} className="text-white/70 underline-offset-4 hover:text-white hover:underline">
+              <Link href={HUB} className="inline-block py-2 text-white/70 underline-offset-4 hover:text-white hover:underline">
                 All delicate stone services
               </Link>
-              <Link href="/service-areas" className="text-white/70 underline-offset-4 hover:text-white hover:underline">
+              <Link href="/service-areas" className="inline-block py-2 text-white/70 underline-offset-4 hover:text-white hover:underline">
                 Service areas
               </Link>
             </div>

@@ -33,7 +33,7 @@
   /* Ink + surfaces */
   --ink:            210 24% 10%;
   --ink-soft:       212 14% 32%;
-  --ink-faint:      210 10% 48%;
+  --ink-faint:      210 12% 40%;
   --canvas:         40 24% 98%;
   --surface:        0 0% 100%;
   --surface-sunken: 38 18% 95%;
@@ -46,7 +46,7 @@
   --stone-700: 28 7% 34%;
 
   /* Brand blue, deepened so it passes AA on white */
-  --brand:        202 80% 38%;
+  --brand:        202 82% 33%;
   --brand-strong: 204 84% 27%;
   --brand-tint:   202 58% 96%;
 
@@ -127,6 +127,37 @@
 
   p {
     text-wrap: pretty;
+  }
+
+
+  /* WCAG 2.4.7. Hand-rolled links and buttons never inherited a focus ring
+     from the shadcn Button, so this gives every focusable element one.
+
+     Written with :where() so it never fights a component's own ring - which
+     also means it has almost no specificity. Do not put Tailwind's
+     `focus:outline-none` on app markup: it outranks this and the element
+     silently loses its focus ring. (shadcn primitives pair
+     focus-visible:outline-none with their own focus-visible:ring-*, which is
+     fine.) */
+  :where(a, button, [role="button"], input, select, textarea, summary,
+         [tabindex]:not([tabindex="-1"])):focus-visible {
+    outline: 2px solid hsl(var(--brand));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Dark sections need a ring that is actually visible against them. */
+  :where(.bg-ink, footer) :where(a, button):focus-visible {
+    outline-color: #fff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
   /* Anything that opts out of the design system keeps its own colour. */

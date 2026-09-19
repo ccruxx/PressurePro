@@ -8,7 +8,11 @@
     "client": "vite --host 0.0.0.0 --port 5000",
     "build": "vite build",
     "check": "tsc",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:ssr": "vite build --ssr src/entry-server.tsx --outDir ../dist/ssr --emptyOutDir",
+    "prerender": "node scripts/prerender.mjs",
+    "sitemap": "node scripts/generate-sitemap.js",
+    "build:site": "npm run build && npm run build:ssr && npm run prerender && npm run sitemap"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

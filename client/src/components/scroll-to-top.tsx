@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { useLocation } from "wouter";
 
 /**
@@ -12,18 +12,25 @@ import { useLocation } from "wouter";
  *    the document after the first scroll and drag the viewport with them
  *
  * Skipped when the URL carries a hash so in-page anchors still work.
+ *
+ * useLayoutEffect has no meaning on the server and React warns about it there,
+ * so the build-time prerender falls back to useEffect - which never runs during
+ * renderToString anyway.
  */
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
 export default function ScrollToTop() {
   const [location] = useLocation();
   const first = useRef(true);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
   }, []);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     // Don't fight the browser on the very first paint of a deep link.
     if (first.current) {
       first.current = false;

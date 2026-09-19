@@ -26,16 +26,16 @@ export default function Services() {
       <div className="mx-auto max-w-7xl px-gutter py-section">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className="text-step--1 uppercase tracking-[0.18em] text-brand">Services</p>
+            <p className="text-step--1 font-medium text-brand">Services</p>
             <h2 className="mt-4 max-w-[22ch] text-step-3">
               Concrete takes pressure. Almost nothing else does.
             </h2>
           </div>
           <Link
             href="/services"
-            className="text-step--1 font-medium uppercase tracking-wider text-brand underline-offset-4 hover:underline"
+            className="inline-block py-2 text-step--1 font-medium text-brand underline-offset-4 hover:underline"
           >
-            All services &rarr;
+            All services
           </Link>
         </div>
 

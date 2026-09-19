@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "npm run build && node scripts/generate-sitemap.js",
+  "buildCommand": "npm run build:site",
   "outputDirectory": "dist/public",
   "framework": "vite",
   "redirects": [

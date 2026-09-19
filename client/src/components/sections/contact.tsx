@@ -21,7 +21,7 @@ export default function Contact() {
 
             <div className="mt-10 flex flex-wrap gap-4">
               <a
-                href={`tel:${CONTACT.PHONE_RAW}`}
+                href={CONTACT.PHONE_TEL}
                 className="inline-flex items-center gap-2 bg-white px-6 py-3.5 font-medium text-ink transition-colors hover:bg-stone-100"
                 data-testid="contact-call"
               >

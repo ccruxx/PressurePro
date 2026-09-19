@@ -33,7 +33,7 @@ export default function About() {
       <main className="min-h-screen pt-header">
         <section className="border-b border-stone-200 bg-surface">
           <div className="mx-auto max-w-7xl px-gutter py-section">
-            <p className="text-step--1 uppercase tracking-[0.18em] text-brand">About</p>
+            <p className="text-step--1 font-medium text-brand">About</p>
             <h1 className="mt-4 max-w-[20ch] text-step-5">
               Knowing what not to do is most of the job
             </h1>
@@ -66,16 +66,16 @@ export default function About() {
             </h2>
             <div className="mt-10 flex flex-wrap items-center gap-6">
               <a
-                href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
                 className="inline-flex items-center gap-2 bg-white px-6 py-3 font-medium text-ink transition-colors hover:bg-stone-100"
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />
                 {SEO_CONSTANTS.CONTACT.PHONE}
               </a>
-              <Link href="/services" className="text-white/70 underline-offset-4 hover:text-white hover:underline">
+              <Link href="/services" className="inline-block py-2 text-white/70 underline-offset-4 hover:text-white hover:underline">
                 All services
               </Link>
-              <Link href="/gallery" className="text-white/70 underline-offset-4 hover:text-white hover:underline">
+              <Link href="/gallery" className="inline-block py-2 text-white/70 underline-offset-4 hover:text-white hover:underline">
                 See the work
               </Link>
             </div>

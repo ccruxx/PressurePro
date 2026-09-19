@@ -28,6 +28,13 @@ export default defineConfig(async () => ({
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
   },
+  // The build-time prerender (scripts/prerender.mjs) imports the SSR bundle
+  // directly with node. Several dependencies here - react-helmet-async among
+  // them - still ship CommonJS, which a bare `import` of an ESM bundle cannot
+  // destructure, so the SSR build bundles everything rather than externalising.
+  ssr: {
+    noExternal: true,
+  },
   server: {
     allowedHosts: [".replit.dev"], // 👈 Fix for Replit preview error
     fs: {

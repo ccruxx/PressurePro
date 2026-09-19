@@ -53,6 +53,11 @@ export default {
           500: "hsl(var(--stone-500) / <alpha-value>)",
           700: "hsl(var(--stone-700) / <alpha-value>)",
         },
+        success: {
+          DEFAULT: "hsl(var(--success) / <alpha-value>)",
+          strong: "hsl(var(--success-strong) / <alpha-value>)",
+        },
+        warning: "hsl(var(--warning) / <alpha-value>)",
         brand: {
           DEFAULT: "hsl(var(--brand) / <alpha-value>)",
           strong: "hsl(var(--brand-strong) / <alpha-value>)",

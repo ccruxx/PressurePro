@@ -1,71 +1,138 @@
 import { Link } from "wouter";
-import { Phone } from "lucide-react";
+import { Phone, Mail, ShieldCheck, Star, PhoneCall } from "lucide-react";
 import logoImage from "@assets/logo2.png";
 import QuoteCalculator from "@/components/quote/QuoteCalculator";
+import SEOHead from "@/components/seo/SEOHead";
+import { SEO_CONSTANTS } from "@/lib/seo-constants";
 
+/**
+ * Focused quote landing page. It deliberately runs without the site nav so
+ * there is one thing to do on the page; everything else uses the same tokens
+ * as the rest of the site.
+ *
+ * The previous version used an off-system blue gradient, emoji trust badges,
+ * and a "5-Star Rated" claim with nothing behind it. The rating is now stated
+ * the way the testimonials section states it - 5.0 on Google - and links to
+ * the listing so it can be checked.
+ */
 export default function QuotePreview() {
+  const { CONTACT, BUSINESS_NAME, SOCIAL } = SEO_CONSTANTS;
+
+  const badges = [
+    { icon: ShieldCheck, label: "Fully insured", detail: "Certificates on request" },
+    {
+      icon: Star,
+      label: "5.0 on Google",
+      detail: "Every review is public",
+      href: SOCIAL.GOOGLE_BUSINESS || undefined,
+    },
+    { icon: PhoneCall, label: "Free follow-up", detail: "We confirm before any work" },
+  ];
+
   return (
-    <div className="min-h-screen bg-slate-50 font-sans">
-      {/* ── Header ──────────────────────────────────────────────── */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-          <Link href="/">
-            <img src={logoImage} alt="DFW Pristine Power Washing" className="h-16 w-auto object-contain" />
+    <div className="flex min-h-screen flex-col bg-canvas">
+      <SEOHead
+        title={`Free Pressure Washing Quote | ${BUSINESS_NAME}`}
+        description="Get an instant pressure washing price range for your home or business in the DFW area. Pick a service, enter measurements, and see an estimate - no phone call needed."
+        canonical="/quote-preview"
+      />
+      <header className="sticky top-0 z-50 border-b border-stone-200 bg-surface/90 backdrop-blur">
+        <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-gutter py-3">
+          <Link href="/" className="flex min-h-[44px] items-center">
+            <img
+              src={logoImage}
+              alt={BUSINESS_NAME}
+              width={160}
+              height={64}
+              className="h-14 w-auto object-contain"
+            />
           </Link>
           <a
-            href="tel:+18175856388"
-            className="flex items-center gap-2 text-[hsl(200,85%,42%)] font-semibold text-sm hover:text-[hsl(200,85%,35%)] transition-colors"
+            href={CONTACT.PHONE_TEL}
+            className="flex min-h-[44px] items-center gap-2 px-1 font-medium text-brand"
           >
-            <Phone className="h-4 w-4" />
-            <span className="hidden sm:inline">(817) 585-6388</span>
+            <Phone className="h-4 w-4 shrink-0" aria-hidden="true" />
+            {CONTACT.PHONE}
           </a>
         </div>
       </header>
 
-      {/* ── Hero ────────────────────────────────────────────────── */}
-      <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-12 px-4">
-        <div className="container mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-4">
-            ⚡ Instant Estimate — No Commitment Required
-          </div>
-          <h1 className="text-3xl md:text-5xl font-bold mb-3">
-            Get Your Free Quote
-          </h1>
-          <p className="text-blue-100 text-lg md:text-xl max-w-xl mx-auto">
-            Select your service, enter measurements, and see an instant price range — no phone call needed.
+      <section className="border-b border-white/10 bg-ink text-white">
+        <div className="mx-auto max-w-3xl px-gutter py-14 text-center">
+          <p className="font-medium text-white/70">
+            Instant estimate &mdash; no commitment required
+          </p>
+          <h1 className="mt-3 text-step-4 text-white">Get your free quote</h1>
+          <p className="mx-auto mt-4 max-w-measure text-step-0 text-white/80">
+            Pick the service, enter your measurements, and see a price range right
+            here. No phone call needed to get started.
           </p>
         </div>
       </section>
 
-      {/* ── Calculator ──────────────────────────────────────────── */}
-      <div className="container mx-auto max-w-3xl px-4 py-10">
-        <QuoteCalculator />
-      </div>
-
-      {/* ── Trust Badges ─────────────────────────────────────────── */}
-      <div className="container mx-auto max-w-3xl px-4 pb-8">
-        <div className="grid grid-cols-3 gap-4">
-          {[
-            { icon: "🛡️", label: "Fully Insured" },
-            { icon: "⭐", label: "5-Star Rated" },
-            { icon: "🤝", label: "Free Follow-Up" },
-          ].map((badge) => (
-            <div key={badge.label} className="bg-white rounded-xl border border-slate-100 p-4 text-center shadow-sm">
-              <div className="text-2xl mb-1">{badge.icon}</div>
-              <div className="text-xs font-semibold text-gray-700">{badge.label}</div>
-            </div>
-          ))}
+      <main className="flex-1">
+        <div className="mx-auto max-w-3xl px-gutter py-12">
+          <QuoteCalculator />
         </div>
-      </div>
 
-      {/* ── Footer ──────────────────────────────────────────────── */}
-      <footer className="bg-gray-800 text-gray-300 py-8 text-center text-sm">
-        <p className="mb-1">
-          <a href="tel:+18175856388" className="text-blue-400 hover:text-blue-300 font-semibold">(817) 585-6388</a>
-          &nbsp;·&nbsp;
-          <a href="mailto:info@dfwpristinepowerwashing.com" className="hover:text-white transition-colors">info@dfwpristinepowerwashing.com</a>
-        </p>
-        <p className="text-gray-500 text-xs mt-2">© {new Date().getFullYear()} DFW Pristine Power Washing. All rights reserved.</p>
+        <div className="mx-auto max-w-3xl px-gutter pb-16">
+          <ul className="grid gap-4 sm:grid-cols-3">
+            {badges.map((badge) => {
+              const body = (
+                <>
+                  <badge.icon className="h-5 w-5 text-brand" aria-hidden="true" />
+                  <span className="mt-3 block font-medium text-ink">{badge.label}</span>
+                  <span className="mt-1 block text-step--1 text-ink-soft">
+                    {badge.detail}
+                  </span>
+                </>
+              );
+              return (
+                <li
+                  key={badge.label}
+                  className="rounded-lg border border-stone-200 bg-surface p-5"
+                >
+                  {badge.href ? (
+                    <a
+                      href={badge.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
+                    >
+                      {body}
+                    </a>
+                  ) : (
+                    body
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </main>
+
+      <footer className="bg-ink text-white/70">
+        <div className="mx-auto flex max-w-3xl flex-col items-center gap-2 px-gutter py-10 text-center">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1">
+            <a
+              href={CONTACT.PHONE_TEL}
+              className="flex min-h-[44px] items-center gap-2 font-medium text-white"
+            >
+              <Phone className="h-4 w-4" aria-hidden="true" />
+              {CONTACT.PHONE}
+            </a>
+            <a
+              href={`mailto:${CONTACT.EMAIL}`}
+              className="flex min-h-[44px] items-center gap-2 text-white/80"
+            >
+              <Mail className="h-4 w-4" aria-hidden="true" />
+              {CONTACT.EMAIL}
+            </a>
+          </div>
+          <p className="text-step--1 text-white/50">
+            &copy; {new Date().getFullYear()} {BUSINESS_NAME}. All rights reserved.
+          </p>
+        </div>
       </footer>
     </div>
   );

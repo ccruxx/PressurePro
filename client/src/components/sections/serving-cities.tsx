@@ -23,7 +23,7 @@ export default function ServingCities() {
                     {slug ? (
                       <Link
                         href={`/service-areas/${slug}`}
-                        className="text-step-1 text-ink-soft underline-offset-4 hover:text-brand hover:underline"
+                        className="inline-block py-2 text-step-1 text-ink-soft underline-offset-4 hover:text-brand hover:underline"
                       >
                         {name}
                       </Link>
@@ -36,9 +36,9 @@ export default function ServingCities() {
             </ul>
             <Link
               href="/service-areas"
-              className="mt-8 inline-block text-step--1 font-medium uppercase tracking-wider text-brand underline-offset-4 hover:underline"
+              className="mt-8 inline-block text-step--1 font-medium text-brand underline-offset-4 hover:underline"
             >
-              All {SEO_CONSTANTS.SERVICE_AREA_CITIES.length} service areas &rarr;
+              All {SEO_CONSTANTS.SERVICE_AREA_CITIES.length} service areas
             </Link>
           </div>
         </div>

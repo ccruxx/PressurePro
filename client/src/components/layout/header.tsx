@@ -36,7 +36,7 @@ export default function Header() {
   };
 
   const navLink =
-    "text-ink-soft transition-colors hover:text-brand focus-visible:text-brand";
+    "inline-flex items-center py-3 text-ink-soft transition-colors hover:text-brand focus-visible:text-brand";
 
   return (
     <header
@@ -88,7 +88,7 @@ export default function Header() {
                     </Link>
                   ))}
                   <div className="my-2 border-t border-stone-200" />
-                  <p className="px-5 pb-1 text-step--1 uppercase tracking-wider text-ink-faint">
+                  <p className="px-5 pb-1 text-step--1 font-medium text-ink-faint">
                     By stone type
                   </p>
                   {STONE_TYPES.map((stone) => (
@@ -145,7 +145,7 @@ export default function Header() {
           {/* Actions ------------------------------------------------------- */}
           <div className="flex items-center gap-3">
             <a
-              href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+              href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
               className="hidden items-center gap-2 font-medium text-ink transition-colors hover:text-brand md:flex"
             >
               <Phone className="h-4 w-4" aria-hidden="true" />
@@ -159,7 +159,7 @@ export default function Header() {
             </button>
 
             <button
-              className="lg:hidden"
+              className="-mr-2 p-2 lg:hidden"
               onClick={() => setIsMobileMenuOpen((v) => !v)}
               aria-expanded={isMobileMenuOpen}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
@@ -209,7 +209,7 @@ export default function Header() {
               </button>
 
               <a
-                href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
                 className="mt-4 inline-flex items-center gap-2 bg-brand px-5 py-3 font-medium text-white"
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />

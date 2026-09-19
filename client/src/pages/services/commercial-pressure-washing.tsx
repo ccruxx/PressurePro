@@ -101,7 +101,7 @@ export default function CommercialPressureWashing() {
         {/* Hero ------------------------------------------------------------- */}
         <section className="border-b border-stone-200 bg-surface">
           <div className="mx-auto max-w-7xl px-gutter py-section">
-            <p className="text-step--1 uppercase tracking-[0.18em] text-brand">
+            <p className="text-step--1 font-medium text-brand">
               Commercial
             </p>
             <h1 className="mt-4 max-w-[20ch] text-step-5">
@@ -115,7 +115,7 @@ export default function CommercialPressureWashing() {
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <a
-                href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
                 className="inline-flex items-center gap-2 bg-brand px-6 py-3 text-step-0 font-medium text-white transition-colors hover:bg-brand-strong"
                 data-testid="button-call"
               >
@@ -186,8 +186,8 @@ export default function CommercialPressureWashing() {
                 &ldquo;Fair pricing, excellent communication, and flawless work. Our
                 fleet vehicles look like they just came off the lot.&rdquo;
               </blockquote>
-              <figcaption className="mt-5 text-step--1 uppercase tracking-wider text-ink-faint">
-                David Miller &middot; Fleet Manager
+              <figcaption className="mt-5 text-step--1 text-ink-faint">
+                David Miller, Fleet Manager
               </figcaption>
             </figure>
           </div>
@@ -243,7 +243,7 @@ export default function CommercialPressureWashing() {
             </h2>
             <div className="mt-10 flex flex-wrap items-center gap-6">
               <a
-                href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
                 className="inline-flex items-center gap-2 bg-white px-6 py-3 font-medium text-ink transition-colors hover:bg-stone-100"
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />

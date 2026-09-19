@@ -12,7 +12,7 @@ export function getLocalBusinessSchema() {
     "@id": `${SEO_CONSTANTS.SITE_URL}/#business`,
     name: SEO_CONSTANTS.BUSINESS_NAME,
     image: `${SEO_CONSTANTS.SITE_URL}/og-default.jpg`,
-    telephone: SEO_CONSTANTS.CONTACT.PHONE,
+    telephone: SEO_CONSTANTS.CONTACT.PHONE_TEL,
     email: SEO_CONSTANTS.CONTACT.EMAIL,
     address: {
       "@type": "PostalAddress",
@@ -79,7 +79,7 @@ export function getServiceSchema(serviceName: string, serviceDescription: string
     provider: {
       "@type": "LocalBusiness",
       name: SEO_CONSTANTS.BUSINESS_NAME,
-      telephone: SEO_CONSTANTS.CONTACT.PHONE,
+      telephone: SEO_CONSTANTS.CONTACT.PHONE_TEL,
     },
     description: serviceDescription,
     areaServed: SEO_CONSTANTS.SERVICE_AREA_CITIES.map((city) => ({
@@ -97,7 +97,7 @@ export function getCityServiceSchema(cityName: string, stateName: string) {
     provider: {
       "@type": "LocalBusiness",
       name: SEO_CONSTANTS.BUSINESS_NAME,
-      telephone: SEO_CONSTANTS.CONTACT.PHONE,
+      telephone: SEO_CONSTANTS.CONTACT.PHONE_TEL,
     },
     areaServed: {
       "@type": "Place",

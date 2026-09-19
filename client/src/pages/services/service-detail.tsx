@@ -66,7 +66,7 @@ export default function ServiceDetail({ slug }: { slug: string }) {
 
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <a
-                  href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                  href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
                   className="inline-flex items-center gap-2 bg-brand px-6 py-3 text-step-0 font-medium text-white transition-colors hover:bg-brand-strong"
                   data-testid="button-call"
                 >
@@ -161,7 +161,7 @@ export default function ServiceDetail({ slug }: { slug: string }) {
                 <li key={item.slug}>
                   <Link
                     href={`/services/${item.slug}`}
-                    className="text-step-1 text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline"
+                    className="inline-block py-2 text-step-1 text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline"
                   >
                     {item.name}
                   </Link>
@@ -171,7 +171,7 @@ export default function ServiceDetail({ slug }: { slug: string }) {
 
             <div className="mt-12 flex flex-wrap items-center gap-6 border-t border-white/15 pt-10">
               <a
-                href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
                 className="inline-flex items-center gap-2 bg-white px-6 py-3 font-medium text-ink transition-colors hover:bg-stone-100"
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />
@@ -179,14 +179,14 @@ export default function ServiceDetail({ slug }: { slug: string }) {
               </a>
               <a
                 href={`mailto:${SEO_CONSTANTS.CONTACT.EMAIL}`}
-                className="inline-flex items-center gap-2 text-white/70 underline-offset-4 hover:text-white hover:underline"
+                className="inline-flex items-center gap-2 py-2 text-white/70 underline-offset-4 hover:text-white hover:underline"
               >
                 <Mail className="h-4 w-4" aria-hidden="true" />
                 {SEO_CONSTANTS.CONTACT.EMAIL}
               </a>
               <Link
                 href="/service-areas"
-                className="text-white/70 underline-offset-4 hover:text-white hover:underline"
+                className="inline-block py-2 text-white/70 underline-offset-4 hover:text-white hover:underline"
               >
                 Service areas
               </Link>

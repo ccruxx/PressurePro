@@ -40,7 +40,11 @@ export default function WorkImage({
       alt={alt ?? image.alt}
       loading={priority ? "eager" : "lazy"}
       decoding={priority ? "sync" : "async"}
-      fetchPriority={priority ? "high" : "auto"}
+      // Lowercase on purpose: react-dom/server in React 18 warns about the
+      // camelCase `fetchPriority` prop, and `fetchpriority` is the real HTML
+      // attribute, so this renders identically on the client and in the
+      // build-time prerender without a warning.
+      {...(priority ? ({ fetchpriority: "high" } as Record<string, string>) : {})}
       className={cn("w-full bg-stone-100 object-cover", aspect, className)}
     />
   );

@@ -315,7 +315,7 @@ export default function CityPageTemplate({ cityName, stateName, slug }: CityPage
 
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <a
-                  href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                  href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
                   className="inline-flex items-center gap-2 bg-brand px-6 py-3 text-step-0 font-medium text-white transition-colors hover:bg-brand-strong"
                   data-testid="button-call"
                 >
@@ -391,7 +391,7 @@ export default function CityPageTemplate({ cityName, stateName, slug }: CityPage
               <li key={service.slug}>
                 <Link
                   href={`/services/${service.slug}`}
-                  className="text-step-1 text-ink-soft underline-offset-4 hover:text-brand hover:underline"
+                  className="inline-block py-2 text-step-1 text-ink-soft underline-offset-4 hover:text-brand hover:underline"
                   data-testid={`city-service-${service.slug}`}
                 >
                   {service.name}
@@ -434,7 +434,7 @@ export default function CityPageTemplate({ cityName, stateName, slug }: CityPage
                       <li key={areaSlug}>
                         <Link
                           href={`/service-areas/${areaSlug}`}
-                          className="text-step-1 text-ink-soft underline-offset-4 hover:text-brand hover:underline"
+                          className="inline-block py-2 text-step-1 text-ink-soft underline-offset-4 hover:text-brand hover:underline"
                           data-testid={`link-nearby-${areaSlug}`}
                         >
                           {area.name}, {area.state}
@@ -445,9 +445,9 @@ export default function CityPageTemplate({ cityName, stateName, slug }: CityPage
                 </ul>
                 <Link
                   href="/service-areas"
-                  className="mt-8 inline-block text-step--1 font-medium uppercase tracking-wider text-brand underline-offset-4 hover:underline"
+                  className="mt-8 inline-block text-step--1 font-medium text-brand underline-offset-4 hover:underline"
                 >
-                  All service areas &rarr;
+                  All service areas
                 </Link>
               </div>
             </div>
@@ -479,7 +479,7 @@ export default function CityPageTemplate({ cityName, stateName, slug }: CityPage
             </h2>
             <div className="mt-10 flex flex-wrap items-center gap-6">
               <a
-                href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
                 className="inline-flex items-center gap-2 bg-white px-6 py-3 font-medium text-ink transition-colors hover:bg-stone-100"
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />

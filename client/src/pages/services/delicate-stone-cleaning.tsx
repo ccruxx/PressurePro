@@ -70,7 +70,7 @@ export default function DelicateStoneCleaning() {
         {/* Hero ------------------------------------------------------------- */}
         <section className="relative border-b border-stone-200 bg-surface">
           <div className="mx-auto max-w-7xl px-gutter py-section">
-            <p className="text-step--1 uppercase tracking-[0.18em] text-brand">
+            <p className="text-step--1 font-medium text-brand">
               Natural stone
             </p>
             <h1 className="mt-4 max-w-[18ch] text-step-5">
@@ -85,7 +85,7 @@ export default function DelicateStoneCleaning() {
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <a
-                href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
                 className="inline-flex items-center gap-2 bg-brand px-6 py-3 text-step-0 font-medium text-white transition-colors hover:bg-brand-strong"
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />
@@ -133,9 +133,9 @@ export default function DelicateStoneCleaning() {
                 <p className="mt-2 max-w-measure text-ink-soft">{stone.lede}</p>
                 <Link
                   href={`${HUB}/${stone.slug}`}
-                  className="mt-4 inline-block text-step--1 font-medium uppercase tracking-wider text-brand underline-offset-4 hover:underline"
+                  className="mt-3 inline-block py-2 text-step--1 font-medium text-brand underline-offset-4 hover:underline"
                 >
-                  {stone.name} cleaning &rarr;
+                  {stone.name} cleaning
                 </Link>
               </article>
             ))}
@@ -197,7 +197,7 @@ export default function DelicateStoneCleaning() {
             </h2>
             <div className="mt-10 flex flex-wrap items-center gap-6">
               <a
-                href={`tel:${SEO_CONSTANTS.CONTACT.PHONE_RAW}`}
+                href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
                 className="inline-flex items-center gap-2 bg-white px-6 py-3 font-medium text-ink transition-colors hover:bg-stone-100"
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />
