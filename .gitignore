@@ -5,7 +5,9 @@ server/public
 vite.config.ts.*
 *.tar.gz
 .vercel
-.env*
+.env
+.env.*
+!.env.example
 
 # scratch + generated triage artifacts
 _triage/
