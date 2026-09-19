@@ -6,6 +6,7 @@ import SEOHead from "@/components/seo/SEOHead";
 import SchemaOrg from "@/components/seo/SchemaOrg";
 import AboutSection from "@/components/sections/about";
 import Certification from "@/components/sections/certification";
+import Credentials from "@/components/sections/credentials";
 import WorkImage from "@/components/work-image";
 import { SEO_CONSTANTS } from "@/lib/seo-constants";
 import { getBreadcrumbSchema, getLocalBusinessSchema } from "@/lib/schema-helpers";
@@ -54,6 +55,7 @@ export default function About() {
           </div>
         </section>
 
+        <Credentials />
         <AboutSection />
         <Certification />
 

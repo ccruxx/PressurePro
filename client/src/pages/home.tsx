@@ -8,6 +8,7 @@ import Gallery from "@/components/sections/gallery";
 import Testimonials from "@/components/sections/testimonials";
 import About from "@/components/sections/about";
 import Certification from "@/components/sections/certification";
+import Credentials from "@/components/sections/credentials";
 import Contact from "@/components/sections/contact";
 import Footer from "@/components/layout/footer";
 import SEOHead from "@/components/seo/SEOHead";
@@ -32,6 +33,7 @@ export default function Home() {
       <Services />
       <FocusAreas />
       <Gallery limit={8} />
+      <Credentials />
       <Testimonials />
       <InstantQuote />
       <ServingCities />

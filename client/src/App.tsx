@@ -2,6 +2,7 @@ import { Switch, Route } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Analytics from "@/components/seo/Analytics";
+import ScrollToTop from "@/components/scroll-to-top";
 import Home from "@/pages/home";
 import QuotePreview from "@/pages/quote-preview";
 import About from "@/pages/about";
@@ -110,6 +111,7 @@ function Router() {
 function App() {
   return (
     <TooltipProvider>
+      <ScrollToTop />
       <Analytics />
       <Toaster />
       <Router />

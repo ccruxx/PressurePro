@@ -31,12 +31,20 @@ export default function Certification() {
             </p>
             {CERTIFICATIONS.MINORITY_OWNED && (
               <p>
-                It is a minority-owned business, and the Google Business Profile
-                carries the Indigenous-owned attribute
-                {CERTIFICATIONS.CERTIFYING_ORGANIZATION
-                  ? ` (${CERTIFICATIONS.CERTIFYING_ORGANIZATION})`
-                  : ""}
-                .
+                It is a{" "}
+                <strong className="font-medium text-ink">
+                  minority-owned business
+                </strong>
+                {CERTIFICATIONS.TRIBAL_CERTIFIED ? (
+                  <>
+                    , tribal certified through the{" "}
+                    <strong className="font-medium text-ink">
+                      {CERTIFICATIONS.CERTIFYING_ORGANIZATION}
+                    </strong>
+                  </>
+                ) : null}
+                . The Google Business Profile carries the Indigenous-owned
+                attribute as well.
               </p>
             )}
             <p>
