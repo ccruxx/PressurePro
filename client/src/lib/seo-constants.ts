@@ -1,6 +1,6 @@
 export const SEO_CONSTANTS = {
   BUSINESS_NAME: "DFW Pristine Power Washing",
-  PRIMARY_CITY: "Arlington, TX",
+  PRIMARY_CITY: "Euless, TX",
   SERVICE_AREA_CITIES: [
     { name: "Arlington", state: "TX", slug: "arlington-tx" },
     { name: "Mansfield", state: "TX", slug: "mansfield-tx" },
@@ -56,6 +56,12 @@ export const SEO_CONSTANTS = {
       description: "Deep cleaning for driveways, sidewalks, and concrete surfaces",
     },
     {
+      name: "Delicate Stone Cleaning",
+      slug: "delicate-stone-cleaning",
+      description:
+        "Low-pressure restoration for limestone, Austin stone, flagstone and other soft natural stone",
+    },
+    {
       name: "Commercial Pressure Washing",
       slug: "commercial-pressure-washing",
       description: "Professional commercial cleaning for businesses and properties",
@@ -73,16 +79,26 @@ export const SEO_CONSTANTS = {
     ACTUAL_EMAIL: "joshua.dfwpristine@gmail.com",
   },
   SITE_URL: "https://dfwpristinepowerwashing.com",
+  // Mirrors the Google Business Profile exactly. Do not diverge from the
+  // listing: NAP consistency across site / GBP / Facebook is a ranking factor.
   NAP: {
-    STREET: "",
-    CITY: "Arlington",
+    STREET: "203 Walnut Way",
+    CITY: "Euless",
     STATE: "TX",
-    ZIP: "",
+    ZIP: "76039",
+  },
+  // Derived from the GBP plus code VW58+64 Euless (~14m precision).
+  GEO: {
+    LAT: 32.8581,
+    LNG: -97.0847,
+    PLUS_CODE: "VW58+64 Euless, Texas",
   },
   HOURS: "Open 24 hours",
   SOCIAL: {
-    FACEBOOK: "",
+    FACEBOOK: "https://www.facebook.com/profile.php?id=61578681147252",
     INSTAGRAM: "",
+    // Paste the "Share" link from the Google Business Profile here.
+    GOOGLE_BUSINESS: "",
   },
   OWNER: {
     NAME: "Josh Collins",
@@ -103,16 +119,67 @@ export const SEO_CONSTANTS = {
   ],
 };
 
+/**
+ * Delicate / soft natural stone varieties Joshua works on.
+ * Each gets its own page under /services/delicate-stone-cleaning/<slug>.
+ * NOTE: the Texas quarry town is spelled "Lueders" - the common misspelling
+ * "Leuders" is carried in `alt` so both spellings are covered in copy.
+ */
+export const STONE_TYPES = [
+  {
+    name: "Limestone",
+    slug: "limestone",
+    alt: [],
+    blurb:
+      "Soft, porous and easily etched. Cleaned at low pressure so the surface is never opened up.",
+  },
+  {
+    name: "Austin Stone",
+    slug: "austin-stone",
+    alt: [],
+    blurb:
+      "The cream-coloured Texas limestone on half the homes in the Metroplex. Shows organic staining badly and burns easily under a wand.",
+  },
+  {
+    name: "Flagstone",
+    slug: "flagstone",
+    alt: [],
+    blurb:
+      "Irregular sandstone slabs with wide mortar or soil joints that hold moss and algae.",
+  },
+  {
+    name: "Pennsylvania Stone",
+    slug: "pennsylvania-stone",
+    alt: ["Pennsylvania Bluestone", "Bluestone"],
+    blurb:
+      "Dense bluestone that spalls and flakes when hit with too much pressure.",
+  },
+  {
+    name: "Lueders Stone",
+    slug: "lueders-stone",
+    alt: ["Leuders Stone", "Lueders Limestone"],
+    blurb:
+      "Hard-weathering Texas limestone from the Lueders quarries, common on patios, caps and steps.",
+  },
+] as const;
+
+/** Look a service up by slug instead of by array index. */
+export function getService(slug: string) {
+  const service = SEO_CONSTANTS.PRIMARY_SERVICES.find((s) => s.slug === slug);
+  if (!service) throw new Error(`Unknown service slug: ${slug}`);
+  return service;
+}
+
 export const TOP_CITIES_FOR_DISPLAY = [
-  "Arlington",
-  "Mansfield",
-  "Dallas",
-  "Fort Worth",
-  "Plano",
-  "Southlake",
+  "Euless",
+  "Bedford",
+  "Hurst",
   "Grapevine",
   "Colleyville",
-  "Coppell",
-  "Carrollton",
-  "Bedford",
+  "Southlake",
+  "Irving",
+  "Arlington",
+  "Keller",
+  "Fort Worth",
+  "Dallas",
 ];

@@ -14,7 +14,13 @@ type ServiceKey =
   | "oil-grease-two"
   | "fence"
   | "concrete-sealing"
-  | "roof";
+  | "roof"
+  // Quoted on site rather than by the calculator - see CUSTOM_QUOTE_SERVICES.
+  | "commercial"
+  | "delicate-stone";
+
+/** Priced on site: surface condition and access vary too much for a calculator. */
+const CUSTOM_QUOTE_SERVICES: ServiceKey[] = ["commercial", "delicate-stone"];
 
 type DirtLevel = "light" | "moderate" | "heavy";
 type RoofTier = "under1500" | "r1800to2800" | "r3000to4000" | "r4200to5000" | "over5000";
@@ -69,6 +75,8 @@ const SERVICES: {
   { key: "fence",             label: "Fence",                             description: "Wood, vinyl, and metal fencing",         unit: "linear ft", icon: "🔲" },
   { key: "concrete-sealing",  label: "Concrete Sealing",                  description: "Protect surfaces from future staining",  unit: "sq ft",     icon: "🛡️" },
   { key: "roof",              label: "Roof Soft Wash",                    description: "Removes algae, moss, and staining",      unit: "flat rate", icon: "🏡" },
+  { key: "delicate-stone",    label: "Delicate Stone Cleaning",           description: "Limestone, Austin stone, flagstone, bluestone", unit: "custom quote", icon: "🪨" },
+  { key: "commercial",        label: "Commercial Property",               description: "Lots, docks, storefronts, fleet, sidewalks", unit: "custom quote", icon: "🏢" },
 ];
 
 const DIRT_LEVELS: { key: DirtLevel; label: string; description: string; multiplier: number }[] = [
@@ -95,6 +103,7 @@ function calcPrice(
 ): PriceRange | null {
   if (!service) return null;
   if (service === "roof" && roofTier === "over5000") return null;
+  if (CUSTOM_QUOTE_SERVICES.includes(service)) return null;
 
   const sqft = parseFloat(measurement) || 0;
   if (service !== "roof" && sqft <= 0) return null;
@@ -213,13 +222,18 @@ export default function QuoteCalculator() {
   const [isSubmitting, setIsSubmitting]       = useState(false);
   const [submitError, setSubmitError]         = useState("");
 
-  const isCustomQuote = selectedService === "roof" && roofTier === "over5000";
+  const isCustomQuote =
+    (selectedService === "roof" && roofTier === "over5000") ||
+    (!!selectedService && CUSTOM_QUOTE_SERVICES.includes(selectedService));
 
   const selectedServiceConfig = SERVICES.find((s) => s.key === selectedService);
   const measurementUnit = selectedServiceConfig?.unit ?? "sq ft";
-  const measurementReady = selectedService === "roof"
-    ? roofTier !== "over5000"
-    : parseFloat(measurement) > 0;
+  const measurementReady =
+    selectedService && CUSTOM_QUOTE_SERVICES.includes(selectedService)
+      ? true
+      : selectedService === "roof"
+        ? roofTier !== "over5000"
+        : parseFloat(measurement) > 0;
 
   // Price preview for the service currently being configured
   const currentPrice = useMemo(

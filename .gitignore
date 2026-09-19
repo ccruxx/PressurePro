@@ -4,3 +4,9 @@ dist
 server/public
 vite.config.ts.*
 *.tar.gz
+.vercel
+.env*
+
+# scratch + generated triage artifacts
+_triage/
+gbp-fullres.html

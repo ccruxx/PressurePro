@@ -8,16 +8,26 @@ const __dirname = path.dirname(__filename);
 const SITE_URL = 'https://dfwpristinepowerwashing.com';
 const buildTime = new Date().toISOString();
 
-const cities = [
-  'midlothian-tx', 'waxahachie-tx', 'cedar-hill-tx', 'mansfield-tx',
-  'red-oak-tx', 'ovilla-tx', 'venus-tx', 'arlington-tx',
-  'grand-prairie-tx', 'irving-tx', 'dallas-tx', 'fort-worth-tx',
-  'burleson-tx', 'desoto-tx', 'ennis-tx'
-];
+// Derived from the page files so a new city page can never be missed.
+// (This list was previously hand-maintained and had drifted: 31 city pages
+// existed but only 15 were in the sitemap.)
+const cityPagesDir = path.join(__dirname, '../client/src/pages/service-areas');
+const cities = fs
+  .readdirSync(cityPagesDir)
+  .filter((f) => f.endsWith('.tsx') && f !== 'index.tsx')
+  .map((f) => f.replace(/\.tsx$/, ''))
+  .sort();
 
 const services = [
   'pressure-washing', 'house-washing', 'roof-cleaning',
-  'driveway-concrete-cleaning', 'commercial-pressure-washing', 'window-cleaning'
+  'driveway-concrete-cleaning', 'delicate-stone-cleaning',
+  'commercial-pressure-washing', 'window-cleaning'
+];
+
+// Per-stone pages under the delicate stone hub.
+const stoneTypes = [
+  'limestone', 'austin-stone', 'flagstone',
+  'pennsylvania-stone', 'lueders-stone'
 ];
 
 const routes = [
@@ -26,6 +36,12 @@ const routes = [
   { path: 'services', priority: '0.9', changefreq: 'weekly' },
   { path: 'service-areas', priority: '0.9', changefreq: 'weekly' },
   
+  ...stoneTypes.map(slug => ({
+    path: `services/delicate-stone-cleaning/${slug}`,
+    priority: '0.8',
+    changefreq: 'monthly',
+  })),
+
   ...services.map(slug => ({
     path: `services/${slug}`,
     priority: '0.8',

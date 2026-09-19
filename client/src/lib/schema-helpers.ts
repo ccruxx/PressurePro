@@ -8,24 +8,64 @@ interface FAQItem {
 export function getLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+    "@id": `${SEO_CONSTANTS.SITE_URL}/#business`,
     name: SEO_CONSTANTS.BUSINESS_NAME,
     image: `${SEO_CONSTANTS.SITE_URL}/og-default.jpg`,
     telephone: SEO_CONSTANTS.CONTACT.PHONE,
     email: SEO_CONSTANTS.CONTACT.EMAIL,
     address: {
       "@type": "PostalAddress",
-      streetAddress: SEO_CONSTANTS.NAP.STREET || undefined,
+      streetAddress: SEO_CONSTANTS.NAP.STREET,
       addressLocality: SEO_CONSTANTS.NAP.CITY,
       addressRegion: SEO_CONSTANTS.NAP.STATE,
-      postalCode: SEO_CONSTANTS.NAP.ZIP || undefined,
+      postalCode: SEO_CONSTANTS.NAP.ZIP,
       addressCountry: "US",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: SEO_CONSTANTS.GEO.LAT,
+      longitude: SEO_CONSTANTS.GEO.LNG,
     },
     areaServed: SEO_CONSTANTS.SERVICE_AREA_CITIES.map((city) => ({
       "@type": "Place",
       name: `${city.name}, ${city.state}`,
     })),
-    openingHours: SEO_CONSTANTS.HOURS,
+    // "Open 24 hours" on the Google listing, expressed the way Google parses it.
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: "00:00",
+        closes: "23:59",
+      },
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: `${SEO_CONSTANTS.BUSINESS_NAME} Services`,
+      itemListElement: SEO_CONSTANTS.PRIMARY_SERVICES.map((service) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: service.name,
+          description: service.description,
+          url: `${SEO_CONSTANTS.SITE_URL}/services/${service.slug}`,
+        },
+      })),
+    },
+    sameAs: [
+      SEO_CONSTANTS.SOCIAL.FACEBOOK,
+      SEO_CONSTANTS.SOCIAL.INSTAGRAM,
+      SEO_CONSTANTS.SOCIAL.GOOGLE_BUSINESS,
+    ].filter(Boolean),
     url: SEO_CONSTANTS.SITE_URL,
     priceRange: "$$",
   };

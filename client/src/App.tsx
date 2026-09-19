@@ -14,6 +14,8 @@ import RoofCleaning from "@/pages/services/roof-cleaning";
 import DrivewayConcreteCleaning from "@/pages/services/driveway-concrete-cleaning";
 import CommercialPressureWashing from "@/pages/services/commercial-pressure-washing";
 import WindowCleaning from "@/pages/services/window-cleaning";
+import DelicateStoneCleaning from "@/pages/services/delicate-stone-cleaning";
+import StoneDetail from "@/pages/services/stone-detail";
 
 import ServiceAreasIndex from "@/pages/service-areas/index";
 import MidlothianTX from "@/pages/service-areas/midlothian-tx";
@@ -62,6 +64,8 @@ function Router() {
       <Route path="/services/driveway-concrete-cleaning" component={DrivewayConcreteCleaning} />
       <Route path="/services/commercial-pressure-washing" component={CommercialPressureWashing} />
       <Route path="/services/window-cleaning" component={WindowCleaning} />
+      <Route path="/services/delicate-stone-cleaning" component={DelicateStoneCleaning} />
+      <Route path="/services/delicate-stone-cleaning/:stone" component={StoneDetail} />
 
       <Route path="/service-areas" component={ServiceAreasIndex} />
       <Route path="/service-areas/midlothian-tx" component={MidlothianTX} />

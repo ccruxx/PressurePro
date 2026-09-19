@@ -4,12 +4,12 @@ import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import SEOHead from "@/components/seo/SEOHead";
 import SchemaOrg from "@/components/seo/SchemaOrg";
-import { SEO_CONSTANTS } from "@/lib/seo-constants";
+import { SEO_CONSTANTS, getService } from "@/lib/seo-constants";
 import { getServiceSchema, getBreadcrumbSchema } from "@/lib/schema-helpers";
 import { Button } from "@/components/ui/button";
 
 export default function WindowCleaning() {
-  const service = SEO_CONSTANTS.PRIMARY_SERVICES[5];
+  const service = getService("window-cleaning");
   
   const breadcrumbs = getBreadcrumbSchema([
     { name: "Home", url: "/" },

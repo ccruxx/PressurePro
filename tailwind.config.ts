@@ -10,7 +10,54 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        display: ['"Fraunces"', "Georgia", "serif"],
+        sans: ['"Inter"', "system-ui", "sans-serif"],
+      },
+      fontSize: {
+        "step--1": "var(--step--1)",
+        "step-0": "var(--step-0)",
+        "step-1": "var(--step-1)",
+        "step-2": "var(--step-2)",
+        "step-3": "var(--step-3)",
+        "step-4": "var(--step-4)",
+        "step-5": "var(--step-5)",
+      },
+      spacing: {
+        section: "var(--section-y)",
+        gutter: "var(--gutter)",
+      },
+      maxWidth: {
+        measure: "var(--measure)",
+      },
+      boxShadow: {
+        sm: "var(--shadow-sm)",
+        md: "var(--shadow-md)",
+        lg: "var(--shadow-lg)",
+      },
       colors: {
+        ink: {
+          DEFAULT: "var(--ink)",
+          soft: "var(--ink-soft)",
+          faint: "var(--ink-faint)",
+        },
+        canvas: "var(--canvas)",
+        surface: {
+          DEFAULT: "var(--surface)",
+          sunken: "var(--surface-sunken)",
+        },
+        stone: {
+          100: "var(--stone-100)",
+          200: "var(--stone-200)",
+          300: "var(--stone-300)",
+          500: "var(--stone-500)",
+          700: "var(--stone-700)",
+        },
+        brand: {
+          DEFAULT: "var(--brand)",
+          strong: "var(--brand-strong)",
+          tint: "var(--brand-tint)",
+        },
         background: "var(--background)",
         foreground: "var(--foreground)",
         card: {

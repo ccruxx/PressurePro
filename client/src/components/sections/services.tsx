@@ -52,14 +52,14 @@ export default function Services() {
     },
     {
       icon: "fas fa-building",
-      title: "Light Commercial Pressure Washing",
+      title: "Commercial Pressure Washing",
       description:
-        "Storefronts and small commercial properties cleaned with the same detail-focused process we use for homes.",
+        "Parking lots, loading docks, dumpster pads, storefronts and fleet, scheduled around your operating hours.",
       features: [
-        "Storefront and Entry Cleaning",
-        "Sidewalk and Concrete Washing",
-        "Building Exterior Rinse",
-        "Routine Maintenance Plans",
+        "Parking Lots and Drive Lanes",
+        "Loading Docks and Dumpster Pads",
+        "Storefronts, Entries and Sidewalks",
+        "Recurring Service Contracts",
       ],
     },
     {
