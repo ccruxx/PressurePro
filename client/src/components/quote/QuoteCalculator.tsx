@@ -374,10 +374,10 @@ export default function QuoteCalculator() {
                   </div>
                   <button
                     onClick={() => setItems((prev) => prev.filter((i) => i.id !== item.id))}
-                    className="ml-1 p-1.5 rounded-lg hover:bg-red-50 hover:text-red-500 text-ink-faint transition-colors flex-shrink-0"
-                    title="Remove"
+                    className="-mr-2.5 flex h-11 w-11 flex-shrink-0 items-center justify-center hover:bg-red-50 hover:text-red-500 text-ink-faint transition-colors"
+                    aria-label={`Remove ${svc.label} from quote`}
                   >
-                    <X className="h-4 w-4" />
+                    <X className="h-4 w-4" aria-hidden="true" />
                   </button>
                 </div>
               );
@@ -397,6 +397,7 @@ export default function QuoteCalculator() {
             <button
               key={s.key}
               onClick={() => { setSelectedService(s.key); setMeasurement(""); }}
+              aria-pressed={selectedService === s.key}
               className={`relative border-2 p-4 text-left transition-colors duration-150 hover:border-brand hover:bg-brand-tint ${
                 selectedService === s.key ? "border-brand bg-brand-tint shadow-sm" : "border-stone-300 bg-surface"
               }`}
@@ -458,6 +459,7 @@ export default function QuoteCalculator() {
                     <button
                       key={tier.key}
                       onClick={() => setRoofTier(tier.key)}
+                      aria-pressed={roofTier === tier.key}
                       className={`border-2 p-4 text-center transition-colors ${
                         roofTier === tier.key
                           ? "border-brand bg-brand-tint"
@@ -466,7 +468,7 @@ export default function QuoteCalculator() {
                     >
                       <tier.icon className="mb-1 h-6 w-6 text-brand" aria-hidden="true" />
                       <div className="font-semibold text-ink text-sm leading-tight">{tier.label}</div>
-                      <div className={`font-bold mt-1 text-sm ${tier.key === "over5000" ? "text-orange-500" : "text-brand"}`}>
+                      <div className={`font-bold mt-1 text-sm ${tier.key === "over5000" ? "text-orange-700" : "text-brand"}`}>
                         {tier.price}
                       </div>
                     </button>
@@ -482,17 +484,18 @@ export default function QuoteCalculator() {
               </div>
             ) : (
               <div>
-                <label className="block text-sm font-medium text-ink-soft mb-2">
+                <label htmlFor="quote-measurement" className="block text-sm font-medium text-ink-soft mb-2">
                   Total {measurementUnit === "linear ft" ? "linear footage" : "square footage"} to be cleaned
                 </label>
                 <div className="relative max-w-xs">
                   <input
+                    id="quote-measurement"
                     type="number"
                     min="1"
                     value={measurement}
                     onChange={(e) => setMeasurement(e.target.value)}
                     placeholder={`e.g. ${measurementUnit === "sq ft" ? "2000" : "150"}`}
-                    className="w-full border-2 border-stone-300 rounded-lg px-4 py-3 text-lg font-semibold focus:border-brand transition-colors pr-24"
+                    className="w-full border-2 border-stone-300 px-4 py-3 text-lg font-semibold focus:border-brand transition-colors pr-24"
                   />
                   <span className="absolute right-3 top-1/2 -translate-y-1/2 text-ink-faint text-sm font-medium">
                     {measurementUnit}
@@ -519,6 +522,7 @@ export default function QuoteCalculator() {
                 <button
                   key={d.key}
                   onClick={() => setDirtLevel(d.key)}
+                  aria-pressed={dirtLevel === d.key}
                   className={`border-2 p-4 text-center transition-colors ${
                     dirtLevel === d.key
                       ? "border-brand bg-brand-tint"
@@ -528,7 +532,7 @@ export default function QuoteCalculator() {
                   <d.icon className="mx-auto mb-1 h-5 w-5 text-brand" aria-hidden="true" />
                   <div className="font-semibold text-ink text-sm">{d.label}</div>
                   <div className="text-ink-faint text-xs mt-1">{d.description}</div>
-                  <div className="text-orange-500 text-xs font-semibold mt-1">
+                  <div className="text-orange-700 text-xs font-semibold mt-1">
                     +{Math.round((d.multiplier - 1) * 100)}%
                   </div>
                 </button>
@@ -643,43 +647,49 @@ export default function QuoteCalculator() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-ink-soft mb-1.5">Full Name *</label>
+                  <label htmlFor="quote-name" className="block text-sm font-medium text-ink-soft mb-1.5">Full Name *</label>
                   <input
+                    id="quote-name"
                     type="text"
                     required
+                    autoComplete="name"
                     value={customer.name}
                     onChange={(e) => setCustomer((p) => ({ ...p, name: e.target.value }))}
                     placeholder="John Smith"
-                    className="w-full border-2 border-stone-300 rounded-lg px-4 py-2.5 text-sm focus:border-brand transition-colors"
+                    className="w-full border-2 border-stone-300 px-4 py-2.5 text-sm focus:border-brand transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-ink-soft mb-1.5">Phone Number *</label>
+                  <label htmlFor="quote-phone" className="block text-sm font-medium text-ink-soft mb-1.5">Phone Number *</label>
                   <input
+                    id="quote-phone"
                     type="tel"
                     required
+                    autoComplete="tel"
                     value={customer.phone}
                     onChange={(e) => setCustomer((p) => ({ ...p, phone: e.target.value }))}
                     placeholder="(817) 555-0100"
-                    className="w-full border-2 border-stone-300 rounded-lg px-4 py-2.5 text-sm focus:border-brand transition-colors"
+                    className="w-full border-2 border-stone-300 px-4 py-2.5 text-sm focus:border-brand transition-colors"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-ink-soft mb-1.5">Email Address *</label>
+                <label htmlFor="quote-email" className="block text-sm font-medium text-ink-soft mb-1.5">Email Address *</label>
                 <input
+                  id="quote-email"
                   type="email"
                   required
+                  autoComplete="email"
                   value={customer.email}
                   onChange={(e) => setCustomer((p) => ({ ...p, email: e.target.value }))}
                   placeholder="john@example.com"
-                  className="w-full border-2 border-stone-300 rounded-lg px-4 py-2.5 text-sm focus:border-brand transition-colors"
+                  className="w-full border-2 border-stone-300 px-4 py-2.5 text-sm focus:border-brand transition-colors"
                 />
               </div>
 
               {submitError && (
-                <div className="flex items-center gap-2 text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm">
-                  <AlertCircle className="h-4 w-4 flex-shrink-0" />
+                <div role="alert" className="flex items-center gap-2 text-red-600 bg-red-50 border border-red-200 px-4 py-3 text-sm">
+                  <AlertCircle className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
                   {submitError}
                 </div>
               )}

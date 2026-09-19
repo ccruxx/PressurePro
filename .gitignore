@@ -12,3 +12,6 @@ vite.config.ts.*
 # scratch + generated triage artifacts
 _triage/
 gbp-fullres.html
+
+# local Claude Code tooling (assistant skills/settings, not site content)
+.claude/

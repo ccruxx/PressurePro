@@ -66,11 +66,18 @@ export default function Header() {
               className="relative"
               onMouseEnter={() => setOpenMenu("services")}
               onMouseLeave={() => setOpenMenu(null)}
+              onBlur={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpenMenu(null);
+              }}
+              onKeyDown={(e) => e.key === "Escape" && setOpenMenu(null)}
             >
               <Link
                 href="/services"
                 className={`flex items-center gap-1 py-6 ${navLink}`}
                 data-testid="nav-services"
+                aria-haspopup="true"
+                aria-expanded={openMenu === "services"}
+                onFocus={() => setOpenMenu("services")}
               >
                 Services
                 <ChevronDown className="h-4 w-4" aria-hidden="true" />
@@ -109,11 +116,18 @@ export default function Header() {
               className="relative"
               onMouseEnter={() => setOpenMenu("areas")}
               onMouseLeave={() => setOpenMenu(null)}
+              onBlur={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpenMenu(null);
+              }}
+              onKeyDown={(e) => e.key === "Escape" && setOpenMenu(null)}
             >
               <Link
                 href="/service-areas"
                 className={`flex items-center gap-1 py-6 ${navLink}`}
                 data-testid="nav-service-areas"
+                aria-haspopup="true"
+                aria-expanded={openMenu === "areas"}
+                onFocus={() => setOpenMenu("areas")}
               >
                 Service Areas
                 <ChevronDown className="h-4 w-4" aria-hidden="true" />
@@ -143,7 +157,17 @@ export default function Header() {
           </div>
 
           {/* Actions ------------------------------------------------------- */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1 sm:gap-3">
+            {/* Icon-only call button below the sm breakpoint: without it, a
+                phone under 640px has no visible call/quote CTA at all - only
+                the hamburger menu. Local-service traffic calls directly. */}
+            <a
+              href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
+              className="flex h-11 w-11 items-center justify-center text-ink transition-colors hover:text-brand sm:hidden"
+              aria-label={`Call ${SEO_CONSTANTS.CONTACT.PHONE}`}
+            >
+              <Phone className="h-5 w-5" aria-hidden="true" />
+            </a>
             <a
               href={SEO_CONSTANTS.CONTACT.PHONE_TEL}
               className="hidden items-center gap-2 font-medium text-ink transition-colors hover:text-brand md:flex"
@@ -159,7 +183,7 @@ export default function Header() {
             </button>
 
             <button
-              className="-mr-2 p-2 lg:hidden"
+              className="-mr-2 flex h-11 w-11 items-center justify-center lg:hidden"
               onClick={() => setIsMobileMenuOpen((v) => !v)}
               aria-expanded={isMobileMenuOpen}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}

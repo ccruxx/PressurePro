@@ -19,7 +19,11 @@
   --secondary-foreground: hsl(0, 0%, 100%);
   --accent: hsl(45, 100%, 50%);
   --accent-foreground: hsl(0, 0%, 0%);
-  --success: hsl(142, 76%, 36%);
+  /* Channel triplet (no hsl() wrapper): tailwind.config composes this as
+     hsl(var(--success) / <alpha-value>), so a wrapped value here silently
+     breaks every success/40, text-success, etc. opacity variant. */
+  --success: 142 76% 36%;
+  --success-strong: 142 76% 30%;
   --success-foreground: hsl(0, 0%, 100%);
   --destructive: hsl(0, 84.2%, 60.2%);
   --destructive-foreground: hsl(60, 9.1%, 97.8%);
@@ -90,7 +94,7 @@
   --secondary-foreground: hsl(0, 0%, 100%);
   --accent: hsl(45, 100%, 50%);
   --accent-foreground: hsl(0, 0%, 0%);
-  --success: hsl(142, 76%, 36%);
+  --success: 142 76% 36%;
   --success-foreground: hsl(0, 0%, 100%);
   --destructive: hsl(0, 62.8%, 30.6%);
   --destructive-foreground: hsl(0, 0%, 98%);
