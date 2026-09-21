@@ -20,11 +20,11 @@ export default function Hero() {
         {/* Single optimised photograph instead of a third-party video embed:
             this is the page's LCP element, so it has to be fast. */}
         <WorkImage
-          slug="limestone-steps-cleaning"
-          alt="Freshly cleaned limestone steps leading up to a stone home"
+          slug="fleet-lineup-commercial-jobsite"
+          alt="DFW Pristine Power Washing's full fleet of trucks, trailers and pressure washing equipment staged at a commercial job site"
           priority
           sizes="100vw"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-[center_35%]"
         />
         {/* Scrim in two layers: a flat base so contrast holds at every width,
             plus a directional gradient behind the type. Below lg the text

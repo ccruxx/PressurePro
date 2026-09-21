@@ -481,6 +481,14 @@ export const WORK_IMAGES: WorkImage[] = [
     width: 2048,
     height: 1542,
   },
+  {
+    slug: "fleet-lineup-commercial-jobsite",
+    category: "fleet",
+    alt: "DFW Pristine Power Washing's full fleet of trucks, trailers and pressure washing equipment staged at a commercial job site",
+    widths: [640, 1024, 1536, 2048],
+    width: 2048,
+    height: 1536,
+  },
 ];
 
 export const workImagesBy = (category: WorkCategory) =>
