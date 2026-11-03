@@ -25,6 +25,29 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- LeadTruffle widget install (vendor snippet). Deferred to window load so
+         the third-party script never competes with the hero for bandwidth.
+         SPA: this one install covers every route. -->
+    <script>
+      ;(function () {
+        function load() {
+          var s = document.createElement('script')
+          s.src = 'https://embeds-v1.leadtruffle.com/tooldesk-widget.js'
+          s.async = true
+          s.onload = function () {
+            window.Tooldesk &&
+              window.Tooldesk.initialize({
+                companyId: 'ea79255a-d13f-42cf-a377-cd53c5a0992b',
+                bypassCache: false,
+              })
+          }
+          document.head.appendChild(s)
+        }
+        if (document.readyState === 'complete') load()
+        else window.addEventListener('load', load)
+      })()
+    </script>
     <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
     <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
   </body>
